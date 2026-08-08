@@ -64,4 +64,4 @@ size = 3
 
 [node name="LevelTag" parent="." unique_id=2094537885 instance=ExtResource("9_la22p")]
 level_name = "Castle Entrance"
-description = "Planned: Beginner enemies and breakable loot. Both will contain dropable loot the player can collect.  Progress ability (double-jump) locked entrance to upper area."
+description = "Planned: Beginner enemies and breakable loot. Both will contain dropable loot the player can collect.  Progress ability (double-jump) locked entrance to upper area.  Upper area not blocked out yet, as progress might not get there during this iteration."
