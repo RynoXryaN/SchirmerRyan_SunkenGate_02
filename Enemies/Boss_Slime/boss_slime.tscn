@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b731vhkfpdiu4"]
+
+[ext_resource type="PackedScene" uid="uid://cyrvsh646p2ii" path="res://Enemies/slime_2/slime_2.tscn" id="1_xbbd5"]
+[ext_resource type="Script" uid="uid://d1yygqxonysds" path="res://Enemies/scripts/boss_slime.gd" id="2_41f3n"]
+
+[node name="BossSlime" unique_id=12220609 instance=ExtResource("1_xbbd5")]
+script = ExtResource("2_41f3n")
+boss_health = 150.0

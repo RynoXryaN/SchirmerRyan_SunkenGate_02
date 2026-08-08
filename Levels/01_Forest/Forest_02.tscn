@@ -1,0 +1,117 @@
+[gd_scene format=4 uid="uid://d1df32fgb7kwm"]
+
+[ext_resource type="Texture2D" uid="uid://b3388dtkq7sac" path="res://Assets/LushForestAssetPack/ParallaxScrollingForestBackground/Forest_layer1.png" id="1_6sxgr"]
+[ext_resource type="TileSet" uid="uid://fkl8smocyiru" path="res://Levels/Tilesets/forgotten_forest.tres" id="1_7k27k"]
+[ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="2_cmcpr"]
+[ext_resource type="Texture2D" uid="uid://btxyi5xv6vp8h" path="res://Assets/LushForestAssetPack/ParallaxScrollingForestBackground/Forest_layer2.png" id="2_pidpb"]
+[ext_resource type="Script" uid="uid://jpbhet65r764" path="res://General/Scripts/level_bounds.gd" id="3_57p05"]
+[ext_resource type="Texture2D" uid="uid://d2rs5u8jrj0ln" path="res://Assets/LushForestAssetPack/ParallaxScrollingForestBackground/Forest_layer3.png" id="3_qu55o"]
+[ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="4_cmcpr"]
+[ext_resource type="Texture2D" uid="uid://divp7tp0pml0g" path="res://Assets/LushForestAssetPack/ParallaxScrollingForestBackground/Forest_layer5.png" id="4_ykpl2"]
+[ext_resource type="Texture2D" uid="uid://cah8uleg5m0w8" path="res://Assets/LushForestAssetPack/ParallaxScrollingForestBackground/Forest_layer4.png" id="9_qu55o"]
+[ext_resource type="Texture2D" uid="uid://db52e2df1bq5f" path="res://Assets/LushForestAssetPack/ParallaxScrollingForestBackground/Forest_layer6.png" id="10_ykpl2"]
+[ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="11_382px"]
+[ext_resource type="AudioStream" uid="uid://d4jsvuylq4x7x" path="res://Music/forest_01.ogg" id="12_bhqh1"]
+
+[sub_resource type="Gradient" id="Gradient_ji3mo"]
+offsets = PackedFloat32Array(0, 0.9963768)
+colors = PackedColorArray(0.5411765, 0.7058824, 0.45882353, 1, 0.38431373, 0.5686275, 0.43529412, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qu55o"]
+gradient = SubResource("Gradient_ji3mo")
+width = 1200
+height = 300
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="Forest_02" type="Node2D" unique_id=1431670717]
+position = Vector2(577, 370)
+
+[node name="Parallax_BG04" type="Parallax2D" parent="." unique_id=1904438255]
+scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(-15, -31)
+
+[node name="ForestLayer1" type="Sprite2D" parent="Parallax_BG04" unique_id=693453635]
+position = Vector2(-56, -156)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_6sxgr")
+
+[node name="Parallax_BG03" type="Parallax2D" parent="." unique_id=1239966525]
+scroll_scale = Vector2(0.4, 1)
+scroll_offset = Vector2(0, 44)
+
+[node name="ForestLayer2" type="Sprite2D" parent="Parallax_BG03" unique_id=854883504]
+position = Vector2(-56, -331)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pidpb")
+
+[node name="Parallax_BG02" type="Parallax2D" parent="." unique_id=1204692841]
+scroll_scale = Vector2(0.6, 1)
+scroll_offset = Vector2(0, -13)
+
+[node name="ForestLayer3" type="Sprite2D" parent="Parallax_BG02" unique_id=529550123]
+position = Vector2(-56, -226)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_qu55o")
+
+[node name="Parallax_BG01" type="Parallax2D" parent="." unique_id=2032397206]
+scroll_scale = Vector2(0.8, 1)
+scroll_offset = Vector2(0, 53)
+
+[node name="ForestLayer5" type="Sprite2D" parent="Parallax_BG01" unique_id=351430177]
+position = Vector2(-56, -356)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ykpl2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2084671512]
+position = Vector2(-59, -255)
+texture = SubResource("GradientTexture2D_qu55o")
+
+[node name="S2_TML_01" type="TileMapLayer" parent="." unique_id=1327578415]
+position = Vector2(-1024, 5)
+tile_map_data = PackedByteArray("AAAOAPv/AAAVAAAAAAAOAP3/AAAVAAUAAAAOAPz/AAAVAAQAAAARAPr/AAAVAAAAAAAQAPr/AAAUAAAAAAAQAPv/AAATAAIAAAAPAPv/AAAVAAAAAAAPAPz/AAAVAAQAAAAQAPz/AAAVAAQAAAARAPv/AAAVAAQAAAAPAP3/AAAVAAUAAAAQAP3/AAAVAAUAAAARAP3/AAAVAAUAAAARAPz/AAAVAAQAAAASAPz/AAAVAAQAAAASAPv/AAAUAAMAAAASAP3/AAAVAAUAAAATAPz/AAAVAAQAAAATAPv/AAAVAAAAAAATAP3/AAAVAAUAAAAUAP3/AAAVAAUAAAAUAPz/AAAUAAMAAAASAPr/AAATAAAAAAAUAPv/AAATAAAAAAAVAPz/AAAVAAAAAAAVAP3/AAAVAAUAAAAWAPz/AAAVAAAAAAAWAP3/AAAVAAUAAAAXAP3/AAAVAAUAAAAYAP3/AAAVAAUAAAAXAPz/AAAVAAAAAAAYAPz/AAAVAAAAAAAZAPz/AAAVAAAAAAAaAPz/AAATAAIAAAAZAP3/AAAVAAUAAAAaAP3/AAAVAAUAAAAaAPv/AAAUAAAAAAAbAPv/AAAVAAAAAAAbAPz/AAAVAAQAAAAbAP3/AAAVAAUAAAAcAP3/AAAVAAUAAAAcAPz/AAAVAAQAAAAcAPv/AAAVAAAAAAAdAP3/AAAVAAUAAAAdAPz/AAAVAAQAAAAdAPv/AAATAAIAAAAdAPr/AAATAAMAAAAeAPr/AAAVAAQAAAAfAPr/AAAVAAQAAAAfAPv/AAAVAAQAAAAeAPv/AAAVAAQAAAAeAPz/AAAVAAQAAAAfAPz/AAAVAAQAAAAfAP3/AAAVAAUAAAAeAP3/AAAVAAUAAAAgAP3/AAAVAAUAAAAgAPz/AAAVAAQAAAAgAPv/AAAVAAQAAAAgAPr/AAAVAAQAAAAhAPr/AAAVAAQAAAAhAPv/AAAVAAQAAAAhAPz/AAAVAAQAAAAhAP3/AAAVAAUAAAAiAPr/AAAWAAQAAAAiAPv/AAAWAAQAAAAiAPz/AAAUAAMAAAAiAP3/AAAVAAUAAAAjAPz/AAAVAAAAAAAjAP3/AAAVAAUAAAAkAP3/AAAVAAUAAAAlAP3/AAAVAAUAAAAlAPz/AAAVAAAAAAAkAPz/AAAVAAAAAAAmAPz/AAAVAAAAAAAnAPz/AAAVAAAAAAAnAP3/AAAVAAUAAAAmAP3/AAAVAAUAAAAoAPv/AAATAAMAAAAoAPz/AAATAAIAAAAoAP3/AAAVAAUAAAApAP3/AAAVAAUAAAAqAP3/AAAVAAUAAAApAPz/AAAVAAQAAAApAPv/AAAVAAQAAAAqAPz/AAAVAAQAAAArAPz/AAAVAAQAAAAqAPv/AAAVAAQAAAArAP3/AAAVAAUAAAAdAPn/AAAUAAAAAAAeAPn/AAAVAAAAAAAfAPn/AAAVAAAAAAAgAPn/AAAVAAAAAAAhAPn/AAAVAAAAAAAiAPn/AAATAAAAAAAoAPr/AAAUAAAAAAApAPr/AAAVAAAAAAAqAPr/AAAVAAAAAAArAPv/AAAVAAQAAAArAPr/AAAUAAEAAAArAPn/AAAUAAAAAAAsAPn/AAAVAAAAAAAtAPn/AAAVAAAAAAAsAPr/AAAVAAQAAAAtAPr/AAAVAAQAAAAsAPv/AAAVAAQAAAAtAPv/AAAVAAQAAAAsAPz/AAAVAAQAAAAsAP3/AAAVAAUAAAAtAPz/AAAVAAQAAAAtAP3/AAAVAAUAAAANAPv/AAAUAAAAAAANAPz/AAATAAMAAAANAP3/AAAUAAUAAAAuAPn/AAATAAAAAAAuAPr/AAAWAAQAAAAuAPv/AAAWAAQAAAAuAPz/AAAWAAQAAAAuAP3/AAATAAUAAAAkAPj/AAARAAYAAAAlAPj/AAASAAYAAAAmAPj/AAATAAYAAAA=")
+tile_set = ExtResource("1_7k27k")
+
+[node name="Player" parent="." unique_id=1832653433 instance=ExtResource("2_cmcpr")]
+position = Vector2(-529, -175)
+
+[node name="LevelBounds" type="Node2D" parent="." unique_id=704055712]
+z_index = 256
+position = Vector2(-577, -370)
+script = ExtResource("3_57p05")
+width = 1024
+metadata/_custom_type_script = "uid://jpbhet65r764"
+
+[node name="LevelTransition" parent="." unique_id=628461966 instance=ExtResource("4_cmcpr")]
+position = Vector2(-578, -150)
+size = 6
+location = 0
+target_level = "uid://b5beoshdgyky1"
+
+[node name="LevelTransition2" parent="." unique_id=1800504861 instance=ExtResource("4_cmcpr")]
+position = Vector2(448, -216)
+size = 5
+location = 1
+target_level = "uid://crtyfsi6e5ehm"
+
+[node name="Parallax_FG02" type="Parallax2D" parent="." unique_id=1450751160]
+scroll_scale = Vector2(1.2, 1)
+
+[node name="ForestLayer4" type="Sprite2D" parent="Parallax_FG02" unique_id=1281367777]
+position = Vector2(-56, -175)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_qu55o")
+
+[node name="Parallax_FG01" type="Parallax2D" parent="." unique_id=51855016]
+modulate = Color(1, 1, 1, 0.61960787)
+scroll_scale = Vector2(1.4, 1)
+
+[node name="ForestLayer6" type="Sprite2D" parent="Parallax_FG01" unique_id=1255635217]
+position = Vector2(-56, -259)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_ykpl2")
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=685198702]
+script = ExtResource("11_382px")
+track = ExtResource("12_bhqh1")
+metadata/_custom_type_script = "uid://e4pke5vxuyxn"

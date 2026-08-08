@@ -1,0 +1,37 @@
+[gd_scene format=4 uid="uid://b5beoshdgyky1"]
+
+[ext_resource type="TileSet" uid="uid://fkl8smocyiru" path="res://Levels/Tilesets/forgotten_forest.tres" id="1_jtdhb"]
+[ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="2_ga02f"]
+[ext_resource type="Script" uid="uid://jpbhet65r764" path="res://General/Scripts/level_bounds.gd" id="3_wjcrk"]
+[ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="4_gdfn2"]
+
+[node name="01" type="Node2D" unique_id=1431670717]
+position = Vector2(577, 370)
+
+[node name="TileMapLayer01" type="TileMapLayer" parent="." unique_id=155749028]
+tile_map_data = PackedByteArray("AADu//7/AAAXAAIAAADu//3/AAAQAAMAAADu//z/AAATAAMAAADu//v/AAAQAAIAAADu//r/AAAXAAQAAADu//n/AAAXAAQAAADu//j/AAAXAAQAAADu//f/AAAXAAQAAADu//b/AAAXAAQAAADu//X/AAAXAAQAAADu//T/AAAXAAMAAADv//v/AAAVAAAAAADv//z/AAAVAAQAAADw//z/AAAVAAQAAADw//3/AAAVAAUAAADw//v/AAAVAAAAAADx//v/AAAVAAAAAADy//v/AAAVAAAAAADz//v/AAATAAAAAADz//z/AAAUAAMAAADz//3/AAAVAAUAAADy//3/AAAVAAUAAADx//3/AAAVAAUAAADx//z/AAAVAAQAAADy//z/AAAVAAQAAADv//3/AAAVAAUAAAD0//z/AAAVAAAAAAD1//z/AAAVAAAAAAD0//3/AAAVAAUAAAD1//3/AAAVAAUAAAD2//z/AAAVAAAAAAD2//3/AAAVAAUAAAD3//z/AAAVAAAAAAD3//3/AAAVAAUAAAD4//z/AAAVAAAAAAD4//3/AAAVAAUAAAD5//z/AAAVAAAAAAD5//3/AAAVAAUAAAD6//z/AAAUAAEAAAD6//3/AAAVAAUAAAD6//v/AAAUAAAAAAD7//z/AAAVAAQAAAD7//v/AAAVAAAAAAD8//v/AAATAAAAAAD9//z/AAAVAAAAAAD8//z/AAAUAAMAAAD7//3/AAAVAAUAAAD8//3/AAAVAAUAAAD9//3/AAAVAAUAAAD+//3/AAAVAAUAAAD+//z/AAAVAAAAAAD///z/AAAVAAAAAAD///3/AAAVAAUAAAAAAP3/AAAVAAUAAAAAAPz/AAAVAAAAAAABAP3/AAAVAAUAAAABAPz/AAAVAAAAAAACAP3/AAAVAAUAAAACAPz/AAAVAAAAAAADAP3/AAAVAAUAAAADAPz/AAAVAAAAAAAEAP3/AAAVAAUAAAAEAPz/AAATAAQAAAAFAPv/AAAFAAMAAAAGAPv/AAAIAAMAAAAHAPv/AAAJAAMAAAAIAPv/AAAKAAMAAAAJAPv/AAALAAMAAAAKAPv/AAAMAAMAAAALAPv/AAANAAMAAAAMAPv/AAAOAAMAAAANAPv/AAAPAAMAAAANAPz/AAAPAAQAAAANAP3/AAAMAAQAAAAMAP3/AAALAAQAAAAMAPz/AAAMAAQAAAALAPz/AAALAAQAAAAKAPz/AAAMAAQAAAAJAPz/AAALAAQAAAAIAPz/AAAMAAQAAAAHAPz/AAALAAQAAAAGAPz/AAAHAAQAAAAFAPz/AAAGAAQAAAAFAP3/AAALAAQAAAAGAP3/AAAMAAQAAAAHAP3/AAALAAQAAAAIAP3/AAAMAAQAAAAJAP3/AAALAAQAAAAKAP3/AAAMAAQAAAALAP3/AAALAAQAAAAOAPv/AAATAAAAAAAOAP3/AAAEAAIAAAAOAPz/AAAEAAEAAAAGAPr/AAAIAAIAAAAHAPr/AAAJAAIAAAAIAPr/AAAKAAIAAAAJAPr/AAALAAIAAAAKAPr/AAAMAAIAAAALAPr/AAANAAIAAAAMAPr/AAAOAAIAAAANAPr/AAAPAAIAAAAEAPv/AAAAAAAAAAA=")
+tile_set = ExtResource("1_jtdhb")
+
+[node name="TileMapLayer02" type="TileMapLayer" parent="." unique_id=1518758287]
+position = Vector2(0, 6)
+tile_map_data = PackedByteArray("AADv//n/AAAVAAcAAADv//r/AAAVAAgAAAD5//v/AAAUAAcAAAAEAPr/AAAUAAcAAAAFAPn/AAAVAAcAAAAFAPr/AAAVAAgAAAANAPn/AAAVAAcAAAANAPr/AAAVAAgAAAA=")
+tile_set = ExtResource("1_jtdhb")
+
+[node name="TileMapLayer03" type="TileMapLayer" parent="." unique_id=58839433]
+tile_set = ExtResource("1_jtdhb")
+
+[node name="Player" parent="." unique_id=1832653433 instance=ExtResource("2_ga02f")]
+position = Vector2(-529, -175)
+
+[node name="LevelBounds" type="Node2D" parent="." unique_id=704055712]
+z_index = 256
+position = Vector2(-577, -370)
+script = ExtResource("3_wjcrk")
+width = 1024
+metadata/_custom_type_script = "uid://jpbhet65r764"
+
+[node name="LevelTransition" parent="." unique_id=628461966 instance=ExtResource("4_gdfn2")]
+position = Vector2(448, -158)
+size = 6
+location = 1
+target_level = "uid://d1df32fgb7kwm"

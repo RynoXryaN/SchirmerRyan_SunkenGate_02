@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b4dm116l21u1p"]
+
+[ext_resource type="Script" uid="uid://chfwydsgj3xui" path="res://Levels/Props/dummies/test_dummy.gd" id="1_g8tnt"]
+[ext_resource type="Texture2D" uid="uid://c04aktnchgl8r" path="res://General/Sprites/props_destructible.png" id="2_34dct"]
+[ext_resource type="Script" uid="uid://8wbd8v2k68p" path="res://General/Scripts/haz_area.gd" id="3_34dct"]
+[ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="3_bb1e8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgdun"]
+atlas = ExtResource("2_34dct")
+region = Rect2(33, 17, 14, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bb1e8"]
+size = Vector2(14, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra0s4"]
+atlas = ExtResource("2_34dct")
+region = Rect2(16, 51, 16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24nys"]
+size = Vector2(14, 34.5)
+
+[node name="SpikeDummy" type="Node2D" unique_id=1473781896]
+script = ExtResource("1_g8tnt")
+base_wobble_angle = 10.0
+wobble_speed = 0.25
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=1374983415]
+position = Vector2(0, -6)
+texture = SubResource("AtlasTexture_qgdun")
+offset = Vector2(0, -19)
+
+[node name="HazardArea" type="Area2D" parent="BodySprite" unique_id=1711532626]
+position = Vector2(0, -21)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("3_34dct")
+metadata/_custom_type_script = "uid://8wbd8v2k68p"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodySprite/HazardArea" unique_id=1202727279]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_bb1e8")
+debug_color = Color(0.9882353, 0.0627451, 0.1764706, 0.42745098)
+
+[node name="BaseSprite" type="Sprite2D" parent="." unique_id=465956297]
+position = Vector2(0, -6)
+texture = SubResource("AtlasTexture_ra0s4")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1226646605]
+collision_layer = 96
+collision_mask = 0
+script = ExtResource("3_bb1e8")
+metadata/_custom_type_script = "uid://bghkwtmlo6w70"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=475332382]
+position = Vector2(0, -27.75)
+shape = SubResource("RectangleShape2D_24nys")
+debug_color = Color(0, 0.6, 0.69803923, 0)

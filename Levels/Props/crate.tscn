@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c0k4kdhi3sxgu"]
+
+[ext_resource type="Script" uid="uid://dr26tgc60d5dh" path="res://General/Scripts/breakable.gd" id="1_j6gu6"]
+[ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="2_rmv41"]
+[ext_resource type="Texture2D" uid="uid://c04aktnchgl8r" path="res://General/Sprites/props_destructible.png" id="3_o4d0r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wveh7"]
+size = Vector2(40, 31)
+
+[node name="Crate" type="Node2D" unique_id=164180075]
+script = ExtResource("1_j6gu6")
+metadata/_custom_type_script = "uid://dr26tgc60d5dh"
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1892175127]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("2_rmv41")
+metadata/_custom_type_script = "uid://bghkwtmlo6w70"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=231178720]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_wveh7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1429394204]
+texture = ExtResource("3_o4d0r")
+region_enabled = true
+region_rect = Rect2(53, 28, 39, 35)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=272118138]
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1236346407]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_wveh7")

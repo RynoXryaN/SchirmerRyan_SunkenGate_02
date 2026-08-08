@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://ctfdruvli7tvj"]
+
+[ext_resource type="Texture2D" uid="uid://out0ujmbue2t" path="res://General/Sprites/dust_effects.png" id="1_6c6jp"]
+[ext_resource type="Script" uid="uid://b5xgyemiv5ngc" path="res://00_Global/visual_effects/dust_effect.gd" id="2_fmowi"]
+
+[sub_resource type="Animation" id="Animation_fmowi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6c6jp"]
+resource_name = "hit"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_ur5ex"]
+resource_name = "jump"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_wdfm4"]
+resource_name = "land"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wdfm4"]
+_data = {
+&"RESET": SubResource("Animation_fmowi"),
+&"hit": SubResource("Animation_6c6jp"),
+&"jump": SubResource("Animation_ur5ex"),
+&"land": SubResource("Animation_wdfm4")
+}
+
+[node name="DustEffect" type="Sprite2D" unique_id=156863493]
+texture = ExtResource("1_6c6jp")
+hframes = 8
+vframes = 3
+script = ExtResource("2_fmowi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1642588109]
+libraries/ = SubResource("AnimationLibrary_wdfm4")

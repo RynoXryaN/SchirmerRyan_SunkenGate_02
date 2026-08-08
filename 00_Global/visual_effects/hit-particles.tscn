@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cnhuevkyfd4oy"]
+
+[ext_resource type="Script" uid="uid://bhutfcnii0apb" path="res://00_Global/visual_effects/hit_particles.gd" id="1_rcko0"]
+
+[sub_resource type="Curve" id="Curve_qupi8"]
+_data = [Vector2(0.004065037, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.7642276, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1v3bo"]
+curve = SubResource("Curve_qupi8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6052t"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(8, 8, 1)
+spread = 90.0
+initial_velocity_min = 75.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 200, 0)
+alpha_curve = SubResource("CurveTexture_1v3bo")
+
+[node name="HitParticles" type="GPUParticles2D" unique_id=39473157]
+z_index = 2
+explosiveness = 0.9
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6052t")
+script = ExtResource("1_rcko0")

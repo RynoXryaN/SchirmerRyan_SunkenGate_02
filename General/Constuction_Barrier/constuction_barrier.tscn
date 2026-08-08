@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bupgmw6te5o0e"]
+
+[ext_resource type="Script" uid="uid://bh8olu838u60a" path="res://General/Constuction_Barrier/constuction_barrier.gd" id="1_urtjf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urtjf"]
+size = Vector2(32, 32)
+
+[node name="ConstuctionBarrier" type="Node2D" unique_id=254877588]
+script = ExtResource("1_urtjf")
+
+[node name="Barrier" type="Area2D" parent="." unique_id=1161659156]
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier" unique_id=1742338316]
+position = Vector2(16, -16)
+shape = SubResource("RectangleShape2D_urtjf")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=701717255]

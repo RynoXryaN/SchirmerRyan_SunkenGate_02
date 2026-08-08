@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bhwdd1x5kfjt8"]
+
+[ext_resource type="Script" uid="uid://chfwydsgj3xui" path="res://Levels/Props/dummies/test_dummy.gd" id="1_k76xv"]
+[ext_resource type="Texture2D" uid="uid://c04aktnchgl8r" path="res://General/Sprites/props_destructible.png" id="2_4u8nk"]
+[ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="3_ya7wa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgdun"]
+atlas = ExtResource("2_4u8nk")
+region = Rect2(17, 10, 14, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra0s4"]
+atlas = ExtResource("2_4u8nk")
+region = Rect2(16, 51, 16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24nys"]
+size = Vector2(16, 35)
+
+[node name="TestDummy" type="Node2D" unique_id=1473781896]
+script = ExtResource("1_k76xv")
+base_wobble_angle = 7.0
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=1374983415]
+position = Vector2(0, -9)
+texture = SubResource("AtlasTexture_qgdun")
+offset = Vector2(0, -19)
+
+[node name="BaseSprite" type="Sprite2D" parent="." unique_id=465956297]
+position = Vector2(0, -6)
+texture = SubResource("AtlasTexture_ra0s4")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1226646605]
+collision_layer = 96
+collision_mask = 0
+script = ExtResource("3_ya7wa")
+metadata/_custom_type_script = "uid://bghkwtmlo6w70"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=475332382]
+position = Vector2(0, -30.5)
+shape = SubResource("RectangleShape2D_24nys")
+debug_color = Color(0, 0.6, 0.69803923, 0)

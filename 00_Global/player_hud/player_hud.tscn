@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://c61vbgu3y8l3j"]
+
+[ext_resource type="Script" uid="uid://bdcxly7qrkjir" path="res://00_Global/player_hud/player_hud.gd" id="1_1rq2o"]
+[ext_resource type="Texture2D" uid="uid://b51l2hc3eydrk" path="res://00_Global/player_hud/health_bar_frame.png" id="1_htg7c"]
+[ext_resource type="Script" uid="uid://b26misjaeywyg" path="res://00_Global/visual_effects/hit_particle_settings.gd" id="3_04axr"]
+
+[sub_resource type="Gradient" id="Gradient_8jfgd"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_htg7c"]
+gradient = SubResource("Gradient_8jfgd")
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_htg7c"]
+offsets = PackedFloat32Array(0, 0.9925926)
+colors = PackedColorArray(0.8627451, 0, 0, 1, 0.99996346, 0.6140783, 0.55596757, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1rq2o"]
+gradient = SubResource("Gradient_htg7c")
+
+[sub_resource type="GDScript" id="GDScript_1rq2o"]
+script/source = "extends Button
+
+@export var particle_settings : HitParticleSettings
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pressed.connect( _on_pressed )
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _on_pressed() -> void:
+	var pos : Vector2 = get_tree().get_first_node_in_group( \"Player\").global_position
+	VisualEffectsFactory.hit_particles( pos, Vector2(1, 0), particle_settings )
+	pass
+"
+
+[sub_resource type="Resource" id="Resource_ilici"]
+script = ExtResource("3_04axr")
+metadata/_custom_type_script = "uid://b26misjaeywyg"
+
+[node name="PlayerHud" type="CanvasLayer" unique_id=1812373244]
+process_mode = 3
+layer = 2
+script = ExtResource("1_1rq2o")
+
+[node name="Control" type="Control" parent="." unique_id=566705701]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="HP_MarginContainer" type="MarginContainer" parent="Control" unique_id=415166997]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 36.0
+scale = Vector2(2, 2)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/HP_MarginContainer" unique_id=1973303225]
+layout_mode = 2
+texture = ExtResource("1_htg7c")
+patch_margin_left = 27
+patch_margin_right = 7
+
+[node name="HP_Bar" type="TextureProgressBar" parent="Control/HP_MarginContainer/NinePatchRect" unique_id=557940524]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 6.0
+offset_right = -3.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+rounded = true
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_htg7c")
+texture_progress = SubResource("GradientTexture2D_1rq2o")
+
+[node name="Button" type="Button" parent="Control" unique_id=1609895322]
+visible = false
+layout_mode = 0
+offset_left = 1045.0
+offset_top = 18.0
+offset_right = 1126.0
+offset_bottom = 49.0
+text = "Test Particles"
+script = SubResource("GDScript_1rq2o")
+particle_settings = SubResource("Resource_ilici")
+
+[node name="MessageLabel" type="Label" parent="Control" unique_id=1602861787]
+custom_minimum_size = Vector2(560, 90)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -178.0
+offset_right = 624.0
+offset_bottom = -98.0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
+autowrap_mode = 3

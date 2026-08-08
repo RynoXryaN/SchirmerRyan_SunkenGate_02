@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bxwpjyachk0bn"]
+
+[ext_resource type="Script" uid="uid://c0kuwxxpeuc8b" path="res://General/Scripts/slam_breakable.gd" id="1_8s6ys"]
+[ext_resource type="Texture2D" uid="uid://du4ror5cralaf" path="res://Levels/Tilesets/Sprites/forgotten_forest_example_tileset.png" id="1_12i22"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12i22"]
+size = Vector2(80, 16)
+
+[node name="SlamBreakable" type="StaticBody2D" unique_id=1862896120]
+collision_layer = 129
+collision_mask = 0
+script = ExtResource("1_8s6ys")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1879217390]
+texture = ExtResource("1_12i22")
+region_enabled = true
+region_rect = Rect2(537, 352, 80, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2116369421]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_12i22")

@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bdnclrejqp8a0"]
+
+[ext_resource type="Script" uid="uid://dwdty0xtxhtek" path="res://Player/Scripts/player.gd" id="1_0qu43"]
+[ext_resource type="Texture2D" uid="uid://du1hmekg0npoi" path="res://assets/2D_Provided_Resources/characters/DinoSprites - vita.png" id="1_4pdrp"]
+[ext_resource type="Script" uid="uid://k67wmx36flxu" path="res://Player/States/idle.gd" id="3_hql3v"]
+[ext_resource type="Script" uid="uid://brrvkrfc08kl1" path="res://Player/States/jump.gd" id="4_ejah4"]
+[ext_resource type="Script" uid="uid://dop1h3d86swol" path="res://Player/States/run.gd" id="4_nk6jx"]
+[ext_resource type="Script" uid="uid://cg6sht8jaj48k" path="res://Player/States/fall.gd" id="5_wyx6f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qu43"]
+atlas = ExtResource("1_4pdrp")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hql3v"]
+atlas = ExtResource("1_4pdrp")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk6jx"]
+atlas = ExtResource("1_4pdrp")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jgbj"]
+atlas = ExtResource("1_4pdrp")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejah4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qu43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hql3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk6jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jgbj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wyx6f"]
+radius = 5.0
+height = 16.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1832653433]
+script = ExtResource("1_0qu43")
+
+[node name="States" type="Node" parent="." unique_id=1938894964]
+
+[node name="Idle" type="Node" parent="States" unique_id=573243015]
+unique_name_in_owner = true
+script = ExtResource("3_hql3v")
+
+[node name="Run" type="Node" parent="States" unique_id=779645212]
+unique_name_in_owner = true
+script = ExtResource("4_nk6jx")
+
+[node name="Jump" type="Node" parent="States" unique_id=196461916]
+unique_name_in_owner = true
+script = ExtResource("4_ejah4")
+
+[node name="Fall" type="Node" parent="States" unique_id=963781513]
+unique_name_in_owner = true
+script = ExtResource("5_wyx6f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=344977414]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_ejah4")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.67777103
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=834586414]
+position = Vector2(0, -11)
+shape = SubResource("CapsuleShape2D_wyx6f")
+
+[node name="Label" type="Label" parent="." unique_id=1446144736]
+offset_left = -37.0
+offset_top = -47.0
+offset_right = 37.0
+offset_bottom = -24.0
+theme_override_font_sizes/font_size = 12
+text = "label"
+horizontal_alignment = 1

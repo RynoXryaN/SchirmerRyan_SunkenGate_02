@@ -1,0 +1,271 @@
+[gd_scene format=3 uid="uid://d3jmhh4iino01"]
+
+[ext_resource type="Texture2D" uid="uid://clpr723afaj0a" path="res://Title_Screen/Sprites/TitleScreenBackground.png" id="1_a8vl6"]
+[ext_resource type="Script" uid="uid://rcaa5ep32hqe" path="res://Title_Screen/title_screen.gd" id="1_sib8q"]
+[ext_resource type="Texture2D" uid="uid://bdy7vrjhnfy34" path="res://Title_Screen/Sprites/SunkenGateNamePlate.png" id="2_sib8q"]
+[ext_resource type="Texture2D" uid="uid://ruw8ohh1o4rx" path="res://Title_Screen/Sprites/NewGameButton.png" id="3_k0bf3"]
+[ext_resource type="Texture2D" uid="uid://b166k8o064hb4" path="res://Title_Screen/Sprites/NewGame2Button.png" id="4_m0skb"]
+[ext_resource type="Texture2D" uid="uid://bd0vyrairxdv4" path="res://Title_Screen/Sprites/LoadGameButton.png" id="5_4dsfg"]
+[ext_resource type="Texture2D" uid="uid://b7isjpelcu2nc" path="res://Title_Screen/Sprites/LoadGame2Button.png" id="6_phkne"]
+[ext_resource type="Texture2D" uid="uid://b5m6fcvah2acd" path="res://Title_Screen/Sprites/OptionsButton.png" id="7_dadoa"]
+[ext_resource type="Texture2D" uid="uid://bj7ney5n0olga" path="res://Title_Screen/Sprites/Options2Button.png" id="8_p77fo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sib8q"]
+bg_color = Color(0.07058824, 0.050980393, 0.019607844, 0.5019608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5411765, 0.41568628, 0.18039216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0bf3"]
+bg_color = Color(0.16470589, 0.12156863, 0.047058824, 0.7490196)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.9411765, 0.72156864, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0skb"]
+bg_color = Color(0.11764706, 0.08627451, 0.03137255, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8392157, 0.7058824, 0.3647059, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dsfg"]
+bg_color = Color(0.03137255, 0.023529412, 0.015686275, 0.5019608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2901961, 0.22745098, 0.1254902, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phkne"]
+bg_color = Color(0.11764706, 0.08627451, 0.03137255, 0.627451)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="TitleScreen" type="CanvasLayer" unique_id=605673358]
+layer = 5
+script = ExtResource("1_sib8q")
+
+[node name="Control" type="Control" parent="." unique_id=1396168724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundImage" type="TextureRect" parent="Control" unique_id=79787679]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_a8vl6")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TitleLogo" type="TextureRect" parent="Control" unique_id=1985505708]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.075520836
+anchor_top = 0.16358025
+anchor_right = 0.075520836
+anchor_bottom = 0.16358025
+offset_left = 26.0
+offset_top = 21.999992
+offset_right = 1562.0
+offset_bottom = 1046.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_sib8q")
+
+[node name="MainMenu" type="VBoxContainer" parent="Control" unique_id=19644053]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 134.0
+offset_top = 287.0
+offset_right = 2306.0
+offset_bottom = 2467.0
+scale = Vector2(0.15, 0.15)
+theme_override_constants/separation = -300
+
+[node name="NewGameButton" type="TextureButton" parent="Control/MainMenu" unique_id=1493166166]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_k0bf3")
+texture_pressed = ExtResource("4_m0skb")
+texture_hover = ExtResource("4_m0skb")
+texture_focused = ExtResource("4_m0skb")
+stretch_mode = 0
+
+[node name="LoadGameButton" type="TextureButton" parent="Control/MainMenu" unique_id=1581976987]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("5_4dsfg")
+texture_pressed = ExtResource("6_phkne")
+texture_hover = ExtResource("6_phkne")
+texture_focused = ExtResource("6_phkne")
+stretch_mode = 0
+
+[node name="OptionsButton3" type="TextureButton" parent="Control/MainMenu" unique_id=1041601354]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("7_dadoa")
+texture_pressed = ExtResource("8_p77fo")
+texture_hover = ExtResource("8_p77fo")
+texture_focused = ExtResource("8_p77fo")
+stretch_mode = 0
+
+[node name="NewGameMenu" type="VBoxContainer" parent="Control" unique_id=789476007]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 448.0
+offset_top = 303.0
+offset_right = 668.0
+offset_bottom = 393.0
+theme_override_constants/separation = 10
+
+[node name="NewSlot1" type="Button" parent="Control/NewGameMenu" unique_id=397909455]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8392157, 0.7058824, 0.35686275, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9411765, 0.72156864, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_disabled_color = Color(0.41568628, 0.3529412, 0.19607843, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sib8q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k0bf3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m0skb")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4dsfg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_phkne")
+text = "Begin Slot 01"
+
+[node name="NewSlot2" type="Button" parent="Control/NewGameMenu" unique_id=2100498219]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8392157, 0.7058824, 0.35686275, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9411765, 0.72156864, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_disabled_color = Color(0.41568628, 0.3529412, 0.19607843, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sib8q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k0bf3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m0skb")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4dsfg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_phkne")
+text = "Begin Slot 02"
+
+[node name="NewSlot3" type="Button" parent="Control/NewGameMenu" unique_id=149416511]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8392157, 0.7058824, 0.35686275, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9411765, 0.72156864, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_disabled_color = Color(0.41568628, 0.3529412, 0.19607843, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sib8q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k0bf3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m0skb")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4dsfg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_phkne")
+text = "Begin Slot 03"
+
+[node name="LoadGameMenu" type="VBoxContainer" parent="Control" unique_id=181577968]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 367.0
+offset_right = 668.0
+offset_bottom = 457.0
+theme_override_constants/separation = 10
+
+[node name="LoadSlot1" type="Button" parent="Control/LoadGameMenu" unique_id=1062726385]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8392157, 0.7058824, 0.35686275, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9411765, 0.72156864, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_disabled_color = Color(0.41568628, 0.3529412, 0.19607843, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sib8q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k0bf3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m0skb")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4dsfg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_phkne")
+text = "Load Game 01"
+
+[node name="LoadSlot2" type="Button" parent="Control/LoadGameMenu" unique_id=1620871881]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8392157, 0.7058824, 0.35686275, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9411765, 0.72156864, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_disabled_color = Color(0.41568628, 0.3529412, 0.19607843, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sib8q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k0bf3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m0skb")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4dsfg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_phkne")
+text = "Load Game 02"
+
+[node name="LoadSlot3" type="Button" parent="Control/LoadGameMenu" unique_id=1794884174]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8392157, 0.7058824, 0.35686275, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9411765, 0.72156864, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.8509804, 0.5411765, 1)
+theme_override_colors/font_disabled_color = Color(0.41568628, 0.3529412, 0.19607843, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sib8q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k0bf3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m0skb")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4dsfg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_phkne")
+text = "Load Game 03"
+
+[node name="SelectionArrow" type="TextureRect" parent="Control" unique_id=2126218649]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fade" type="ColorRect" parent="Control" unique_id=806021409]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

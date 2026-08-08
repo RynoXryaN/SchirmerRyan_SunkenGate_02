@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://fp7r1tlhdxg4"]
+
+[ext_resource type="Script" uid="uid://ctqcxy6vvdoqu" path="res://General/Scripts/lever.gd" id="1_j8hjq"]
+[ext_resource type="Texture2D" uid="uid://d2u0rgmr5sq6u" path="res://Levels/Tilesets/Sprites_Animated/TX Dungeon Props Animation.png" id="2_03iv8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8hjq"]
+atlas = ExtResource("2_03iv8")
+region = Rect2(0, 960, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03iv8"]
+atlas = ExtResource("2_03iv8")
+region = Rect2(32, 960, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ovuy"]
+atlas = ExtResource("2_03iv8")
+region = Rect2(64, 960, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnp70"]
+atlas = ExtResource("2_03iv8")
+region = Rect2(96, 960, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhudw"]
+atlas = ExtResource("2_03iv8")
+region = Rect2(128, 960, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojg0t"]
+atlas = ExtResource("2_03iv8")
+region = Rect2(160, 960, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl1ky"]
+atlas = ExtResource("2_03iv8")
+region = Rect2(192, 960, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2mkb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8hjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03iv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ovuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnp70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhudw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojg0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl1ky")
+}],
+"loop": false,
+"name": &"pull",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ovuy"]
+size = Vector2(32, 64)
+
+[node name="Lever" type="Node2D" unique_id=2133648057]
+script = ExtResource("1_j8hjq")
+
+[node name="Lever_Sprite" type="AnimatedSprite2D" parent="." unique_id=1461182598]
+sprite_frames = SubResource("SpriteFrames_t2mkb")
+animation = &"pull"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1267495267]
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=353038876]
+shape = SubResource("RectangleShape2D_6ovuy")

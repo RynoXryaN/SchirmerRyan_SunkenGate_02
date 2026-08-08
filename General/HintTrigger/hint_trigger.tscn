@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ctcsggk411ht0"]
+
+[ext_resource type="Script" uid="uid://b80et2m60xl5t" path="res://General/HintTrigger/hint_trigger.gd" id="1_wo0b5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skx51"]
+size = Vector2(130, 64)
+
+[node name="HintTrigger" type="Area2D" unique_id=1453235186]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_wo0b5")
+area_size = Vector2(96, 48)
+requires_ability = null
+required_ability_name = null
+locked_message = null
+unlocked_message = null
+locked_hint_type = null
+unlocked_hint_type = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1704544921]
+shape = SubResource("RectangleShape2D_skx51")

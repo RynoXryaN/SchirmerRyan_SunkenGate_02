@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dpqk6jkm54mi6"]
+
+[ext_resource type="Script" uid="uid://bsfmjs117u2li" path="res://General/Level_Tag/level_tag.gd" id="1_hiy27"]
+
+[node name="LevelTag" type="CanvasLayer" unique_id=2094537885]
+script = ExtResource("1_hiy27")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1899403907]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=597391611]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1302441425]
+layout_mode = 2
+
+[node name="LevelName" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=1751631399]
+layout_mode = 2
+text = "CASTLE ENTRANCE"
+
+[node name="Description" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=529080231]
+layout_mode = 2
+text = "Planned: Basic enemies and breakable props.  Both will contain droppable loot.  Ability restricted (double-jump) route to upper level."
+autowrap_mode = 3
