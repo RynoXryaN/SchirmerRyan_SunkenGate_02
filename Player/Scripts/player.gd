@@ -76,6 +76,7 @@ var morph_roll : bool = false
 
 #region /// standard variables
 var direction : Vector2 = Vector2.ZERO
+var facing_direction : float = 1.0
 var gravity : float = 980
 var gravity_multiplier : float = 1.0
 #endregion
@@ -187,9 +188,12 @@ func change_state( new_state : PlayerState ) -> void:
 	
 func update_direction() -> void:
 	var prev_direction : Vector2 = direction
-	var x_axis = Input.get_axis("move_left", "move_right")
-	var y_axis = Input.get_axis("up", "down")
-	direction = Vector2(x_axis, y_axis)
+	var x_axis = Input.get_axis( "move_left", "move_right" )
+	var y_axis = Input.get_axis( "up", "down" )
+	direction = Vector2( x_axis, y_axis )
+	
+	if direction.x != 0:
+		facing_direction = signf( direction.x )
 	
 	if prev_direction.x != direction.x:
 		attack_area.flip( direction.x )

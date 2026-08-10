@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cn4jitpludbj1"]
+
+[ext_resource type="Texture2D" uid="uid://dtdwtu6tw5qch" path="res://Assets/Built/Sprites/Projectiles/Dagger.png" id="1_g83fo"]
+[ext_resource type="Script" uid="uid://cq3o5y8em1g34" path="res://General/Projectiles/Dagger/dagger_ricochet.gd" id="1_kres1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ahfwt"]
+friction = 0.65
+rough = true
+bounce = 0.35
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n64fp"]
+size = Vector2(28, 6)
+
+[node name="DaggerRicochet" type="RigidBody2D" unique_id=530080787]
+collision_layer = 0
+collision_mask = 3
+mass = 0.25
+physics_material_override = SubResource("PhysicsMaterial_ahfwt")
+gravity_scale = 1.5
+continuous_cd = 1
+linear_damp_mode = 1
+linear_damp = 0.4
+angular_damp_mode = 1
+angular_damp = 2.5
+script = ExtResource("1_kres1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2051559359]
+texture = ExtResource("1_g83fo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=383435582]
+shape = SubResource("RectangleShape2D_n64fp")

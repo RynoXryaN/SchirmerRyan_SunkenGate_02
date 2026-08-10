@@ -21,6 +21,8 @@
 [ext_resource type="Script" uid="uid://bjwu3ub6mnef3" path="res://Player/Scripts/character_sprite.gd" id="12_agy6j"]
 [ext_resource type="Script" uid="uid://cbc2yf1vi3itv" path="res://Player/States/soft_knockback.gd" id="13_nsxpy"]
 [ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="14_gt0dp"]
+[ext_resource type="Script" uid="uid://crfjfvwhk85o0" path="res://Player/Scripts/ability_controller.gd" id="22_xq5ky"]
+[ext_resource type="Resource" uid="uid://ccakve6r1d3dt" path="res://General/Projectiles/Dagger/dagger_ability.tres" id="23_1roin"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wyx6f"]
 radius = 8.0
@@ -558,3 +560,12 @@ collision_mask = 3
 hit_from_inside = true
 
 [node name="AudioStreams" type="Node2D" parent="." unique_id=2075322960]
+
+[node name="AbilityController" type="Node" parent="." unique_id=1284004886]
+unique_name_in_owner = true
+script = ExtResource("22_xq5ky")
+ability_data = ExtResource("23_1roin")
+
+[node name="ProjectileSpawn" type="Marker2D" parent="." unique_id=305014213]
+unique_name_in_owner = true
+position = Vector2(32, -28)

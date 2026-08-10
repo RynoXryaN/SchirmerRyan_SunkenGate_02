@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c38ic5j37wjl1"]
+
+[ext_resource type="Script" uid="uid://b3305oyxxho20" path="res://General/Projectiles/Dagger/dagger_projectile.gd" id="1_vin05"]
+[ext_resource type="Texture2D" uid="uid://dtdwtu6tw5qch" path="res://Assets/Built/Sprites/Projectiles/Dagger.png" id="2_m4mai"]
+[ext_resource type="PackedScene" uid="uid://cn4jitpludbj1" path="res://General/Projectiles/Dagger/DaggerRicochet.tscn" id="2_v02kg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n64fp"]
+size = Vector2(28, 6)
+
+[node name="DaggerProjectile" type="CharacterBody2D" unique_id=671143263]
+collision_layer = 0
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_vin05")
+ricochet_scene = ExtResource("2_v02kg")
+speed = 360.0
+max_lifetime = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=33701456]
+texture = ExtResource("2_m4mai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2105118065]
+shape = SubResource("RectangleShape2D_n64fp")

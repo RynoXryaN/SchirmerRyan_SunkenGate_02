@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityData" format=3 uid="uid://ccakve6r1d3dt"]
+
+[ext_resource type="Script" uid="uid://dmq1anbu7lisa" path="res://General/Scripts/ability_data.gd" id="1_eu001"]
+[ext_resource type="PackedScene" uid="uid://c38ic5j37wjl1" path="res://General/Projectiles/Dagger/DaggerProjectile.tscn" id="1_h2cia"]
+
+[resource]
+script = ExtResource("1_eu001")
+display_name = "Dagger"
+projectile_scene = ExtResource("1_h2cia")
+mana_cost = 2.0
+cooldown = 0.4
+metadata/_custom_type_script = "uid://dmq1anbu7lisa"
