@@ -2,10 +2,22 @@
 
 [ext_resource type="Script" uid="uid://bdcxly7qrkjir" path="res://00_Global/player_hud/player_hud.gd" id="1_1rq2o"]
 [ext_resource type="Texture2D" uid="uid://b51l2hc3eydrk" path="res://00_Global/player_hud/health_bar_frame.png" id="1_htg7c"]
+[ext_resource type="Texture2D" uid="uid://dcbtjpg78o2fe" path="res://Assets/MetroVan_Assets/ch_03_game_systems/sprites/mana_bar_frame.png" id="2_ilici"]
 [ext_resource type="Script" uid="uid://b26misjaeywyg" path="res://00_Global/visual_effects/hit_particle_settings.gd" id="3_04axr"]
 
 [sub_resource type="Gradient" id="Gradient_8jfgd"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bsods"]
+gradient = SubResource("Gradient_8jfgd")
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_ijx2p"]
+offsets = PackedFloat32Array(0, 0.9925926)
+colors = PackedColorArray(0.024882732, 0.30185372, 0.7188372, 1, 0.52491885, 0.7956122, 0.9999997, 0.99607843)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_401q1"]
+gradient = SubResource("Gradient_ijx2p")
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_htg7c"]
 gradient = SubResource("Gradient_8jfgd")
@@ -52,6 +64,39 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
+
+[node name="MP_MarginContainer" type="MarginContainer" parent="Control" unique_id=1166684722]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 38.0
+offset_right = 56.0
+offset_bottom = 58.0
+scale = Vector2(2, 2)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MP_MarginContainer" unique_id=971469406]
+layout_mode = 2
+texture = ExtResource("2_ilici")
+patch_margin_left = 27
+patch_margin_right = 7
+
+[node name="MP_Bar" type="TextureProgressBar" parent="Control/MP_MarginContainer/NinePatchRect" unique_id=1708129189]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 6.0
+offset_right = -3.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+rounded = true
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_bsods")
+texture_progress = SubResource("GradientTexture2D_401q1")
 
 [node name="HP_MarginContainer" type="MarginContainer" parent="Control" unique_id=415166997]
 custom_minimum_size = Vector2(40, 20)

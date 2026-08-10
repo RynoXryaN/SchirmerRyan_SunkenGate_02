@@ -49,6 +49,17 @@ var max_hp : float = 20 :
 		max_hp = value
 		Messages.player_health_changed.emit( hp, max_hp)
 		
+var mana : float = 20:
+	set(value):
+		mana = clampf(value, 0, max_mana)
+		Messages.player_mana_changed.emit(mana, max_mana)
+
+var max_mana : float = 20:
+	set(value):
+		max_mana = maxf(value, 0)
+		mana = clampf(mana, 0, max_mana)
+		Messages.player_mana_changed.emit(mana, max_mana)
+		
 var dash : bool = false:
 	set(value):
 		if dash != value:
@@ -80,6 +91,9 @@ func _ready() -> void:
 
 	Messages.player_healed.connect( _on_player_healed )
 	damage_area.damage_taken.connect( _on_damage_taken )
+	
+	Messages.player_health_changed.emit(hp, max_hp)
+	Messages.player_mana_changed.emit(mana, max_mana)
 	pass
 
 
@@ -105,7 +119,13 @@ func _unhandled_input( event: InputEvent ) -> void:
 				max_hp += 10
 			else:
 				hp += 2
-			
+	if event.is_action_pressed("ui_page_down"):
+		spend_mana(2)
+
+	if event.is_action_pressed("ui_page_up"):
+		restore_mana(2)
+	
+	
 	change_state( current_state.handle_inputs( event ) )
 	pass
 
@@ -203,6 +223,21 @@ func _on_damage_taken( a : AttackArea ) -> void:
 	damage_taken.emit()
 	# emit signal
 	pass
+	
+func has_mana(amount : float) -> bool:
+	return mana >= amount
+
+
+func spend_mana(amount : float) -> bool:
+	if not has_mana(amount):
+		return false
+
+	mana -= amount
+	return true
+
+
+func restore_mana(amount : float) -> void:
+	mana += amount
 	
 func can_dash() -> bool:
 	print("CAN DASH CHECK FROM: ", get_path(), " | dash: ", dash, " dash_count: ", dash_count)
