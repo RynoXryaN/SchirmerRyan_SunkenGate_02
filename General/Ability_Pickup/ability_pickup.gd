@@ -59,6 +59,7 @@ func _reward_ability() -> void:
 			player.double_jump = true
 		Type.DASH:
 			player.dash = true
+			player.back_dash = true
 		Type.GROUND_SLAM:
 			player.ground_slam = true
 		Type.MORPH_ROLL:
@@ -73,7 +74,7 @@ func _show_ability_message() -> void:
 
 		Type.DASH:
 			Messages.message_requested.emit(
-				"DASH ACQUIRED\nPress Dash (z for keyboard, b for xbox or circle for DualSense) to burst forward across gaps and hazards.", 10.0 )
+				"DASH/BACK DASH ACQUIRED\nPress Dash (z for keyboard, BUMPERS for xbox or circle for DualSense) to burst forward across gaps and hazards.", 10.0 )
 
 		Type.GROUND_SLAM:
 			Messages.message_requested.emit(
@@ -94,7 +95,8 @@ func get_ability_name() -> String:
 		Type.DOUBLE_JUMP:
 			return "double_jump"
 		Type.DASH:
-			return "dash"
+			return "right_dash"
+			return "left_dash"
 		Type.GROUND_SLAM:
 			return "ground_slam"
 		Type.MORPH_ROLL:

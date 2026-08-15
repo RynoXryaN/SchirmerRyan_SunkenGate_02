@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cg6sht8jaj48k" path="res://Player/States/fall.gd" id="5_wyx6f"]
 [ext_resource type="Script" uid="uid://c2yj0g6a0imm0" path="res://Player/States/crouch.gd" id="6_wyx6f"]
 [ext_resource type="Script" uid="uid://q4x0qcijqgkm" path="res://Player/States/attack.gd" id="7_4rodd"]
-[ext_resource type="Texture2D" uid="uid://s1ndtcq8ocjl" path="res://Player/Sprites/hero.png" id="7_wyx6f"]
 [ext_resource type="Script" uid="uid://48olr02vd0g7" path="res://Player/Scripts/input_hints.gd" id="8_n15od"]
 [ext_resource type="Script" uid="uid://bb5oecip8qjve" path="res://Player/Scenes/take_damage.gd" id="8_p5bkw"]
 [ext_resource type="Script" uid="uid://xpjw46qvyebm" path="res://Player/States/dash.gd" id="9_f5uno"]
@@ -20,7 +19,9 @@
 [ext_resource type="Script" uid="uid://chcyhmh03r4lm" path="res://Player/Scenes/jump_slam.gd" id="11_qqeun"]
 [ext_resource type="Script" uid="uid://bjwu3ub6mnef3" path="res://Player/Scripts/character_sprite.gd" id="12_agy6j"]
 [ext_resource type="Script" uid="uid://cbc2yf1vi3itv" path="res://Player/States/soft_knockback.gd" id="13_nsxpy"]
+[ext_resource type="Texture2D" uid="uid://c22p2ry6hokmg" path="res://Player/Sprites/hero_hooded.png" id="14_1roin"]
 [ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="14_gt0dp"]
+[ext_resource type="Script" uid="uid://d2n5qb014g147" path="res://Player/States/back_dash.gd" id="14_ji1x8"]
 [ext_resource type="Script" uid="uid://crfjfvwhk85o0" path="res://Player/Scripts/ability_controller.gd" id="22_xq5ky"]
 [ext_resource type="Resource" uid="uid://ccakve6r1d3dt" path="res://General/Projectiles/Dagger/dagger_ability.tres" id="23_1roin"]
 
@@ -242,6 +243,21 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_ji1x8"]
+resource_name = "back_dash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [30]
+}
+
 [sub_resource type="Animation" id="Animation_qqeun"]
 resource_name = "ball"
 length = 0.225
@@ -330,6 +346,7 @@ _data = {
 &"Run": SubResource("Animation_ulbg8"),
 &"attack": SubResource("Animation_gt0dp"),
 &"attack_2": SubResource("Animation_p5bkw"),
+&"back_dash": SubResource("Animation_ji1x8"),
 &"ball": SubResource("Animation_qqeun"),
 &"dash": SubResource("Animation_agy6j"),
 &"ground_slam": SubResource("Animation_f5uno"),
@@ -415,9 +432,13 @@ script = ExtResource("11_ac4ik")
 unique_name_in_owner = true
 script = ExtResource("13_nsxpy")
 
+[node name="BackDash" type="Node" parent="States" unique_id=1521800728]
+unique_name_in_owner = true
+script = ExtResource("14_ji1x8")
+
 [node name="Character" type="Sprite2D" parent="." unique_id=1582937770]
 position = Vector2(0, -40)
-texture = ExtResource("7_wyx6f")
+texture = ExtResource("14_1roin")
 hframes = 16
 vframes = 4
 frame = 1
@@ -450,7 +471,7 @@ max_results = 4
 collision_mask = 192
 collide_with_areas = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=73344781]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=73344781 groups=["Player"]]
 libraries/ = SubResource("AnimationLibrary_n15od")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=919677668]

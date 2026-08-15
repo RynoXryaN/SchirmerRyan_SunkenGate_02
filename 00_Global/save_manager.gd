@@ -39,7 +39,7 @@ func create_new_game_save( slot : int ) -> void:
 		"y" : 230,
 		"hp" : 20,
 		"max_hp" : 20,
-		"dash" : false,
+		"right_dash" : false,
 		"double_jump" : false,
 		"ground_slam" : false,
 		"morph_roll" : false,
@@ -64,7 +64,7 @@ func save_game() -> void:
 		"y" : player.global_position.y,
 		"hp" : player.hp,
 		"max_hp" : player.max_hp,
-		"dash" : player.dash,
+		"right_dash" : player.dash,
 		"double_jump" : player.double_jump,
 		"ground_slam" : player.ground_slam,
 		"morph_roll" : player.morph_roll,
@@ -103,7 +103,7 @@ func setup_player() -> void:
 	player.hp = save_data.get( "hp", 20 )
 	
 	player.apply_saved_abilities()
-	#player.dash = save_data.get( "dash", false )
+	#player.dash = save_data.get( "right_dash", false )
 	#player.double_jump = save_data.get( "double_jump", false )
 	#player.ground_slam = save_data.get( "ground_slam", false )
 	#player.morph_roll = save_data.get( "morph_roll", false )

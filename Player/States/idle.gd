@@ -11,6 +11,7 @@ func enter() -> void:
 	player.animation_player.play( "idle" )
 	player.jump_count = 0
 	player.dash_count = 0
+	player.back_dash_count = 0
 	pass
 	
 
@@ -19,8 +20,16 @@ func exit() -> void:
 	
 
 func handle_inputs( event : InputEvent ) -> PlayerState:
-	if event.is_action_pressed( "dash" ) and player.can_dash():
-		return dash
+	if event.is_action_pressed( "right_dash" ) and player.can_dash():
+		if player.character.flip_h:
+			return back_dash
+		else:
+			return dash
+	if event.is_action_pressed( "left_dash" ) and player.can_back_dash():
+		if player.character.flip_h:
+			return dash
+		else:
+			return back_dash
 	if event.is_action_pressed( "attack" ):
 		return attack
 	if event.is_action_pressed( "jump" ):

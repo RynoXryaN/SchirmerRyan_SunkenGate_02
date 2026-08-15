@@ -60,13 +60,20 @@ var max_mana : float = 20:
 		mana = clampf(mana, 0, max_mana)
 		Messages.player_mana_changed.emit(mana, max_mana)
 		
-var dash : bool = false:
+var dash : bool = true:
 	set(value):
 		if dash != value:
 			print("DASH CHANGED FROM ", dash, " TO ", value, " ON ", get_path())
 			print_stack()
 		dash = value
 var dash_count : int = 0
+var back_dash : bool = true:
+	set(value):
+		if back_dash != value:
+			print("BACK DASH CHANGED FROM ", back_dash, " TO ", value, " ON ", get_path())
+			print_stack()
+		back_dash = value
+var back_dash_count : int = 0
 var double_jump : bool = false
 var jump_count : int = 0
 var ground_slam : bool = false
@@ -251,6 +258,14 @@ func can_dash() -> bool:
 
 	return true
 	
+func can_back_dash() -> bool:
+	print("CAN BACK DASH CHECK FROM: ", get_path(), " | back_dash: ", back_dash, " back_dash_count: ", back_dash_count)
+
+	if back_dash == false or back_dash_count > 0:
+		return false
+
+	return true
+	
 func can_morph() -> bool:
 	if morph_roll == false:
 		return false
@@ -259,7 +274,7 @@ func can_morph() -> bool:
 	
 func apply_saved_abilities() -> void:
 	double_jump = SaveManager.persistent_data.get("double_jump", "") == "acquired"
-	dash = SaveManager.persistent_data.get("dash", "") == "acquired"
+	dash = SaveManager.persistent_data.get("right_dash", "") == "acquired"
 	ground_slam = SaveManager.persistent_data.get("ground_slam", "") == "acquired"
 	morph_roll = SaveManager.persistent_data.get("morph_roll", "") == "acquired"
 	

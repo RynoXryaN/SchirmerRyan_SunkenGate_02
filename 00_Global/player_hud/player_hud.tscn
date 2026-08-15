@@ -53,6 +53,23 @@ func _on_pressed() -> void:
 script = ExtResource("3_04axr")
 metadata/_custom_type_script = "uid://b26misjaeywyg"
 
+[sub_resource type="GDScript" id="GDScript_n64fp"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pressed.connect( _on_pressed )
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _on_pressed() -> void:
+	var player : Node2D = get_tree().get_first_node_in_group( \"Player\" )
+	VisualEffectsFactory.land_dust( player.global_position )
+	pass
+"
+
 [node name="PlayerHud" type="CanvasLayer" unique_id=1812373244]
 process_mode = 3
 layer = 2
@@ -159,3 +176,12 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 24
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="TestDust" type="Button" parent="Control" unique_id=1697865905]
+layout_mode = 0
+offset_left = 1052.0
+offset_top = 39.0
+offset_right = 1121.0
+offset_bottom = 64.0
+text = "TestDust"
+script = SubResource("GDScript_n64fp")

@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://b3305oyxxho20" path="res://General/Projectiles/Dagger/dagger_projectile.gd" id="1_vin05"]
 [ext_resource type="Texture2D" uid="uid://dtdwtu6tw5qch" path="res://Assets/Built/Sprites/Projectiles/Dagger.png" id="2_m4mai"]
 [ext_resource type="PackedScene" uid="uid://cn4jitpludbj1" path="res://General/Projectiles/Dagger/DaggerRicochet.tscn" id="2_v02kg"]
+[ext_resource type="Script" uid="uid://6s8p4noeyskh" path="res://General/Scripts/attack_area.gd" id="3_attack"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n64fp"]
 size = Vector2(28, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_attack"]
+size = Vector2(28, 10)
 
 [node name="DaggerProjectile" type="CharacterBody2D" unique_id=671143263]
 collision_layer = 0
@@ -20,4 +24,15 @@ max_lifetime = 3.0
 texture = ExtResource("2_m4mai")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2105118065]
+visible = false
 shape = SubResource("RectangleShape2D_n64fp")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1940434563]
+collision_layer = 0
+collision_mask = 96
+script = ExtResource("3_attack")
+damage = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1306499860]
+visible = false
+shape = SubResource("RectangleShape2D_attack")

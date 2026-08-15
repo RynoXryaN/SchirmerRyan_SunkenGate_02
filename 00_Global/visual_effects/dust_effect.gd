@@ -2,7 +2,8 @@ class_name DustEffect
 extends Sprite2D
 
 enum TYPE { JUMP, LAND, HIT }
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+
 
 
 

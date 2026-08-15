@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://r5525kn3sdx7" path="res://Music/dungeon_01.ogg" id="8_km5et"]
 [ext_resource type="PackedScene" uid="uid://bupgmw6te5o0e" path="res://General/Constuction_Barrier/constuction_barrier.tscn" id="8_wnxaq"]
 [ext_resource type="PackedScene" uid="uid://dpqk6jkm54mi6" path="res://General/Level_Tag/level_tag.tscn" id="9_la22p"]
+[ext_resource type="PackedScene" path="res://Enemies/zombie_dawn/zombie.tscn" id="10_zombie"]
+[ext_resource type="PackedScene" uid="uid://sa3hv23ypaho" path="res://General/Ability_Pickup/ability_pickup.tscn" id="11_ro7mg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx20p"]
 texture = ExtResource("2_o5j3c")
@@ -65,3 +67,10 @@ size = 3
 [node name="LevelTag" parent="." unique_id=2094537885 instance=ExtResource("9_la22p")]
 level_name = "Castle Entrance"
 description = "Planned: Beginner enemies and breakable loot. Both will contain dropable loot the player can collect.  Progress ability (double-jump) locked entrance to upper area.  Upper area not blocked out yet, as progress might not get there during this iteration."
+
+[node name="ZombieDawn" parent="." unique_id=764564105 instance=ExtResource("10_zombie")]
+position = Vector2(320, 224)
+
+[node name="AbilityPickup" parent="." unique_id=260079599 instance=ExtResource("11_ro7mg")]
+position = Vector2(888, 256)
+type = 1

@@ -1,0 +1,482 @@
+{
+  "source": "DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Zombie.png",
+  "source_sha256": "4356bb014286dbeeac3b06c1ec669a264737be49d2b2b11c6ae4aba0e6953046",
+  "removed_background_colors_rgba": [
+    [
+      0,
+      255,
+      0,
+      255
+    ],
+    [
+      0,
+      128,
+      128,
+      255
+    ]
+  ],
+  "canvas": {
+    "width": 32,
+    "height": 48
+  },
+  "sheet": {
+    "columns": 8,
+    "rows": 3,
+    "width": 256,
+    "height": 144
+  },
+  "ground_line_y": 44,
+  "pivot_recommendation": {
+    "x": 16,
+    "y": 44,
+    "godot_centered_sprite_offset": {
+      "x": 0,
+      "y": 20
+    }
+  },
+  "animations": [
+    {
+      "name": "rise",
+      "loop": false,
+      "confidence": "high",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "shamble",
+      "loop": true,
+      "confidence": "high",
+      "frame_indices": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "name": "uncertain_pose",
+      "loop": false,
+      "confidence": "low; possibly an attack, hurt, or alternate shamble pose",
+      "frame_indices": [
+        16
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "index": 0,
+      "animation": "rise",
+      "animation_frame": 0,
+      "duration_ms": 140,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 38,
+        "y": 79,
+        "w": 14,
+        "h": 1
+      },
+      "placement_offset": {
+        "x": 9,
+        "y": 43
+      },
+      "pixel_digest": "b73c2da567bcd87c60add9fb8dc8a5183431e0f2d3135673e0ebe639e9c4eaeb"
+    },
+    {
+      "index": 1,
+      "animation": "rise",
+      "animation_frame": 1,
+      "duration_ms": 140,
+      "rect": {
+        "x": 32,
+        "y": 0,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 134,
+        "y": 78,
+        "w": 14,
+        "h": 2
+      },
+      "placement_offset": {
+        "x": 9,
+        "y": 42
+      },
+      "pixel_digest": "8a0f33915571351d9d051802038b46cc9ddeed42aacdc21b0707734c40ca605d"
+    },
+    {
+      "index": 2,
+      "animation": "rise",
+      "animation_frame": 2,
+      "duration_ms": 140,
+      "rect": {
+        "x": 64,
+        "y": 0,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 229,
+        "y": 77,
+        "w": 15,
+        "h": 3
+      },
+      "placement_offset": {
+        "x": 8,
+        "y": 41
+      },
+      "pixel_digest": "597cb6cbd70f854a39dcd5f1e2191fd797f6d7cb473c6dec85fe8277e4f1d979"
+    },
+    {
+      "index": 3,
+      "animation": "rise",
+      "animation_frame": 3,
+      "duration_ms": 140,
+      "rect": {
+        "x": 96,
+        "y": 0,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 325,
+        "y": 74,
+        "w": 15,
+        "h": 6
+      },
+      "placement_offset": {
+        "x": 8,
+        "y": 38
+      },
+      "pixel_digest": "d02c3743ff90fb96c2c64dc4da5276691f8e8bbb15e5a2c4f514be82ad55ba45"
+    },
+    {
+      "index": 4,
+      "animation": "rise",
+      "animation_frame": 4,
+      "duration_ms": 140,
+      "rect": {
+        "x": 128,
+        "y": 0,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 420,
+        "y": 67,
+        "w": 20,
+        "h": 13
+      },
+      "placement_offset": {
+        "x": 6,
+        "y": 31
+      },
+      "pixel_digest": "f7a928dee03e926480dcafb31382e9e509b223920c959e5917fb23a2706f07fa"
+    },
+    {
+      "index": 5,
+      "animation": "rise",
+      "animation_frame": 5,
+      "duration_ms": 140,
+      "rect": {
+        "x": 160,
+        "y": 0,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 517,
+        "y": 61,
+        "w": 16,
+        "h": 19
+      },
+      "placement_offset": {
+        "x": 8,
+        "y": 25
+      },
+      "pixel_digest": "57bcb3736e65cb2f9b92b1d9201508248923adbbfdacd6b1d5c3f9dbb4ad7cbb"
+    },
+    {
+      "index": 6,
+      "animation": "rise",
+      "animation_frame": 6,
+      "duration_ms": 140,
+      "rect": {
+        "x": 192,
+        "y": 0,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 613,
+        "y": 52,
+        "w": 20,
+        "h": 28
+      },
+      "placement_offset": {
+        "x": 6,
+        "y": 16
+      },
+      "pixel_digest": "6336bd49bebba382e017d1bffed879674c96c11ce6efeb07c949940cd2469033"
+    },
+    {
+      "index": 7,
+      "animation": "rise",
+      "animation_frame": 7,
+      "duration_ms": 140,
+      "rect": {
+        "x": 224,
+        "y": 0,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 710,
+        "y": 42,
+        "w": 21,
+        "h": 38
+      },
+      "placement_offset": {
+        "x": 5,
+        "y": 6
+      },
+      "pixel_digest": "8c5dafc60a86d23167346edcff12476857c2587e7f88b52d4e44ab1c8d455256"
+    },
+    {
+      "index": 8,
+      "animation": "shamble",
+      "animation_frame": 0,
+      "duration_ms": 180,
+      "rect": {
+        "x": 0,
+        "y": 48,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 35,
+        "y": 102,
+        "w": 27,
+        "h": 42
+      },
+      "placement_offset": {
+        "x": 2,
+        "y": 2
+      },
+      "pixel_digest": "368472f0a9cd925dd94e339d66a4507f8de515a7443656b91a9ae17749a94d1c"
+    },
+    {
+      "index": 9,
+      "animation": "shamble",
+      "animation_frame": 1,
+      "duration_ms": 150,
+      "rect": {
+        "x": 32,
+        "y": 48,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 134,
+        "y": 104,
+        "w": 22,
+        "h": 40
+      },
+      "placement_offset": {
+        "x": 5,
+        "y": 4
+      },
+      "pixel_digest": "2783792bde9a24baee021295ec23b0586d5523a57877fc410d20144ee5dc8802"
+    },
+    {
+      "index": 10,
+      "animation": "shamble",
+      "animation_frame": 2,
+      "duration_ms": 170,
+      "rect": {
+        "x": 64,
+        "y": 48,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 231,
+        "y": 105,
+        "w": 22,
+        "h": 39
+      },
+      "placement_offset": {
+        "x": 5,
+        "y": 5
+      },
+      "pixel_digest": "e57a52fedd8d22af502fbdb1dde34c736e0f229401cfa1dcff67b60cc48e5653"
+    },
+    {
+      "index": 11,
+      "animation": "shamble",
+      "animation_frame": 3,
+      "duration_ms": 210,
+      "rect": {
+        "x": 96,
+        "y": 48,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 327,
+        "y": 102,
+        "w": 22,
+        "h": 42
+      },
+      "placement_offset": {
+        "x": 5,
+        "y": 2
+      },
+      "pixel_digest": "e8aa4931b68a1c41c407fe53550c49998c66f63a06259028eed7cedab11616f5"
+    },
+    {
+      "index": 12,
+      "animation": "shamble",
+      "animation_frame": 4,
+      "duration_ms": 180,
+      "rect": {
+        "x": 128,
+        "y": 48,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 422,
+        "y": 102,
+        "w": 20,
+        "h": 42
+      },
+      "placement_offset": {
+        "x": 6,
+        "y": 2
+      },
+      "pixel_digest": "69b4a84d955b032ea0b70ecdee292a3021cbc1d45ed5b3a4052df9d2ca24fbab"
+    },
+    {
+      "index": 13,
+      "animation": "shamble",
+      "animation_frame": 5,
+      "duration_ms": 150,
+      "rect": {
+        "x": 160,
+        "y": 48,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 515,
+        "y": 104,
+        "w": 25,
+        "h": 40
+      },
+      "placement_offset": {
+        "x": 3,
+        "y": 4
+      },
+      "pixel_digest": "d89adde86be45f04588cf3402b7728c0bf009a5ec333dd0e7bbcc7b693990133"
+    },
+    {
+      "index": 14,
+      "animation": "shamble",
+      "animation_frame": 6,
+      "duration_ms": 170,
+      "rect": {
+        "x": 192,
+        "y": 48,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 613,
+        "y": 105,
+        "w": 24,
+        "h": 39
+      },
+      "placement_offset": {
+        "x": 4,
+        "y": 5
+      },
+      "pixel_digest": "48971f3799d6357e04387925c81fc874084d0b65d92220878c7c496892109979"
+    },
+    {
+      "index": 15,
+      "animation": "shamble",
+      "animation_frame": 7,
+      "duration_ms": 210,
+      "rect": {
+        "x": 224,
+        "y": 48,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 710,
+        "y": 104,
+        "w": 21,
+        "h": 40
+      },
+      "placement_offset": {
+        "x": 5,
+        "y": 4
+      },
+      "pixel_digest": "c0347e7c3f24123558e6fc0ccf5c9c777555bcac884311cb8837eab14cc757ba"
+    },
+    {
+      "index": 16,
+      "animation": "uncertain_pose",
+      "animation_frame": 0,
+      "duration_ms": 180,
+      "rect": {
+        "x": 0,
+        "y": 96,
+        "w": 32,
+        "h": 48
+      },
+      "source_rect": {
+        "x": 35,
+        "y": 198,
+        "w": 27,
+        "h": 42
+      },
+      "placement_offset": {
+        "x": 2,
+        "y": 2
+      },
+      "pixel_digest": "e9acb668fab68770e0f5d3ceb8aa047c3c5e093b841134d548ca6979a2568f8b"
+    }
+  ],
+  "unused_source_regions": [
+    {
+      "name": "parts_gore_palette_reference",
+      "rect": {
+        "x": 0,
+        "y": 288,
+        "w": 256,
+        "h": 176
+      },
+      "reason": "Dismembered components, gore pieces, guide/palette swatches, and tightly packed reference artwork; no reliable timeline order inferred."
+    }
+  ]
+}

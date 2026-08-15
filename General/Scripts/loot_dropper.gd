@@ -33,5 +33,5 @@ func drop_loot() -> void:
 			owner.add_sibling.call_deferred(drop)
 			drop.set_deferred("global_position", global_position)
 			if drop is CharacterBody2D:
-				drop.velocity = Vector2( randf_range( 150, 50 ), randf_range( -200, -400 ))
+				drop.velocity = Vector2( randf_range( -50, 50 ), randf_range( -180, -120 ))
 	pass

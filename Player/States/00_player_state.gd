@@ -19,6 +19,8 @@ var next_state : PlayerState
 @onready var ball: PlayerStateBall = %Ball
 @onready var jump_slam: PlayerStateJumpSlam = %JumpSlam
 @onready var soft_knockback: PlayerStateSoftKnockback = %SoftKnockback
+@onready var back_dash: PlayerStateBackDash = %BackDash
+
 
 #endregion
 

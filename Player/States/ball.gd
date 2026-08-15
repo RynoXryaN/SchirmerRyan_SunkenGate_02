@@ -59,7 +59,7 @@ func handle_inputs( event : InputEvent ) -> PlayerState:
 			player.velocity.y -= jump_velocity
 			#jump_audio.play
 			VisualEffectsFactory.jump_dust( player.global_position )
-	if event.is_action_pressed( "dash" ) and player.can_dash():
+	if event.is_action_pressed( "right_dash" ) and player.can_dash():
 		return dash
 	if event.is_action_pressed( "attack" ):
 		return attack

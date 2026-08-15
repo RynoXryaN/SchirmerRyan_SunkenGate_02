@@ -141,7 +141,7 @@ func _get_hint_name_from_type(type_to_check: HintType) -> String:
 		HintType.DOWN_JUMP:
 			return "down_jump"
 		HintType.DASH:
-			return "dash"
+			return "right_dash"
 		HintType.BALL:
 			return "ball"
 		HintType.GROUND_SLAM:

@@ -122,8 +122,6 @@ func _on_damage_taken( a : AttackArea ) -> void:
 	blackboard.damage_source = a
 	blackboard.health -= a.damage
 	blackboard.can_decide = true
-	
-	blackboard.health -= a.damage
 
 	if blackboard.health <= health * 0.5:
 		bleeding = true

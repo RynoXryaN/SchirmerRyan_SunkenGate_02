@@ -7,6 +7,9 @@ signal damage_taken( attack_area )
 @export var audio : AudioStream
 
 func take_damage( attack_area : AttackArea ) -> void:
+	var target: Node = owner if owner else get_parent()
+	if target and target.has_method("show_damage_number"):
+		target.show_damage_number(attack_area.damage)
 	damage_taken.emit( attack_area )
 	#if audio:
 		#Audio.play_spatial_sound( audio, global_position ) 

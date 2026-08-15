@@ -6,6 +6,12 @@ extends Projectile
 @export var ricochet_angle_variation : float = 0.9
 
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var attack_area : AttackArea = $AttackArea
+
+
+func _ready() -> void:
+	attack_area.area_entered.connect(_on_attack_area_entered)
+	attack_area.set_active(true)
 
 
 func launch( new_direction : Vector2 ) -> void:
@@ -40,3 +46,8 @@ func collision_response( collision : KinematicCollision2D ) -> void:
 	
 	queue_free()
 	pass
+
+
+func _on_attack_area_entered(area: Area2D) -> void:
+	if area is DamageArea:
+		queue_free()
