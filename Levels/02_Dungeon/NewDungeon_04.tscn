@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="4_w100r"]
 [ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="5_e36eh"]
 [ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="6_hna3u"]
-[ext_resource type="AudioStream" uid="uid://r5525kn3sdx7" path="res://Music/dungeon_01.ogg" id="7_blv7t"]
+[ext_resource type="AudioStream" uid="uid://buyrvlkdm6ifg" path="res://Music/SunkenGate_MainPlay.mp3" id="7_bdy8m"]
 [ext_resource type="PackedScene" uid="uid://dpqk6jkm54mi6" path="res://General/Level_Tag/level_tag.tscn" id="8_bdy8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx20p"]
@@ -61,7 +61,7 @@ target_area_name = "LT_01"
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=87531037]
 script = ExtResource("6_hna3u")
-track = ExtResource("7_blv7t")
+track = ExtResource("7_bdy8m")
 metadata/_custom_type_script = "uid://e4pke5vxuyxn"
 
 [node name="LevelTag" parent="." unique_id=2094537885 instance=ExtResource("8_bdy8m")]

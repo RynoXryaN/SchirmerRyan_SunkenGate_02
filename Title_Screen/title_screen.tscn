@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b7isjpelcu2nc" path="res://Title_Screen/Sprites/LoadGame2Button.png" id="6_phkne"]
 [ext_resource type="Texture2D" uid="uid://b5m6fcvah2acd" path="res://Title_Screen/Sprites/OptionsButton.png" id="7_dadoa"]
 [ext_resource type="Texture2D" uid="uid://bj7ney5n0olga" path="res://Title_Screen/Sprites/Options2Button.png" id="8_p77fo"]
+[ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="10_m0skb"]
+[ext_resource type="AudioStream" uid="uid://c3oqc2o7u0t85" path="res://Music/SunkenGate_PauseMenu.mp3" id="11_4dsfg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sib8q"]
 bg_color = Color(0.07058824, 0.050980393, 0.019607844, 0.5019608)
@@ -269,3 +271,8 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=2091443088]
+script = ExtResource("10_m0skb")
+track = ExtResource("11_4dsfg")
+metadata/_custom_type_script = "uid://e4pke5vxuyxn"

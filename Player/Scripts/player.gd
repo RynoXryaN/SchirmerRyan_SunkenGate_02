@@ -6,6 +6,7 @@ const D_BUG_JUMP_INDICATOR = preload("uid://cxynln4h88jwb")
 #region /// signals
 
 signal damage_taken
+#signal death
 
 #endregion
 
@@ -229,12 +230,15 @@ func _on_player_healed( amount : float ) -> void:
 	pass
 	
 func _on_damage_taken( a : AttackArea ) -> void:
-	# reduce hp
+
+	if current_state == PlayerStateDeath:
+		return
+		
 	hp -= a.damage
 	damage_taken.emit()
-	# emit signal
+
 	pass
-	
+
 func has_mana(amount : float) -> bool:
 	return mana >= amount
 

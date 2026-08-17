@@ -20,6 +20,7 @@ var next_state : PlayerState
 @onready var jump_slam: PlayerStateJumpSlam = %JumpSlam
 @onready var soft_knockback: PlayerStateSoftKnockback = %SoftKnockback
 @onready var back_dash: PlayerStateBackDash = %BackDash
+@onready var death: PlayerStateDeath = %Death
 
 
 #endregion

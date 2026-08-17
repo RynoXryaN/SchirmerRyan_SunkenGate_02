@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://durq0j07eobvx" path="res://Levels/Tilesets/Sprites_Animated/moving_platform.tscn" id="5_eqhta"]
 [ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="6_i4lpk"]
 [ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="7_gtikc"]
-[ext_resource type="AudioStream" uid="uid://r5525kn3sdx7" path="res://Music/dungeon_01.ogg" id="8_5e47a"]
+[ext_resource type="AudioStream" uid="uid://cp7m5h32kdfn3" path="res://Music/SunkenGate_SaveRoom.mp3" id="8_c02y0"]
 [ext_resource type="PackedScene" uid="uid://curvm7tuye4xq" path="res://General/Save_Point/save_point.tscn" id="9_0iulf"]
 
 [node name="SaveRoom" type="Node2D" unique_id=243067464]
@@ -57,7 +57,7 @@ target_level = "uid://dp61nk60jg4au"
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=87531037]
 script = ExtResource("7_gtikc")
-track = ExtResource("8_5e47a")
+track = ExtResource("8_c02y0")
 metadata/_custom_type_script = "uid://e4pke5vxuyxn"
 
 [node name="SavePoint" parent="." unique_id=140148429 instance=ExtResource("9_0iulf")]

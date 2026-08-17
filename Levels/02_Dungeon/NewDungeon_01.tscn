@@ -9,8 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://r5525kn3sdx7" path="res://Music/dungeon_01.ogg" id="8_km5et"]
 [ext_resource type="PackedScene" uid="uid://bupgmw6te5o0e" path="res://General/Constuction_Barrier/constuction_barrier.tscn" id="8_wnxaq"]
 [ext_resource type="PackedScene" uid="uid://dpqk6jkm54mi6" path="res://General/Level_Tag/level_tag.tscn" id="9_la22p"]
-[ext_resource type="PackedScene" path="res://Enemies/zombie_dawn/zombie.tscn" id="10_zombie"]
+[ext_resource type="PackedScene" uid="uid://ck5hktsdvi0ok" path="res://Enemies/zombie_dawn/zombie.tscn" id="10_zombie"]
 [ext_resource type="PackedScene" uid="uid://sa3hv23ypaho" path="res://General/Ability_Pickup/ability_pickup.tscn" id="11_ro7mg"]
+[ext_resource type="AudioStream" uid="uid://buyrvlkdm6ifg" path="res://Music/SunkenGate_MainPlay.mp3" id="12_s8y31"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx20p"]
 texture = ExtResource("2_o5j3c")
@@ -74,3 +75,8 @@ position = Vector2(320, 224)
 [node name="AbilityPickup" parent="." unique_id=260079599 instance=ExtResource("11_ro7mg")]
 position = Vector2(888, 256)
 type = 1
+
+[node name="MusicAutoTrigger2" type="Node" parent="." unique_id=635084365]
+script = ExtResource("7_cur6i")
+track = ExtResource("12_s8y31")
+metadata/_custom_type_script = "uid://e4pke5vxuyxn"

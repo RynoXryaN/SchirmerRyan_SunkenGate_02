@@ -30,7 +30,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	
 func create_new_game_save( slot : int ) -> void:
 	current_slot = slot
-	var new_game_scene : String = "uid://b5beoshdgyky1"
+	var new_game_scene : String = "uid://dkvomvhpxo00k"
 	discovered_areas.append( new_game_scene )
 	save_data = {
 		"scene_path" : new_game_scene,
@@ -39,7 +39,7 @@ func create_new_game_save( slot : int ) -> void:
 		"y" : 230,
 		"hp" : 20,
 		"max_hp" : 20,
-		"right_dash" : false,
+		"dash" : false,
 		"double_jump" : false,
 		"ground_slam" : false,
 		"morph_roll" : false,
@@ -64,7 +64,7 @@ func save_game() -> void:
 		"y" : player.global_position.y,
 		"hp" : player.hp,
 		"max_hp" : player.max_hp,
-		"right_dash" : player.dash,
+		"dash" : player.dash,
 		"double_jump" : player.double_jump,
 		"ground_slam" : player.ground_slam,
 		"morph_roll" : player.morph_roll,

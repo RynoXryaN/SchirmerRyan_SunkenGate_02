@@ -95,8 +95,8 @@ func get_ability_name() -> String:
 		Type.DOUBLE_JUMP:
 			return "double_jump"
 		Type.DASH:
-			return "right_dash"
-			return "left_dash"
+			return "dash"
+			#return "back_dash"
 		Type.GROUND_SLAM:
 			return "ground_slam"
 		Type.MORPH_ROLL:

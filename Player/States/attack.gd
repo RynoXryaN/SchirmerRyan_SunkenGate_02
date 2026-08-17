@@ -1,7 +1,8 @@
 class_name PlayerStateAttack
 extends PlayerState
 
-const AUDIO_ATTACK = preload("uid://csvxwrvmj7cop")
+const ATTACK_AUDIO = preload("uid://csvxwrvmj7cop")
+const BOOM_AUDIO = preload("uid://byjx710kqcabp")
 
 @export var combo_time_window : float = 0.2
 @export var speed : float = 150
@@ -60,12 +61,18 @@ func physics_process( _delta: float ) -> PlayerState:
 	return null
 
 func do_attack() -> void:
+	
 	var anim_name : String = "attack"
+	
 	if combo > 0:
 		anim_name = "attack_2"
+		
 	player.animation_player.play( anim_name )
 	player.attack_area.activate()
-	Audio.play_spatial_sound( AUDIO_ATTACK, player.global_position )
+	
+	Audio.play_spatial_sound( ATTACK_AUDIO, player.global_position )
+	#Audio.play_spatial_sound( BOOM_AUDIO, player.global_position )
+	
 	pass
 	
 func _end_attack() -> void:

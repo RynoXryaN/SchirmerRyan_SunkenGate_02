@@ -21,6 +21,7 @@ extends CanvasLayer
 #endregion
 
 func _ready() -> void:
+	
 	new_game_button.pressed.connect(show_new_game_menu)
 	load_game_button.pressed.connect(show_load_game_menu)
 
@@ -44,6 +45,9 @@ func _ready() -> void:
 	load_slot_3.mouse_entered.connect(load_slot_3.grab_focus)
 
 	show_main_menu()
+	
+	Audio.setup_button_audio( self )
+	
 	pass
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -109,7 +113,7 @@ func show_load_game_menu() -> void:
 	
 func _on_new_game_pressed( slot : int ) -> void:
 	SaveManager.create_new_game_save( slot )
-	#SceneManager.transition_scene( "uid://b5beoshdgyky1","", Vector2.ZERO, "up" )
+	SceneManager.transition_scene( "uid://dkvomvhpxo00k","", Vector2.ZERO, "up" )
 	pass
 
 func _on_load_game_pressed( slot : int ) -> void:

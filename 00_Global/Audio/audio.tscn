@@ -9,7 +9,11 @@
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_ukacp"]
 
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_ro7mg"]
+polyphony = 16
+
 [node name="Audio" type="Node" unique_id=471437677]
+process_mode = 3
 script = ExtResource("1_qt2oq")
 ui_focus_audio = ExtResource("2_dt2ws")
 ui_select_audio = ExtResource("3_mqlny")
@@ -29,4 +33,5 @@ bus = &"Music"
 
 [node name="UI" type="AudioStreamPlayer" parent="." unique_id=929306367]
 unique_name_in_owner = true
+stream = SubResource("AudioStreamPolyphonic_ro7mg")
 bus = &"UI"

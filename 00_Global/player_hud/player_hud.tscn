@@ -65,8 +65,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_pressed() -> void:
-	var player : Node2D = get_tree().get_first_node_in_group( \"Player\" )
-	VisualEffectsFactory.land_dust( player.global_position )
+	VisualEffectsFactory.camera_shake()
 	pass
 "
 
@@ -148,17 +147,6 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_htg7c")
 texture_progress = SubResource("GradientTexture2D_1rq2o")
 
-[node name="Button" type="Button" parent="Control" unique_id=1609895322]
-visible = false
-layout_mode = 0
-offset_left = 1045.0
-offset_top = 18.0
-offset_right = 1126.0
-offset_bottom = 49.0
-text = "Test Particles"
-script = SubResource("GDScript_1rq2o")
-particle_settings = SubResource("Resource_ilici")
-
 [node name="MessageLabel" type="Label" parent="Control" unique_id=1602861787]
 custom_minimum_size = Vector2(560, 90)
 layout_mode = 1
@@ -177,11 +165,97 @@ theme_override_font_sizes/font_size = 24
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="TestDust" type="Button" parent="Control" unique_id=1697865905]
-layout_mode = 0
-offset_left = 1052.0
-offset_top = 39.0
-offset_right = 1121.0
-offset_bottom = 64.0
-text = "TestDust"
+[node name="DebugTestButtons" type="VBoxContainer" parent="Control" unique_id=1416720179]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_top = 37.0
+offset_right = -17.0
+offset_bottom = 60.0
+grow_horizontal = 0
+
+[node name="TestParticles" type="Button" parent="Control/DebugTestButtons" unique_id=1609895322]
+layout_mode = 2
+text = "Test Particles"
+script = SubResource("GDScript_1rq2o")
+particle_settings = SubResource("Resource_ilici")
+
+[node name="TestDust" type="Button" parent="Control/DebugTestButtons" unique_id=1697865905]
+layout_mode = 2
+text = "Test Dust"
 script = SubResource("GDScript_n64fp")
+
+[node name="TestGameOver" type="Button" parent="Control/DebugTestButtons" unique_id=1082684884]
+layout_mode = 2
+text = "Test Game Over"
+script = SubResource("GDScript_n64fp")
+
+[node name="TestCameraShake" type="Button" parent="Control/DebugTestButtons" unique_id=1375297586]
+layout_mode = 2
+text = "Test Camera Shake"
+script = SubResource("GDScript_n64fp")
+
+[node name="GameOver" type="Control" parent="Control" unique_id=468134856]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/GameOver" unique_id=1753254710]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.84705883)
+
+[node name="Label" type="Label" parent="Control/GameOver" unique_id=331616597]
+modulate = Color(0.47843137, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -15.0
+offset_right = 77.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Game Over"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/GameOver" unique_id=1253811117]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = 62.0
+offset_right = 152.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadButton" type="Button" parent="Control/GameOver/HBoxContainer" unique_id=8596764]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Load Last Save"
+
+[node name="QuitButton" type="Button" parent="Control/GameOver/HBoxContainer" unique_id=604809716]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Quit to Title"

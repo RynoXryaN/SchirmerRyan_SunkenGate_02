@@ -17,6 +17,7 @@ func init()	-> void:
 	
 
 func enter() -> void:
+	
 	player.animation_player.play( "ball" )
 	var shape : CapsuleShape2D = player.collision_stand.get_shape() as CapsuleShape2D
 	shape.radius = 12.0
@@ -27,10 +28,12 @@ func enter() -> void:
 
 	player.velocity.y -= 100
 	Audio.play_spatial_sound( MORPH_AUDIO, player.global_position )
+	
 	pass
 	
 
 func exit() -> void:
+	
 	player.animation_player.speed_scale = 1
 	var shape : CapsuleShape2D = player.collision_stand.get_shape() as CapsuleShape2D
 	shape.radius = 8.0
@@ -40,6 +43,7 @@ func exit() -> void:
 	player.da_stand.position.y = -23
 	
 	Audio.play_spatial_sound( MORPH_OUT_AUDIO, player.global_position )
+	
 	pass
 	
 

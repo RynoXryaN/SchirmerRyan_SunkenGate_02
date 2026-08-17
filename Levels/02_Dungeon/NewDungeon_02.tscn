@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="4_xj5ls"]
 [ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="6_7u4wy"]
 [ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="7_a3w0f"]
-[ext_resource type="AudioStream" uid="uid://r5525kn3sdx7" path="res://Music/dungeon_01.ogg" id="8_lddlp"]
+[ext_resource type="AudioStream" uid="uid://buyrvlkdm6ifg" path="res://Music/SunkenGate_MainPlay.mp3" id="7_d53ic"]
 [ext_resource type="PackedScene" uid="uid://bupgmw6te5o0e" path="res://General/Constuction_Barrier/constuction_barrier.tscn" id="8_ygoq6"]
 [ext_resource type="PackedScene" uid="uid://dpqk6jkm54mi6" path="res://General/Level_Tag/level_tag.tscn" id="9_d53ic"]
 
@@ -69,7 +69,7 @@ target_area_name = "LT_01"
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=87531037]
 script = ExtResource("7_a3w0f")
-track = ExtResource("8_lddlp")
+track = ExtResource("7_d53ic")
 metadata/_custom_type_script = "uid://e4pke5vxuyxn"
 
 [node name="ConstuctionBarrier" parent="." unique_id=254877588 instance=ExtResource("8_ygoq6")]

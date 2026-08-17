@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://c22p2ry6hokmg" path="res://Player/Sprites/hero_hooded.png" id="14_1roin"]
 [ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="14_gt0dp"]
 [ext_resource type="Script" uid="uid://d2n5qb014g147" path="res://Player/States/back_dash.gd" id="14_ji1x8"]
+[ext_resource type="Script" uid="uid://da5xmj7ttukei" path="res://Player/States/death.gd" id="15_yo5y8"]
 [ext_resource type="Script" uid="uid://crfjfvwhk85o0" path="res://Player/Scripts/ability_controller.gd" id="22_xq5ky"]
 [ext_resource type="Resource" uid="uid://ccakve6r1d3dt" path="res://General/Projectiles/Dagger/dagger_ability.tres" id="23_1roin"]
 
@@ -104,7 +105,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -291,6 +292,23 @@ tracks/0/keys = {
 "values": [29]
 }
 
+[sub_resource type="Animation" id="Animation_yo5y8"]
+resource_name = "death"
+length = 1.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.90000004, 1, 1.1, 1.2, 1.3000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+}
+
 [sub_resource type="Animation" id="Animation_f5uno"]
 resource_name = "ground_slam"
 tracks/0/type = "value"
@@ -349,6 +367,7 @@ _data = {
 &"back_dash": SubResource("Animation_ji1x8"),
 &"ball": SubResource("Animation_qqeun"),
 &"dash": SubResource("Animation_agy6j"),
+&"death": SubResource("Animation_yo5y8"),
 &"ground_slam": SubResource("Animation_f5uno"),
 &"idle": SubResource("Animation_wyx6f"),
 &"take_damage": SubResource("Animation_q3u0r")
@@ -436,6 +455,10 @@ script = ExtResource("13_nsxpy")
 unique_name_in_owner = true
 script = ExtResource("14_ji1x8")
 
+[node name="Death" type="Node" parent="States" unique_id=1316464290]
+unique_name_in_owner = true
+script = ExtResource("15_yo5y8")
+
 [node name="Character" type="Sprite2D" parent="." unique_id=1582937770]
 position = Vector2(0, -40)
 texture = ExtResource("14_1roin")
@@ -446,24 +469,29 @@ script = ExtResource("12_agy6j")
 
 [node name="AttackSprite2D" type="Sprite2D" parent="Character" unique_id=319267213]
 unique_name_in_owner = true
+visible = false
 position = Vector2(24, 24)
 texture = ExtResource("9_p75he")
 hframes = 8
 
 [node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=834586414]
+visible = false
 position = Vector2(0, -25)
 shape = SubResource("CapsuleShape2D_wyx6f")
 
 [node name="CollisionCrouch" type="CollisionShape2D" parent="." unique_id=2027176795]
+visible = false
 position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_n15od")
 
 [node name="OneWayPlatformRaycast" type="RayCast2D" parent="." unique_id=698266447]
+visible = false
 exclude_parent = false
 target_position = Vector2(0, 10)
 collision_mask = 2
 
 [node name="GroundSlamShapeCast" type="ShapeCast2D" parent="." unique_id=918773578]
+visible = false
 enabled = false
 shape = SubResource("RectangleShape2D_agy6j")
 target_position = Vector2(0, 18)
@@ -481,6 +509,7 @@ zoom = Vector2(2.5, 2.5)
 script = ExtResource("10_p75he")
 
 [node name="InputHints" type="Node2D" parent="." unique_id=996071486]
+visible = false
 script = ExtResource("8_n15od")
 
 [node name="Hint_01" type="Sprite2D" parent="InputHints" unique_id=856814430]
@@ -521,6 +550,7 @@ vertical_alignment = 1
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=532570956]
 unique_name_in_owner = true
+visible = false
 position = Vector2(23, -12)
 collision_layer = 0
 collision_mask = 96
@@ -535,6 +565,7 @@ debug_color = Color(0.9606553, 0.17480978, 0.25616938, 0.41960785)
 
 [node name="GroundSlamAttackArea" type="Area2D" parent="." unique_id=1326895195]
 unique_name_in_owner = true
+visible = false
 collision_layer = 0
 collision_mask = 96
 monitorable = false
@@ -548,6 +579,7 @@ shape = SubResource("RectangleShape2D_ac4ik")
 debug_color = Color(0.9606553, 0.17480978, 0.25616938, 0.41960785)
 
 [node name="DamageArea" type="Area2D" parent="." unique_id=870705351]
+visible = false
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("14_gt0dp")

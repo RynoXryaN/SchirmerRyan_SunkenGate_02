@@ -26,6 +26,7 @@ func _ready() -> void:
 
 
 func play_music( audio : AudioStream ) -> void:
+	
 	var current_player : AudioStreamPlayer = get_music_player( current_track )
 	if current_player.stream == audio:
 		return
@@ -45,35 +46,39 @@ func play_music( audio : AudioStream ) -> void:
 	
 	current_track = next_track
 	
-	
-	
 	# Store/set current music track
+	
 	pass
 	
 func get_music_player( i : int ) -> AudioStreamPlayer:
+	
 	if i == 0:
 		return music_1
 	else:
 		return music_2
 
 func fade_track_out( player : AudioStreamPlayer ) -> void:
+	
 	var tween : Tween = create_tween()
 	music_tweens.append( tween )
 	tween.tween_property( player, "volume_linear", 0.0, 1.5 )
 	tween.tween_callback( player.stop )
+	
 	pass
 
 func fade_track_in( player : AudioStreamPlayer ) -> void:
+	
 	var tween : Tween = create_tween()
 	music_tweens.append( tween )
 	tween.tween_property( player, "volume_linear", 1.0, 1.0 )
+	
 	pass
 
 func set_reverb( type : REVERB_TYPE ) -> void:
-	
 	pass
 	
 func play_spatial_sound( audio : AudioStream, pos : Vector2 ) -> void:
+	
 	var ap : AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 	add_child( ap )
 	ap.bus = "SFX"
@@ -81,12 +86,22 @@ func play_spatial_sound( audio : AudioStream, pos : Vector2 ) -> void:
 	ap.stream = audio
 	ap.finished.connect( ap.queue_free )
 	ap.play()
+	
 	pass
 	
 func play_ui_audio( audio : AudioStream ) -> void:
+	
 	if ui_audio_player:
 		ui_audio_player.play_stream( audio )
+		print( "Boop-Beep-Boop" )
 	pass
+	
+func setup_button_audio( node : Node ) -> void:
+	for c in node.find_children( "*", "BaseButton" ):
+		c.pressed.connect( ui_select )
+		c.focus_entered.connect( ui_focus_change )
+	pass
+
 #region /// UI functions
 
 func ui_focus_change() -> void:
@@ -101,11 +116,11 @@ func ui_cancel() -> void:
 	play_ui_audio( ui_cancel_audio )
 	pass
 	
-func ui_success_change() -> void:
+func ui_success() -> void:
 	play_ui_audio( ui_success_audio )
 	pass
 	
-func ui_error_change() -> void:
+func ui_error() -> void:
 	play_ui_audio( ui_error_audio )
 	pass
 #endregion

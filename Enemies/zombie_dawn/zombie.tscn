@@ -1,21 +1,20 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ck5hktsdvi0ok"]
 
-[ext_resource type="Script" path="res://Enemies/zombie_dawn/zombie.gd" id="1"]
-[ext_resource type="Texture2D" path="res://Enemies/zombie_dawn/artwork/zombie_dawn_animation_sheet_80x80.png" id="2"]
-[ext_resource type="Script" path="res://General/Scripts/damage_area.gd" id="3"]
-[ext_resource type="Script" path="res://General/Scripts/haz_area.gd" id="4"]
-[ext_resource type="Script" path="res://General/Scripts/loot_dropper.gd" id="5"]
-[ext_resource type="Script" path="res://General/Scripts/loot_data.gd" id="6"]
-[ext_resource type="Script" path="res://Enemies/scripts/enemy_state_machine.gd" id="7"]
-[ext_resource type="Script" path="res://Enemies/scripts/states/es_walk.gd" id="8"]
-[ext_resource type="Script" path="res://Enemies/zombie_dawn/states/es_zombie_walk.gd" id="16"]
-[ext_resource type="Script" path="res://Enemies/scripts/states/es_stun.gd" id="9"]
-[ext_resource type="Script" path="res://Enemies/zombie_dawn/states/es_zombie_rise.gd" id="10"]
-[ext_resource type="Script" path="res://Enemies/zombie_dawn/states/es_zombie_death.gd" id="11"]
-[ext_resource type="Script" path="res://Enemies/scripts/decision_engines/decision_engine_basic.gd" id="12"]
-[ext_resource type="Script" path="res://Enemies/scripts/sensors/edge_sensor.gd" id="13"]
-[ext_resource type="Script" path="res://Enemies/scripts/sensors/player_sensor.gd" id="14"]
+[ext_resource type="Script" uid="uid://chtfkgngfjiu8" path="res://Enemies/zombie_dawn/zombie.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dar62w6hpdx77" path="res://Enemies/zombie_dawn/artwork/zombie_dawn_animation_sheet_80x80.png" id="2"]
+[ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="3"]
+[ext_resource type="Script" uid="uid://8wbd8v2k68p" path="res://General/Scripts/haz_area.gd" id="4"]
+[ext_resource type="Script" uid="uid://cufxxpgcwhvsu" path="res://General/Scripts/loot_dropper.gd" id="5"]
+[ext_resource type="Script" uid="uid://pb1tujd7oxwl" path="res://General/Scripts/loot_data.gd" id="6"]
+[ext_resource type="Script" uid="uid://cywmqmetox18r" path="res://Enemies/scripts/enemy_state_machine.gd" id="7"]
+[ext_resource type="Script" uid="uid://cld8y0cwd3yuf" path="res://Enemies/scripts/states/es_stun.gd" id="9"]
+[ext_resource type="Script" uid="uid://cyir6hg1ya5ud" path="res://Enemies/zombie_dawn/states/es_zombie_rise.gd" id="10"]
+[ext_resource type="Script" uid="uid://c0q6o6oyg6d7j" path="res://Enemies/zombie_dawn/states/es_zombie_death.gd" id="11"]
+[ext_resource type="Script" uid="uid://d3vm36d2ckned" path="res://Enemies/scripts/decision_engines/decision_engine_basic.gd" id="12"]
+[ext_resource type="Script" uid="uid://bqhqokpra366b" path="res://Enemies/scripts/sensors/edge_sensor.gd" id="13"]
+[ext_resource type="Script" uid="uid://kpe1daxjqgwk" path="res://Enemies/scripts/sensors/player_sensor.gd" id="14"]
 [ext_resource type="PackedScene" path="res://Enemies/zombie_dawn/zombie_death_pieces.tscn" id="15"]
+[ext_resource type="Script" uid="uid://s8pyx80teyky" path="res://Enemies/zombie_dawn/states/es_zombie_walk.gd" id="16"]
 
 [sub_resource type="CapsuleShape2D" id="BodyShape"]
 radius = 9.0
@@ -27,123 +26,164 @@ size = Vector2(24, 38)
 [sub_resource type="RectangleShape2D" id="HazardShape"]
 size = Vector2(24, 18)
 
+[sub_resource type="Resource" id="Loot"]
+script = ExtResource("6")
+item = "uid://d57kc2dwj02f"
+
 [sub_resource type="Animation" id="Reset"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/keys = {"times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [8]}
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
 
 [sub_resource type="Animation" id="Rise"]
 resource_name = "rise"
 length = 1.12
 step = 0.14
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/keys = {"times": PackedFloat32Array(0, 0.14, 0.28, 0.42, 0.56, 0.70, 0.84, 0.98), "transitions": PackedFloat32Array(1,1,1,1,1,1,1,1), "update": 1, "values": [0,1,2,3,4,5,6,7]}
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.28, 0.42, 0.56, 0.7, 0.84, 0.98),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
 
 [sub_resource type="Animation" id="Shamble"]
 resource_name = "shamble"
 length = 1.37
 loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/keys = {"times": PackedFloat32Array(0,0.18,0.33,0.50,0.71,0.89,1.04,1.21), "transitions": PackedFloat32Array(1,1,1,1,1,1,1,1), "update": 1, "values": [8,9,10,11,12,13,14,15]}
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.33, 0.5, 0.71, 0.89, 1.04, 1.21),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
 
 [sub_resource type="Animation" id="Stun"]
 resource_name = "stun"
 length = 0.25
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/keys = {"times": PackedFloat32Array(0), "transitions": PackedFloat32Array(1), "update": 1, "values": [9]}
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
 
 [sub_resource type="AnimationLibrary" id="Animations"]
-_data = {&"RESET": SubResource("Reset"), &"rise": SubResource("Rise"), &"shamble": SubResource("Shamble"), &"stun": SubResource("Stun")}
+_data = {
+&"RESET": SubResource("Reset"),
+&"rise": SubResource("Rise"),
+&"shamble": SubResource("Shamble"),
+&"stun": SubResource("Stun")
+}
 
-[sub_resource type="Resource" id="Loot"]
-script = ExtResource("6")
-item = "uid://d57kc2dwj02f"
-minimum = 1
-maximum = 1
-
-[node name="ZombieDawn" type="CharacterBody2D"]
+[node name="ZombieDawn" type="CharacterBody2D" unique_id=2045108050]
+scale = Vector2(1.4, 1.4)
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1")
-health = 3.0
-face_left_on_start = true
 death_pieces_scene = ExtResource("15")
-scale = Vector2(1.4, 1.4)
+health = 20.0
+face_left_on_start = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1923042595]
 position = Vector2(0, -32)
 texture = ExtResource("2")
 hframes = 8
 vframes = 3
+frame = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=742520962]
 position = Vector2(0, -16)
 shape = SubResource("BodyShape")
 
-[node name="DamageArea" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="." unique_id=1275055312]
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=956367178]
 position = Vector2(0, -20)
 shape = SubResource("DamageShape")
 
-[node name="HazardArea" type="Area2D" parent="."]
+[node name="HazardArea" type="Area2D" parent="." unique_id=93485242]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("4")
+damage = 5.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea" unique_id=421242082]
 position = Vector2(0, -8)
 shape = SubResource("HazardShape")
 
-[node name="LootDropper" type="Marker2D" parent="."]
+[node name="LootDropper" type="Marker2D" parent="." unique_id=1722819933]
 position = Vector2(0, -30)
 script = ExtResource("5")
 items = Array[ExtResource("6")]([SubResource("Loot")])
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=365195092]
 libraries/ = SubResource("Animations")
 
-[node name="EnemyStateMachine" type="Node" parent="."]
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1620073818]
 script = ExtResource("7")
 
-[node name="ESZombieRise" type="Node" parent="EnemyStateMachine"]
+[node name="ESZombieRise" type="Node" parent="EnemyStateMachine" unique_id=2011731308]
 script = ExtResource("10")
 animation_name = "rise"
 
-[node name="ESWalk" type="Node" parent="EnemyStateMachine"]
+[node name="ESWalk" type="Node" parent="EnemyStateMachine" unique_id=187562962]
 unique_name_in_owner = true
 script = ExtResource("16")
-animation_name = "shamble"
 walk_speed = 35.0
+animation_name = "shamble"
 
-[node name="ESStun" type="Node" parent="EnemyStateMachine"]
+[node name="ESStun" type="Node" parent="EnemyStateMachine" unique_id=934954670]
 unique_name_in_owner = true
 script = ExtResource("9")
 animation_name = "stun"
 
-[node name="ESDeath" type="Node" parent="EnemyStateMachine"]
+[node name="ESDeath" type="Node" parent="EnemyStateMachine" unique_id=144445999]
 unique_name_in_owner = true
 script = ExtResource("11")
 
-[node name="DecisionEngine" type="Node" parent="."]
+[node name="DecisionEngine" type="Node" parent="." unique_id=1872030430]
 script = ExtResource("12")
 
-[node name="EdgeSensor" type="RayCast2D" parent="."]
+[node name="EdgeSensor" type="RayCast2D" parent="." unique_id=621279858]
 position = Vector2(8, 0)
 target_position = Vector2(0, 8)
 collision_mask = 3
 script = ExtResource("13")
 
-[node name="PlayerSensor" type="Area2D" parent="."]
+[node name="PlayerSensor" type="Area2D" parent="." unique_id=1983145763]
 position = Vector2(0, -8)
 script = ExtResource("14")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerSensor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerSensor" unique_id=352228268]
 polygon = PackedVector2Array(0, 0, 256, -128, 256, 128)
