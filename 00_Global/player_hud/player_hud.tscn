@@ -205,9 +205,9 @@ offset_right = -17.0
 offset_bottom = 60.0
 grow_horizontal = 0
 script = ExtResource("5_developer_menu")
-always_visible_controls = Array[NodePath]([NodePath("TestParticles"), NodePath("TestDust"), NodePath("TestGameOver"), NodePath("TestCameraShake")])
-menu_only_controls = Array[NodePath]([NodePath("DeveloperMenuTitle"), NodePath("TestDoubleJump"), NodePath("TestDash"), NodePath("TestGroundSlam"), NodePath("TestMorphRoll"), NodePath("TestInvulnerable"), NodePath("TestUntouchable"), NodePath("DeveloperMenuHint")])
-navigable_controls = Array[NodePath]([NodePath("TestParticles"), NodePath("TestDust"), NodePath("TestGameOver"), NodePath("TestCameraShake"), NodePath("TestDoubleJump"), NodePath("TestDash"), NodePath("TestGroundSlam"), NodePath("TestMorphRoll"), NodePath("TestInvulnerable"), NodePath("TestUntouchable")])
+always_visible_controls = Array[NodePath]([NodePath("DeveloperColumns")])
+menu_only_controls = Array[NodePath]([NodePath("DeveloperMenuTitle"), NodePath("DeveloperColumns/AbilityColumn"), NodePath("DeveloperColumns/ModeColumn"), NodePath("DeveloperMenuHint")])
+navigable_controls = Array[NodePath]([NodePath("DeveloperColumns/TestColumn/TestParticles"), NodePath("DeveloperColumns/TestColumn/TestDust"), NodePath("DeveloperColumns/TestColumn/TestGameOver"), NodePath("DeveloperColumns/TestColumn/TestCameraShake"), NodePath("DeveloperColumns/AbilityColumn/TestDoubleJump"), NodePath("DeveloperColumns/AbilityColumn/TestDash"), NodePath("DeveloperColumns/AbilityColumn/TestGroundSlam"), NodePath("DeveloperColumns/AbilityColumn/TestMorphRoll"), NodePath("DeveloperColumns/ModeColumn/TestInvulnerable"), NodePath("DeveloperColumns/ModeColumn/TestUntouchable")])
 blocking_controls = Array[NodePath]([NodePath("../GameOver")])
 
 [node name="DeveloperMenuTitle" type="Label" parent="Control/DeveloperMenu" unique_id=1599186334]
@@ -217,39 +217,62 @@ theme_override_font_sizes/font_size = 14
 text = "DEV MENU — PAUSED"
 horizontal_alignment = 1
 
-[node name="TestParticles" type="Button" parent="Control/DeveloperMenu" unique_id=1609895322]
+[node name="DeveloperColumns" type="HBoxContainer" parent="Control/DeveloperMenu"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TestColumn" type="VBoxContainer" parent="Control/DeveloperMenu/DeveloperColumns"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Control/DeveloperMenu/DeveloperColumns/TestColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "TEST"
+horizontal_alignment = 1
+
+[node name="TestParticles" type="Button" parent="Control/DeveloperMenu/DeveloperColumns/TestColumn" unique_id=1609895322]
 layout_mode = 2
 focus_mode = 0
 text = "Test Particles"
 script = SubResource("GDScript_1rq2o")
 particle_settings = SubResource("Resource_ilici")
 
-[node name="TestDust" type="Button" parent="Control/DeveloperMenu" unique_id=1697865905]
+[node name="TestDust" type="Button" parent="Control/DeveloperMenu/DeveloperColumns/TestColumn" unique_id=1697865905]
 layout_mode = 2
 focus_mode = 0
 text = "Test Dust"
 script = SubResource("GDScript_test_dust")
 
-[node name="TestGameOver" type="Button" parent="Control/DeveloperMenu" unique_id=1082684884]
+[node name="TestGameOver" type="Button" parent="Control/DeveloperMenu/DeveloperColumns/TestColumn" unique_id=1082684884]
 layout_mode = 2
 focus_mode = 0
 text = "Test Game Over"
 script = SubResource("GDScript_test_game_over")
 
-[node name="TestCameraShake" type="Button" parent="Control/DeveloperMenu" unique_id=1375297586]
+[node name="TestCameraShake" type="Button" parent="Control/DeveloperMenu/DeveloperColumns/TestColumn" unique_id=1375297586]
 layout_mode = 2
 focus_mode = 0
 text = "Test Camera Shake"
 script = SubResource("GDScript_n64fp")
 
-[node name="TestDoubleJump" type="CheckButton" parent="Control/DeveloperMenu" unique_id=2089934236]
+[node name="AbilityColumn" type="VBoxContainer" parent="Control/DeveloperMenu/DeveloperColumns"]
+visible = false
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Control/DeveloperMenu/DeveloperColumns/AbilityColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "ABILITY"
+horizontal_alignment = 1
+
+[node name="TestDoubleJump" type="CheckButton" parent="Control/DeveloperMenu/DeveloperColumns/AbilityColumn" unique_id=2089934236]
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 2
 text = "Double Jump: OFF"
 script = ExtResource("4_debug_ability")
 
-[node name="TestDash" type="CheckButton" parent="Control/DeveloperMenu" unique_id=1640422820]
+[node name="TestDash" type="CheckButton" parent="Control/DeveloperMenu/DeveloperColumns/AbilityColumn" unique_id=1640422820]
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 2
@@ -257,7 +280,7 @@ text = "Dash: OFF"
 script = ExtResource("4_debug_ability")
 ability = 1
 
-[node name="TestGroundSlam" type="CheckButton" parent="Control/DeveloperMenu" unique_id=882906678]
+[node name="TestGroundSlam" type="CheckButton" parent="Control/DeveloperMenu/DeveloperColumns/AbilityColumn" unique_id=882906678]
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 2
@@ -265,7 +288,7 @@ text = "Ground Slam: OFF"
 script = ExtResource("4_debug_ability")
 ability = 2
 
-[node name="TestMorphRoll" type="CheckButton" parent="Control/DeveloperMenu" unique_id=36356375]
+[node name="TestMorphRoll" type="CheckButton" parent="Control/DeveloperMenu/DeveloperColumns/AbilityColumn" unique_id=36356375]
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 2
@@ -273,14 +296,24 @@ text = "Morph Roll: OFF"
 script = ExtResource("4_debug_ability")
 ability = 3
 
-[node name="TestInvulnerable" type="CheckButton" parent="Control/DeveloperMenu"]
+[node name="ModeColumn" type="VBoxContainer" parent="Control/DeveloperMenu/DeveloperColumns"]
+visible = false
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Control/DeveloperMenu/DeveloperColumns/ModeColumn"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "MODE"
+horizontal_alignment = 1
+
+[node name="TestInvulnerable" type="CheckButton" parent="Control/DeveloperMenu/DeveloperColumns/ModeColumn"]
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 2
 text = "Invulnerable: OFF"
 script = ExtResource("6_debug_flag")
 
-[node name="TestUntouchable" type="CheckButton" parent="Control/DeveloperMenu"]
+[node name="TestUntouchable" type="CheckButton" parent="Control/DeveloperMenu/DeveloperColumns/ModeColumn"]
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 2
@@ -292,7 +325,7 @@ debug_flag = 1
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "Up / Down: Navigate
+text = "UI Directions: Navigate
 Select: Toggle / Run Test
 Cancel: Close"
 horizontal_alignment = 1

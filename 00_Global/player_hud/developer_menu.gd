@@ -43,10 +43,6 @@ func _input( event: InputEvent ) -> void:
 		if _activate_focused_control():
 			get_viewport().set_input_as_handled()
 		return
-	elif event.is_action_pressed( "ui_left" ) or event.is_action_pressed( "ui_right" ):
-		# Horizontal analog jitter should never change developer settings.
-		get_viewport().set_input_as_handled()
-		return
 	elif event.is_action_pressed( "ui_accept" ):
 		# Ability switches use normal focused CheckButton activation. Ordinary
 		# test buttons are intentionally activated only through ui_select.
@@ -55,7 +51,7 @@ func _input( event: InputEvent ) -> void:
 		return
 	else:
 		# Match the title menu: let Godot's Control focus system process
-		# ui_up, ui_down, and ui_accept, including analog deadzone/repeat.
+		# UI directions and ui_accept, including analog deadzone/repeat.
 		return
 
 	get_viewport().set_input_as_handled()
