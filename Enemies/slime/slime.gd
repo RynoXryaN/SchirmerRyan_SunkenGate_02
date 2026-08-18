@@ -54,7 +54,7 @@ func _on_edge_detected() -> void:
 func _on_damage_taken( attack_area : AttackArea ) -> void:
 	health -= attack_area.damage
 	
-	knockback( attack_area.global_position )
+	knockback( attack_area )
 	
 	if health > 0:
 		animation_player.play( "stun" )
@@ -65,13 +65,14 @@ func _on_damage_taken( attack_area : AttackArea ) -> void:
 		hazard_area.queue_free()
 	pass
 
-func knockback( a_pos : Vector2 ) -> void:
+func knockback( attack_area: AttackArea ) -> void:
 	var from : float = dir
 	var to : float = dir
-	if a_pos.x < global_position.x:
-		from += 2
+	var knockback_amount := 2.0 * attack_area.knockback_multiplier
+	if attack_area.global_position.x < global_position.x:
+		from += knockback_amount
 	else:
-		from -= 2
+		from -= knockback_amount
 		
 	if move_tween:
 		move_tween.kill()

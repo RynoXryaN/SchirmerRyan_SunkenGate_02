@@ -49,5 +49,5 @@ func _calc_velocity( a : AttackArea ) -> void:
 	vel_x = 1
 	if a.global_position.x > enemy.global_position.x:
 		vel_x = -1
-	vel_x *= knockback_strength
+	vel_x *= knockback_strength * a.knockback_multiplier
 	pass

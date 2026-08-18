@@ -3,6 +3,7 @@ class_name AttackArea
 extends Area2D
 
 @export var damage : float = 1
+@export var knockback_multiplier: float = 1.0
 
 func _ready() -> void:
 	body_entered.connect( _on_body_entered )

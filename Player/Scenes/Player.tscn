@@ -576,6 +576,7 @@ collision_mask = 96
 monitorable = false
 script = ExtResource("10_6rv2o")
 damage = 10.0
+knockback_multiplier = 2.0
 metadata/_custom_type_script = "uid://6s8p4noeyskh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSlamAttackArea" unique_id=1312504152]

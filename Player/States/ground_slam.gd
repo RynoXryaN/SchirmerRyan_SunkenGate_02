@@ -9,6 +9,7 @@ const BREAK_WOOD_AUDIO = preload("uid://brv656rb7cddj")
 
 @export var velocity : float = 400
 @export var effect_delay : float = 0.075
+@export var recovery_invulnerability_duration: float = 0.25
 var effect_timer : float = 0
 
 @onready var damage_area: DamageArea = $"../../DamageArea"
@@ -35,7 +36,7 @@ func exit() -> void:
 	VisualEffectsFactory.land_dust( player.global_position )
 	VisualEffectsFactory.hit_dust( player.global_position )
 	Audio.play_spatial_sound( BOOM_AUDIO, player.global_position)
-	damage_area.end_invulnerable()
+	damage_area.make_invulnerable( recovery_invulnerability_duration )
 	ground_slam_attack_area.set_active( false )
 	pass
 	
