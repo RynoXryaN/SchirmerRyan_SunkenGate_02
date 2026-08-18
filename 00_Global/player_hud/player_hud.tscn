@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b51l2hc3eydrk" path="res://00_Global/player_hud/health_bar_frame.png" id="1_htg7c"]
 [ext_resource type="Texture2D" uid="uid://dcbtjpg78o2fe" path="res://Assets/MetroVan_Assets/ch_03_game_systems/sprites/mana_bar_frame.png" id="2_ilici"]
 [ext_resource type="Script" uid="uid://b26misjaeywyg" path="res://00_Global/visual_effects/hit_particle_settings.gd" id="3_04axr"]
+[ext_resource type="Script" uid="uid://de0c05hkhnrr1" path="res://00_Global/player_hud/debug_ability_button.gd" id="4_debug_ability"]
+[ext_resource type="Script" uid="uid://cse5o374x237d" path="res://00_Global/player_hud/developer_menu.gd" id="5_developer_menu"]
 
 [sub_resource type="Gradient" id="Gradient_8jfgd"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -165,7 +167,7 @@ theme_override_font_sizes/font_size = 24
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DebugTestButtons" type="VBoxContainer" parent="Control" unique_id=1416720179]
+[node name="DeveloperMenu" type="VBoxContainer" parent="Control" unique_id=1416720179]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -175,45 +177,82 @@ offset_top = 37.0
 offset_right = -17.0
 offset_bottom = 60.0
 grow_horizontal = 0
+script = ExtResource("5_developer_menu")
+always_visible_controls = Array[NodePath]([NodePath("TestParticles"), NodePath("TestDust"), NodePath("TestGameOver"), NodePath("TestCameraShake")])
+menu_only_controls = Array[NodePath]([NodePath("DeveloperMenuTitle"), NodePath("TestDoubleJump"), NodePath("TestDash"), NodePath("TestGroundSlam"), NodePath("TestMorphRoll"), NodePath("DeveloperMenuHint")])
+navigable_controls = Array[NodePath]([NodePath("TestDoubleJump"), NodePath("TestDash"), NodePath("TestGroundSlam"), NodePath("TestMorphRoll")])
+blocking_controls = Array[NodePath]([NodePath("../GameOver")])
 
-[node name="TestParticles" type="Button" parent="Control/DebugTestButtons" unique_id=1609895322]
+[node name="DeveloperMenuTitle" type="Label" parent="Control/DeveloperMenu" unique_id=1599186334]
+visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "DEV MENU — PAUSED"
+horizontal_alignment = 1
+
+[node name="TestParticles" type="Button" parent="Control/DeveloperMenu" unique_id=1609895322]
+layout_mode = 2
+focus_mode = 0
 text = "Test Particles"
 script = SubResource("GDScript_1rq2o")
 particle_settings = SubResource("Resource_ilici")
 
-[node name="TestDust" type="Button" parent="Control/DebugTestButtons" unique_id=1697865905]
+[node name="TestDust" type="Button" parent="Control/DeveloperMenu" unique_id=1697865905]
 layout_mode = 2
+focus_mode = 0
 text = "Test Dust"
 script = SubResource("GDScript_n64fp")
 
-[node name="TestGameOver" type="Button" parent="Control/DebugTestButtons" unique_id=1082684884]
+[node name="TestGameOver" type="Button" parent="Control/DeveloperMenu" unique_id=1082684884]
 layout_mode = 2
+focus_mode = 0
 text = "Test Game Over"
 script = SubResource("GDScript_n64fp")
 
-[node name="TestCameraShake" type="Button" parent="Control/DebugTestButtons" unique_id=1375297586]
+[node name="TestCameraShake" type="Button" parent="Control/DeveloperMenu" unique_id=1375297586]
 layout_mode = 2
+focus_mode = 0
 text = "Test Camera Shake"
 script = SubResource("GDScript_n64fp")
 
-; TEMP DEBUG: Runtime ability toggles. Remove these four nodes together with
-; the matching temporary section in player_hud.gd after testing.
-[node name="TestDoubleJump" type="Button" parent="Control/DebugTestButtons"]
+[node name="TestDoubleJump" type="CheckButton" parent="Control/DeveloperMenu" unique_id=2089934236]
 layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
 text = "Double Jump: OFF"
+script = ExtResource("4_debug_ability")
 
-[node name="TestDash" type="Button" parent="Control/DebugTestButtons"]
+[node name="TestDash" type="CheckButton" parent="Control/DeveloperMenu" unique_id=1640422820]
 layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
 text = "Dash: OFF"
+script = ExtResource("4_debug_ability")
+ability = 1
 
-[node name="TestGroundSlam" type="Button" parent="Control/DebugTestButtons"]
+[node name="TestGroundSlam" type="CheckButton" parent="Control/DeveloperMenu" unique_id=882906678]
 layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
 text = "Ground Slam: OFF"
+script = ExtResource("4_debug_ability")
+ability = 2
 
-[node name="TestMorphRoll" type="Button" parent="Control/DebugTestButtons"]
+[node name="TestMorphRoll" type="CheckButton" parent="Control/DeveloperMenu" unique_id=36356375]
 layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
 text = "Morph Roll: OFF"
+script = ExtResource("4_debug_ability")
+ability = 3
+
+[node name="DeveloperMenuHint" type="Label" parent="Control/DeveloperMenu" unique_id=1929119826]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "UI directions: Navigate / OFF / ON
+Accept: Toggle  |  Cancel: Close"
+horizontal_alignment = 1
 
 [node name="GameOver" type="Control" parent="Control" unique_id=468134856]
 unique_name_in_owner = true
