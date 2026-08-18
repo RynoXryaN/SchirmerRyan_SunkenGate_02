@@ -278,7 +278,16 @@ func can_morph() -> bool:
 	
 func apply_saved_abilities() -> void:
 	double_jump = SaveManager.persistent_data.get("double_jump", "") == "acquired"
-	dash = SaveManager.persistent_data.get("right_dash", "") == "acquired"
+	# The dash pickup grants both directional dash states and is persisted under
+	# the single canonical "dash" key. Keep the old directional keys as a
+	# fallback so saves created by earlier versions continue to work.
+	var has_dash: bool = (
+		SaveManager.persistent_data.get("dash", "") == "acquired"
+		or SaveManager.persistent_data.get("right_dash", "") == "acquired"
+		or SaveManager.persistent_data.get("back_dash", "") == "acquired"
+	)
+	dash = has_dash
+	back_dash = has_dash
 	ground_slam = SaveManager.persistent_data.get("ground_slam", "") == "acquired"
 	morph_roll = SaveManager.persistent_data.get("morph_roll", "") == "acquired"
 	

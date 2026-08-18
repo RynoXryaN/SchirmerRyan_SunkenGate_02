@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://mkxst6oludvn" path="res://Enemies/slime/slime.png" id="2_mqbni"]
 [ext_resource type="Script" uid="uid://8wbd8v2k68p" path="res://General/Scripts/haz_area.gd" id="3_22fhf"]
 [ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="4_3l4cu"]
-[ext_resource type="AudioStream" uid="uid://di3jyemo4l1ka" path="res://Enemies/slime/slime_hit.wav" id="5_nbo77"]
 [ext_resource type="Script" uid="uid://bvv1el7c3wf0i" path="res://Enemies/scripts/edge_detector.gd" id="6_mqbni"]
 [ext_resource type="Script" uid="uid://cufxxpgcwhvsu" path="res://General/Scripts/loot_dropper.gd" id="7_3l4cu"]
 [ext_resource type="Script" uid="uid://pb1tujd7oxwl" path="res://General/Scripts/loot_data.gd" id="8_nbo77"]
@@ -122,7 +121,6 @@ libraries/ = SubResource("AnimationLibrary_qdd58")
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("4_3l4cu")
-audio = ExtResource("5_nbo77")
 metadata/_custom_type_script = "uid://bghkwtmlo6w70"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageArea" unique_id=1812925397]

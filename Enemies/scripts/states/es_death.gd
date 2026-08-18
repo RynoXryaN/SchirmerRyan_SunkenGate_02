@@ -8,14 +8,12 @@ extends EnemyState
 #var enemy : Enemy
 #var blackboard : BlackBoard
 @export var knockback_strength : float = 100
-@export var death_audio : AudioStream
 var vel_x : float = 0
 var duration : float = 0
 var timer : float = 0
 
 func enter() -> void:
 	enemy.play_animation( animation_name if animation_name else "death" )
-	Audio.play_spatial_sound( death_audio, enemy.global_position )
 	
 	duration = enemy.animation.current_animation_length
 	timer = 0

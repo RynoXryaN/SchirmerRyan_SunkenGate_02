@@ -73,8 +73,7 @@ func check_collisions ( _delta : float ) -> float:
 			
 			if c.get_parent() is Breakable:
 				var b : Breakable = c.get_parent()
-				b.queue_free()
-				Audio.play_spatial_sound( b.destroy_audio, pos )
+				b.break_apart()
 				for p in b.destroy_particles:
 					VisualEffectsFactory.hit_particles( pos, Vector2.DOWN, p )
 			else:

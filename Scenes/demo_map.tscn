@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cuyeunwmfs0sg"]
 
 [ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="2_hkha8"]
-[ext_resource type="AudioStream" uid="uid://dm7k6xvijepjc" path="res://General/Audio/hit.wav" id="3_bdi8m"]
 [ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="3_husy1"]
 [ext_resource type="PackedScene" uid="uid://bhwdd1x5kfjt8" path="res://Levels/Props/dummies/test_dummy.tscn" id="4_husy1"]
 [ext_resource type="PackedScene" uid="uid://c0k4kdhi3sxgu" path="res://Levels/Props/crate.tscn" id="5_wveh7"]
@@ -133,7 +132,6 @@ position = Vector2(0, 37)
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("3_husy1")
-audio = ExtResource("3_bdi8m")
 metadata/_custom_type_script = "uid://bghkwtmlo6w70"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1672547390]

@@ -11,6 +11,11 @@ signal was_killed()
 @export var health : float = 50
 @export var affected_by_gravity : bool = true
 @export var face_left_on_start : bool = false
+@export_group("Audio")
+@export var hit_audio : AudioStream = preload( "res://General/Audio/hit.wav" )
+@export var death_audio : AudioStream = preload( "res://General/Audio/death.wav" )
+@export_range( 0.0, 0.25, 0.01 ) var audio_pitch_variation : float = 0.05
+@export_range( 0.0, 6.0, 0.1, "suffix:dB" ) var audio_volume_variation_db : float = 1.0
 
 var sprite : Sprite2D
 var animation : AnimationPlayer
@@ -128,12 +133,24 @@ func _on_damage_taken( a : AttackArea ) -> void:
 	
 	if blackboard.health <= 0:
 		bleeding = false
+		_play_audio( death_audio )
 		damage_area.queue_free()
 		hazard_area.queue_free()
 		was_killed.emit()
 		return
-		
+
+	_play_audio( hit_audio )
 	was_hit.emit( a )
+
+
+func _play_audio( stream : AudioStream ) -> void:
+	if stream:
+		Audio.play_spatial_sound(
+			stream,
+			global_position,
+			audio_pitch_variation,
+			audio_volume_variation_db
+		)
 
 
 func _get_configuration_warnings() -> PackedStringArray:

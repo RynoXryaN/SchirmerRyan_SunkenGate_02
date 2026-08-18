@@ -2,6 +2,8 @@ class_name PlayerStateBackDash
 extends PlayerState
 
 const DASH_AUDIO = preload("uid://bkaogxsakt1wl")
+#const BACK_DASH_AUDIO = preload("uid://gd130tt3y0d0")
+
 
 @export var duration : float = 0.25
 @export var speed : float = 300
@@ -25,7 +27,8 @@ func enter() -> void:
 	effect_timer = 0.0 
 	get_back_dash_direction()
 	damage_area.make_invulnerable( duration )
-	#Audio.play_spatial_sound( DASH_AUDIO, player.global_position )pass
+	Audio.play_spatial_sound( DASH_AUDIO, player.global_position )
+	#Audio.play_spatial_sound( BACK_DASH_AUDIO, player.global_position )
 	#player.character.tween_color()
 	player.gravity_multiplier = 0.0
 	player.velocity.y = 0.0

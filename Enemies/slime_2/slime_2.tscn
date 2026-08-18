@@ -134,6 +134,8 @@ func _physics_process(delta: float) -> void:
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("1_wqav1")
+hit_audio = ExtResource("4_6tvwq")
+death_audio = ExtResource("13_8h6b7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2115805676]
 position = Vector2(0, -14)
@@ -150,7 +152,6 @@ shape = SubResource("CapsuleShape2D_8h6b7")
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("3_7liyp")
-audio = ExtResource("4_6tvwq")
 metadata/_custom_type_script = "uid://bghkwtmlo6w70"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageArea" unique_id=146502314]
@@ -195,7 +196,6 @@ metadata/_custom_type_script = "uid://cld8y0cwd3yuf"
 [node name="ESDeath" type="Node" parent="EnemyStateMachine" unique_id=213728102]
 unique_name_in_owner = true
 script = ExtResource("12_8h6b7")
-death_audio = ExtResource("13_8h6b7")
 metadata/_custom_type_script = "uid://bruc2dk03s1s"
 
 [node name="DecisionEngine" type="Node" parent="." unique_id=537701033]

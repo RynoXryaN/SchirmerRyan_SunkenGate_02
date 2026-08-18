@@ -9,24 +9,6 @@ func _ready() -> void:
 	super()
 
 
-func _on_damage_taken(attack_area: AttackArea) -> void:
-	# Keep this enemy's damage path aligned with Slime's single subtraction.
-	blackboard.damage_source = attack_area
-	blackboard.health -= attack_area.damage
-	blackboard.can_decide = true
-
-	if blackboard.health <= health * 0.5:
-		bleeding = true
-
-	if blackboard.health <= 0:
-		bleeding = false
-		damage_area.queue_free()
-		hazard_area.queue_free()
-		was_killed.emit()
-	else:
-		was_hit.emit(attack_area)
-
-
 func show_damage_number(amount: float) -> void:
 	VisualEffectsFactory.damage_number(global_position + Vector2(0.0, -58.0), amount)
 

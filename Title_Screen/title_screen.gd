@@ -113,7 +113,7 @@ func show_load_game_menu() -> void:
 	
 func _on_new_game_pressed( slot : int ) -> void:
 	SaveManager.create_new_game_save( slot )
-	SceneManager.transition_scene( "uid://dkvomvhpxo00k","", Vector2.ZERO, "up" )
+	#SceneManager.transition_scene( "uid://dkvomvhpxo00k","", Vector2.ZERO, "up" )
 	pass
 
 func _on_load_game_pressed( slot : int ) -> void:
