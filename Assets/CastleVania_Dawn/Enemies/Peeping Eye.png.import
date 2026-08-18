@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cduujhygbpr7m"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Manticore.png-713917849a267e065fd0d64b977a6d93.ctex"
+uid="uid://dunwdj5net7sl"
+path="res://.godot/imported/Peeping Eye.png-0eb20c104dbbd81f4b33b15bdf54007a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Manticore.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Manticore.png-713917849a267e065fd0d64b977a6d93.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Enemies/Peeping Eye.png"
+dest_files=["res://.godot/imported/Peeping Eye.png-0eb20c104dbbd81f4b33b15bdf54007a.ctex"]
 
 [params]
 

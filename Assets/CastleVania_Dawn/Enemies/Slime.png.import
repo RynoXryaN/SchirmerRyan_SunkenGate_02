@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjgbs52of8d44"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Bosses - Gergoth.png-022d4248d05bee884a53ebe49749aa85.ctex"
+uid="uid://cclno5d12p1ck"
+path="res://.godot/imported/Slime.png-e87af10db9210748950078f3faff1df4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Bosses - Gergoth.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Bosses - Gergoth.png-022d4248d05bee884a53ebe49749aa85.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Enemies/Slime.png"
+dest_files=["res://.godot/imported/Slime.png-e87af10db9210748950078f3faff1df4.ctex"]
 
 [params]
 

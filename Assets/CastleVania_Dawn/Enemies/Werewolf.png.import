@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu5irnir2weq4"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Student Witch.png-475b8e429e4d88064d902c23d4f55c72.ctex"
+uid="uid://be4jbxvymgkp4"
+path="res://.godot/imported/Werewolf.png-b8bfa5e18093038f4f65b5e390eec3ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Student Witch.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Student Witch.png-475b8e429e4d88064d902c23d4f55c72.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Enemies/Werewolf.png"
+dest_files=["res://.godot/imported/Werewolf.png-b8bfa5e18093038f4f65b5e390eec3ed.ctex"]
 
 [params]
 

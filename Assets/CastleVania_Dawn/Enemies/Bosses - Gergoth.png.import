@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gl3rwoyk7gvb"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Werewolf.png-7de18286adfda6577510af958372d3c6.ctex"
+uid="uid://bjgbs52of8d44"
+path="res://.godot/imported/Bosses - Gergoth.png-6124adce56ace0d9ff2c66fc45b7f9df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Werewolf.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Werewolf.png-7de18286adfda6577510af958372d3c6.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Enemies/Bosses - Gergoth.png"
+dest_files=["res://.godot/imported/Bosses - Gergoth.png-6124adce56ace0d9ff2c66fc45b7f9df.ctex"]
 
 [params]
 

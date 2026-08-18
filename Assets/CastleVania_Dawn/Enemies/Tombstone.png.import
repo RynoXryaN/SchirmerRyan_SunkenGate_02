@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccfmmleewcnqg"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Lilith & Succubus.png-31bff158be762780561af583f7ea9a23.ctex"
+uid="uid://s88pnb5c0823"
+path="res://.godot/imported/Tombstone.png-104baf29eca016c99b639b0bac70fd34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Lilith & Succubus.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Lilith & Succubus.png-31bff158be762780561af583f7ea9a23.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Enemies/Tombstone.png"
+dest_files=["res://.godot/imported/Tombstone.png-104baf29eca016c99b639b0bac70fd34.ctex"]
 
 [params]
 

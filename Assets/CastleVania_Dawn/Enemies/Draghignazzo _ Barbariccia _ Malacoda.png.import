@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2xkf3xbijxkb"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Slime.png-7da2246802ffdab01e3e29bfde1acb46.ctex"
+uid="uid://bacqe0lf5upiv"
+path="res://.godot/imported/Draghignazzo _ Barbariccia _ Malacoda.png-763f6c8690ecd8be61b4c53916eee970.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Slime.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Slime.png-7da2246802ffdab01e3e29bfde1acb46.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Enemies/Draghignazzo _ Barbariccia _ Malacoda.png"
+dest_files=["res://.godot/imported/Draghignazzo _ Barbariccia _ Malacoda.png-763f6c8690ecd8be61b4c53916eee970.ctex"]
 
 [params]
 

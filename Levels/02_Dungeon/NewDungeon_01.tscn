@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dpqk6jkm54mi6" path="res://General/Level_Tag/level_tag.tscn" id="9_la22p"]
 [ext_resource type="PackedScene" uid="uid://sa3hv23ypaho" path="res://General/Ability_Pickup/ability_pickup.tscn" id="11_ro7mg"]
 [ext_resource type="AudioStream" uid="uid://buyrvlkdm6ifg" path="res://Music/SunkenGate_MainPlay.mp3" id="12_s8y31"]
-[ext_resource type="PackedScene" path="res://General/Enemy_Spawn_Manager/EnemySpawnManager.tscn" id="13_enemy_spawner"]
+[ext_resource type="PackedScene" uid="uid://c2447ai00s2wo" path="res://General/Enemy_Spawn_Manager/EnemySpawnManager.tscn" id="13_enemy_spawner"]
 [ext_resource type="PackedScene" uid="uid://ck5hktsdvi0ok" path="res://Enemies/zombie_dawn/zombie.tscn" id="14_zombie"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx20p"]
@@ -57,10 +57,10 @@ spawn_interval_max = 2.0
 minimum_distance_from_player = 100.0
 maximum_distance_from_player = 250.0
 
-[node name="SpawnArea" parent="EnemySpawnManager" index="0"]
+[node name="SpawnArea" parent="EnemySpawnManager" index="0" unique_id=100325130]
 position = Vector2(1120, 240)
 
-[node name="CollisionShape2D" parent="EnemySpawnManager/SpawnArea" index="0"]
+[node name="CollisionShape2D" parent="EnemySpawnManager/SpawnArea" index="0" unique_id=1435487905]
 shape = SubResource("RectangleShape2D_spawn_floor")
 
 [node name="LT_02" parent="." unique_id=626773304 instance=ExtResource("6_2s8s5")]

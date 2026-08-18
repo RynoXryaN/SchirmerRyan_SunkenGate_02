@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk1opcbi25b8s"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - White Dragon.png-7a99675cf71968e69ddecf8733e563be.ctex"
+uid="uid://cqy3b468lxi1q"
+path="res://.godot/imported/White Dragon.png-38bcf8ddc80dfaae36fca9b68551c9ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - White Dragon.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - White Dragon.png-7a99675cf71968e69ddecf8733e563be.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Enemies/White Dragon.png"
+dest_files=["res://.godot/imported/White Dragon.png-38bcf8ddc80dfaae36fca9b68551c9ea.ctex"]
 
 [params]
 

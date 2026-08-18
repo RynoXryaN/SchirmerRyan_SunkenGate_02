@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca0o5ols0bxsx"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Witch.png-f12809eec5522e7e75b150f1318ae4d2.ctex"
+uid="uid://mgikefcvu8lw"
+path="res://.godot/imported/Lilith & Succubus.png-3598864164123fef0b0ec86ff364424f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Witch.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Witch.png-f12809eec5522e7e75b150f1318ae4d2.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Enemies/Lilith & Succubus.png"
+dest_files=["res://.godot/imported/Lilith & Succubus.png-3598864164123fef0b0ec86ff364424f.ctex"]
 
 [params]
 

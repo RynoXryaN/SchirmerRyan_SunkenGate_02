@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ht0l6dwismw"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Tombstone.png-5e2cb0c641d1f08e7fce67c967eedfb4.ctex"
+uid="uid://kmwejdt33ls"
+path="res://.godot/imported/Student Witch.png-6fb84fa7163f4ecf4dab163e7546da29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Tombstone.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Tombstone.png-5e2cb0c641d1f08e7fce67c967eedfb4.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Enemies/Student Witch.png"
+dest_files=["res://.godot/imported/Student Witch.png-6fb84fa7163f4ecf4dab163e7546da29.ctex"]
 
 [params]
 

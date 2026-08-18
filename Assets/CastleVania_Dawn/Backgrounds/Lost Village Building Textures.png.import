@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buxhq5d5q0mdv"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Peeping Eye.png-c9b2a19215d42159d4118a2d9af81d2a.ctex"
+uid="uid://b6x3ghttt0c7j"
+path="res://.godot/imported/Lost Village Building Textures.png-d8507c9700976f699689ecb6601b5e0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Peeping Eye.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Peeping Eye.png-c9b2a19215d42159d4118a2d9af81d2a.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Backgrounds/Lost Village Building Textures.png"
+dest_files=["res://.godot/imported/Lost Village Building Textures.png-d8507c9700976f699689ecb6601b5e0d.ctex"]
 
 [params]
 

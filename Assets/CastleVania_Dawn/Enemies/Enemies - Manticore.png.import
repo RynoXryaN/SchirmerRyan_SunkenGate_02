@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bacqe0lf5upiv"
-path="res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Draghignazzo _ Barbariccia _ Malacoda.png-a8d996c0aea689b978b694d0e6fe52ef.ctex"
+uid="uid://2fr6bd6psfgk"
+path="res://.godot/imported/Enemies - Manticore.png-1ff73825d362319d35d90379f4907bc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CastleVania_Dawn/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Draghignazzo _ Barbariccia _ Malacoda.png"
-dest_files=["res://.godot/imported/DS _ DSi - Castlevania_ Dawn of Sorrow - Enemies - Draghignazzo _ Barbariccia _ Malacoda.png-a8d996c0aea689b978b694d0e6fe52ef.ctex"]
+source_file="res://Assets/CastleVania_Dawn/Enemies/Enemies - Manticore.png"
+dest_files=["res://.godot/imported/Enemies - Manticore.png-1ff73825d362319d35d90379f4907bc0.ctex"]
 
 [params]
 
