@@ -273,7 +273,7 @@ func can_directional_dash() -> bool:
 
 
 func can_dodge() -> bool:
-	return not dash_unlocked and dodge_count <= 0
+	return is_on_floor() and not dash_unlocked and dodge_count <= 0
 
 
 func can_dash() -> bool:
