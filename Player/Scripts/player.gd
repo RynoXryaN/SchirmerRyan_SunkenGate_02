@@ -69,6 +69,7 @@ var dash_unlocked : bool = true:
 		dash_unlocked = value
 var dash_count : int = 0
 var back_dash_count : int = 0
+var dodge_count : int = 0
 var double_jump : bool = false
 var jump_count : int = 0
 var ground_slam : bool = false
@@ -269,6 +270,10 @@ func can_forward_dash() -> bool:
 # without changing input routing or either dash state.
 func can_directional_dash() -> bool:
 	return dash_unlocked
+
+
+func can_dodge() -> bool:
+	return not dash_unlocked and dodge_count <= 0
 
 
 func can_dash() -> bool:

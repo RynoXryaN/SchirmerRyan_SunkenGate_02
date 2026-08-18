@@ -32,7 +32,7 @@ func exit() -> void:
 	pass
 	
 
-func handle_inputs( event : InputEvent ) -> PlayerState:
+func handle_inputs( _event : InputEvent ) -> PlayerState:
 	return null
 	
 

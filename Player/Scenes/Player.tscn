@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="14_gt0dp"]
 [ext_resource type="Script" uid="uid://d2n5qb014g147" path="res://Player/States/back_dash.gd" id="14_ji1x8"]
 [ext_resource type="Script" uid="uid://da5xmj7ttukei" path="res://Player/States/death.gd" id="15_yo5y8"]
+[ext_resource type="Script" uid="uid://eyq1n0xnmr2r" path="res://Player/States/dodge.gd" id="16_dodge"]
 [ext_resource type="Script" uid="uid://crfjfvwhk85o0" path="res://Player/Scripts/ability_controller.gd" id="22_xq5ky"]
 [ext_resource type="Resource" uid="uid://ccakve6r1d3dt" path="res://General/Projectiles/Dagger/dagger_ability.tres" id="23_1roin"]
 
@@ -454,6 +455,10 @@ script = ExtResource("13_nsxpy")
 [node name="BackDash" type="Node" parent="States" unique_id=1521800728]
 unique_name_in_owner = true
 script = ExtResource("14_ji1x8")
+
+[node name="Dodge" type="Node" parent="States"]
+unique_name_in_owner = true
+script = ExtResource("16_dodge")
 
 [node name="Death" type="Node" parent="States" unique_id=1316464290]
 unique_name_in_owner = true

@@ -88,7 +88,7 @@ func is_destroyed() -> bool:
 	return _is_destroyed
 
 
-func _destroy( pos : Vector2 = Vector2.INF, dir : Vector2 = Vector2.UP ) -> void:
+func _destroy( pos : Vector2 = Vector2.INF, _dir : Vector2 = Vector2.UP ) -> void:
 	if _is_destroyed:
 		return
 

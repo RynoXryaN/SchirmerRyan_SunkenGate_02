@@ -1,3 +1,4 @@
+@tool
 @icon("res://General/Icons/enemy.svg")
 class_name ZombieDawn
 extends Enemy

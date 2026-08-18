@@ -46,6 +46,8 @@ func handle_inputs( event : InputEvent ) -> PlayerState:
 			return dash
 		else:
 			return back_dash
+	if event.is_action_pressed( "left_dash" ) and player.can_dodge():
+		return dodge
 	if event.is_action_pressed( "ball" ) and player.can_morph():
 		return ball
 	return next_state

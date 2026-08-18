@@ -12,6 +12,7 @@ func enter() -> void:
 	player.jump_count = 0
 	player.dash_count = 0
 	player.back_dash_count = 0
+	player.dodge_count = 0
 	pass
 	
 
@@ -30,6 +31,8 @@ func handle_inputs( event : InputEvent ) -> PlayerState:
 			return dash
 		else:
 			return back_dash
+	if event.is_action_pressed( "left_dash" ) and player.can_dodge():
+		return dodge
 	if event.is_action_pressed( "attack" ):
 		return attack
 	if event.is_action_pressed( "jump" ):

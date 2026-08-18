@@ -131,31 +131,31 @@ func _find_candidate(rectangle: RectangleShape2D, side: float) -> Vector2:
 	return hit.position as Vector2
 
 
-func _is_valid_spawn_position(position: Vector2, rectangle: RectangleShape2D) -> bool:
-	if not _is_inside_spawn_area(position, rectangle):
+func _is_valid_spawn_position( candidate_position: Vector2, rectangle: RectangleShape2D ) -> bool:
+	if not _is_inside_spawn_area( candidate_position, rectangle ):
 		return false
-	var distance := position.distance_to(_player.global_position)
+	var distance := candidate_position.distance_to( _player.global_position )
 	if distance < minimum_distance_from_player:
 		return false
 	if maximum_distance_from_player > 0.0 and distance > maximum_distance_from_player:
 		return false
-	if not _is_near_camera(position):
+	if not _is_near_camera(candidate_position):
 		return false
-	if not _has_clear_terrain_space(position):
+	if not _has_clear_terrain_space(candidate_position):
 		return false
-	if not _has_clear_sightline(position):
+	if not _has_clear_sightline(candidate_position):
 		return false
-	if _is_near_an_enemy(position):
+	if _is_near_an_enemy(candidate_position):
 		return false
 	return true
 
 
-func _is_inside_spawn_area(position: Vector2, rectangle: RectangleShape2D) -> bool:
-	var local_position := spawn_shape.to_local(position)
+func _is_inside_spawn_area(candidate_position: Vector2, rectangle: RectangleShape2D) -> bool:
+	var local_position := spawn_shape.to_local(candidate_position)
 	return Rect2(-rectangle.size * 0.5, rectangle.size).has_point(local_position)
 
 
-func _is_near_camera(position: Vector2) -> bool:
+func _is_near_camera(candidate_position: Vector2) -> bool:
 	if not require_near_camera:
 		return true
 	var camera := get_viewport().get_camera_2d()
@@ -163,40 +163,40 @@ func _is_near_camera(position: Vector2) -> bool:
 		return true
 	var visible_size := get_viewport().get_visible_rect().size / camera.zoom
 	var camera_rect := Rect2(camera.get_screen_center_position() - visible_size * 0.5, visible_size)
-	return camera_rect.grow(camera_edge_allowance).has_point(position)
+	return camera_rect.grow(camera_edge_allowance).has_point(candidate_position)
 
 
-func _has_clear_terrain_space(position: Vector2) -> bool:
+func _has_clear_terrain_space(candidate_position: Vector2) -> bool:
 	var shape := CircleShape2D.new()
 	shape.radius = wall_clearance_radius
 	var query := PhysicsShapeQueryParameters2D.new()
 	query.shape = shape
-	query.transform = Transform2D(0.0, position + Vector2(0.0, -wall_clearance_radius - 1.0))
+	query.transform = Transform2D(0.0, candidate_position + Vector2(0.0, -wall_clearance_radius - 1.0))
 	query.collision_mask = terrain_collision_mask
 	query.collide_with_bodies = true
 	query.collide_with_areas = false
 	return get_viewport().world_2d.direct_space_state.intersect_shape(query, 1).is_empty()
 
 
-func _has_clear_sightline(position: Vector2) -> bool:
+func _has_clear_sightline(candidate_position: Vector2) -> bool:
 	if not require_clear_sightline:
 		return true
 	var ray := PhysicsRayQueryParameters2D.create(
 		_player.global_position + Vector2(0.0, -24.0),
-		position + Vector2(0.0, -24.0),
+		candidate_position + Vector2(0.0, -24.0),
 		terrain_collision_mask
 	)
 	return get_viewport().world_2d.direct_space_state.intersect_ray(ray).is_empty()
 
 
-func _is_near_an_enemy(position: Vector2) -> bool:
+func _is_near_an_enemy(candidate_position: Vector2) -> bool:
 	for node in get_parent().find_children("*", "Enemy", true, false):
-		if node is Enemy and (node as Enemy).global_position.distance_to(position) < minimum_enemy_separation:
+		if node is Enemy and (node as Enemy).global_position.distance_to(candidate_position) < minimum_enemy_separation:
 			return true
 	return false
 
 
-func _spawn_enemy(position: Vector2) -> void:
+func _spawn_enemy(candidate_position: Vector2) -> void:
 	var enemy := enemy_scene.instantiate() as Node2D
 	if not enemy:
 		push_warning("EnemySpawnManager enemy_scene must instantiate a Node2D.")
@@ -204,7 +204,7 @@ func _spawn_enemy(position: Vector2) -> void:
 
 	enemy.visible = spawn_animation_name.is_empty()
 	get_parent().add_child(enemy)
-	enemy.global_position = position
+	enemy.global_position = candidate_position
 
 	var instance_id := enemy.get_instance_id()
 	_spawned_enemies[instance_id] = weakref(enemy)

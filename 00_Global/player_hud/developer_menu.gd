@@ -129,9 +129,9 @@ func _apply_closed_visibility() -> void:
 	_set_controls_visible( _menu_only, false )
 
 
-func _set_controls_visible( controls: Array[Control], visible: bool ) -> void:
+func _set_controls_visible( controls: Array[Control], is_visible: bool ) -> void:
 	for control in controls:
-		control.visible = visible
+		control.visible = is_visible
 
 
 func _resolve_controls( paths: Array[NodePath] ) -> Array[Control]:

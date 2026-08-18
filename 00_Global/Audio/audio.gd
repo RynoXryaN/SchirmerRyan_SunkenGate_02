@@ -74,7 +74,7 @@ func fade_track_in( player : AudioStreamPlayer ) -> void:
 	
 	pass
 
-func set_reverb( type : REVERB_TYPE ) -> void:
+func set_reverb( _type : REVERB_TYPE ) -> void:
 	pass
 	
 func play_spatial_sound(
