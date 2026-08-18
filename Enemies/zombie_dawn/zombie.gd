@@ -9,10 +9,6 @@ func _ready() -> void:
 	super()
 
 
-func show_damage_number(amount: float) -> void:
-	VisualEffectsFactory.damage_number(global_position + Vector2(0.0, -58.0), amount)
-
-
 func change_dir(new_dir: float) -> void:
 	blackboard.dir = new_dir
 	direction_changed.emit(new_dir)

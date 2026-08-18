@@ -3,15 +3,14 @@
 [ext_resource type="TileSet" uid="uid://fkl8smocyiru" path="res://Levels/Tilesets/forgotten_forest.tres" id="1_ro7mg"]
 [ext_resource type="Texture2D" uid="uid://bwdwnmmwiu0qd" path="res://Assets/Medieval_Castle_Asset_Pack/Tilesets/SunkenGate_Stairs.png" id="2_o5j3c"]
 [ext_resource type="Script" uid="uid://jpbhet65r764" path="res://General/Scripts/level_bounds.gd" id="3_gd453"]
-[ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="4_mewjy"]
 [ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="6_2s8s5"]
 [ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="7_cur6i"]
-[ext_resource type="AudioStream" uid="uid://r5525kn3sdx7" path="res://Music/dungeon_01.ogg" id="8_km5et"]
 [ext_resource type="PackedScene" uid="uid://bupgmw6te5o0e" path="res://General/Constuction_Barrier/constuction_barrier.tscn" id="8_wnxaq"]
 [ext_resource type="PackedScene" uid="uid://dpqk6jkm54mi6" path="res://General/Level_Tag/level_tag.tscn" id="9_la22p"]
-[ext_resource type="PackedScene" uid="uid://ck5hktsdvi0ok" path="res://Enemies/zombie_dawn/zombie.tscn" id="10_zombie"]
 [ext_resource type="PackedScene" uid="uid://sa3hv23ypaho" path="res://General/Ability_Pickup/ability_pickup.tscn" id="11_ro7mg"]
 [ext_resource type="AudioStream" uid="uid://buyrvlkdm6ifg" path="res://Music/SunkenGate_MainPlay.mp3" id="12_s8y31"]
+[ext_resource type="PackedScene" path="res://General/Enemy_Spawn_Manager/EnemySpawnManager.tscn" id="13_enemy_spawner"]
+[ext_resource type="PackedScene" uid="uid://ck5hktsdvi0ok" path="res://Enemies/zombie_dawn/zombie.tscn" id="14_zombie"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx20p"]
 texture = ExtResource("2_o5j3c")
@@ -24,6 +23,9 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_n64fp"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_jx20p")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spawn_floor"]
+size = Vector2(1984, 128)
 
 [node name="NewDungeon_01" type="Node2D" unique_id=243067464]
 
@@ -46,20 +48,28 @@ width = 2240
 height = 334
 metadata/_custom_type_script = "uid://jpbhet65r764"
 
-[node name="Player" parent="." unique_id=1832653433 instance=ExtResource("4_mewjy")]
-position = Vector2(23, 224)
+[node name="EnemySpawnManager" parent="." unique_id=250596232 instance=ExtResource("13_enemy_spawner")]
+enemy_scene = ExtResource("14_zombie")
+spawn_animation_name = &"rise"
+max_alive_enemies = 5
+spawn_interval_min = 0.5
+spawn_interval_max = 2.0
+minimum_distance_from_player = 100.0
+maximum_distance_from_player = 250.0
+
+[node name="SpawnArea" parent="EnemySpawnManager" index="0"]
+position = Vector2(1120, 240)
+
+[node name="CollisionShape2D" parent="EnemySpawnManager/SpawnArea" index="0"]
+shape = SubResource("RectangleShape2D_spawn_floor")
 
 [node name="LT_02" parent="." unique_id=626773304 instance=ExtResource("6_2s8s5")]
 position = Vector2(2240, 232)
 size = 3
+area_width = 2
 location = 1
 target_level = "uid://dq7myjj2j5rbm"
 target_area_name = "LT_01"
-
-[node name="MusicAutoTrigger" type="Node" parent="." unique_id=87531037]
-script = ExtResource("7_cur6i")
-track = ExtResource("8_km5et")
-metadata/_custom_type_script = "uid://e4pke5vxuyxn"
 
 [node name="ConstuctionBarrier" parent="." unique_id=254877588 instance=ExtResource("8_wnxaq")]
 position = Vector2(0, 232)
@@ -69,14 +79,13 @@ size = 3
 level_name = "Castle Entrance"
 description = "Planned: Beginner enemies and breakable loot. Both will contain dropable loot the player can collect.  Progress ability (double-jump) locked entrance to upper area.  Upper area not blocked out yet, as progress might not get there during this iteration."
 
-[node name="ZombieDawn" parent="." unique_id=764564105 instance=ExtResource("10_zombie")]
-position = Vector2(320, 224)
-
 [node name="AbilityPickup" parent="." unique_id=260079599 instance=ExtResource("11_ro7mg")]
-position = Vector2(888, 256)
+position = Vector2(448, 8)
 type = 1
 
-[node name="MusicAutoTrigger2" type="Node" parent="." unique_id=635084365]
+[node name="MusicAutoTrigger" type="Node" parent="." unique_id=635084365]
 script = ExtResource("7_cur6i")
 track = ExtResource("12_s8y31")
 metadata/_custom_type_script = "uid://e4pke5vxuyxn"
+
+[editable path="EnemySpawnManager"]

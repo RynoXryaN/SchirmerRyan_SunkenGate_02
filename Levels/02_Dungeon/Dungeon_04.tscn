@@ -3,7 +3,6 @@
 [ext_resource type="TileSet" uid="uid://fkl8smocyiru" path="res://Levels/Tilesets/forgotten_forest.tres" id="1_sbfak"]
 [ext_resource type="Texture2D" uid="uid://bwdwnmmwiu0qd" path="res://Assets/Medieval_Castle_Asset_Pack/Tilesets/SunkenGate_Stairs.png" id="2_gfimy"]
 [ext_resource type="Script" uid="uid://jpbhet65r764" path="res://General/Scripts/level_bounds.gd" id="3_6xyb8"]
-[ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="4_jhciu"]
 [ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="6_wlr73"]
 [ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="7_wvupv"]
 [ext_resource type="AudioStream" uid="uid://r5525kn3sdx7" path="res://Music/dungeon_01.ogg" id="8_24d3x"]
@@ -40,9 +39,6 @@ script = ExtResource("3_6xyb8")
 width = 2048
 height = 334
 metadata/_custom_type_script = "uid://jpbhet65r764"
-
-[node name="Player" parent="." unique_id=1832653433 instance=ExtResource("4_jhciu")]
-position = Vector2(23, 224)
 
 [node name="LevelTransition" parent="." unique_id=628461966 instance=ExtResource("6_wlr73")]
 position = Vector2(0, 232)

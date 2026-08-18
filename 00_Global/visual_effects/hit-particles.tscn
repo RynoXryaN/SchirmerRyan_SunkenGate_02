@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://cnhuevkyfd4oy"]
+[gd_scene load_steps=6 format=3 uid="uid://cnhuevkyfd4oy"]
 
 [ext_resource type="Script" uid="uid://bhutfcnii0apb" path="res://00_Global/visual_effects/hit_particles.gd" id="1_rcko0"]
+[ext_resource type="Texture2D" path="res://00_Global/visual_effects/blood_particle.svg" id="2_blood"]
 
 [sub_resource type="Curve" id="Curve_qupi8"]
 _data = [Vector2(0.004065037, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.7642276, 0), 0.0, 0.0, 0, 0]
@@ -21,7 +22,11 @@ alpha_curve = SubResource("CurveTexture_1v3bo")
 
 [node name="HitParticles" type="GPUParticles2D" unique_id=39473157]
 z_index = 2
+one_shot = true
+amount = 5
+lifetime = 0.55
 explosiveness = 0.9
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_6052t")
+texture = ExtResource("2_blood")
 script = ExtResource("1_rcko0")

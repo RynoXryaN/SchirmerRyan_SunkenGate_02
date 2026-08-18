@@ -3,7 +3,6 @@
 [ext_resource type="TileSet" uid="uid://fkl8smocyiru" path="res://Levels/Tilesets/forgotten_forest.tres" id="1_i6a4u"]
 [ext_resource type="PackedScene" uid="uid://fp7r1tlhdxg4" path="res://Levels/Tilesets/Sprites_Animated/lever.tscn" id="2_32sb0"]
 [ext_resource type="Script" uid="uid://jpbhet65r764" path="res://General/Scripts/level_bounds.gd" id="3_qphpe"]
-[ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="4_qmr71"]
 [ext_resource type="PackedScene" uid="uid://durq0j07eobvx" path="res://Levels/Tilesets/Sprites_Animated/moving_platform.tscn" id="5_vkq4q"]
 [ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="6_3y7mu"]
 [ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="7_hs73u"]
@@ -30,9 +29,6 @@ z_index = 256
 script = ExtResource("3_qphpe")
 width = 1024
 metadata/_custom_type_script = "uid://jpbhet65r764"
-
-[node name="Player" parent="." unique_id=1832653433 instance=ExtResource("4_qmr71")]
-position = Vector2(24, 184)
 
 [node name="Moving_Platform_Container" parent="." unique_id=556840979 instance=ExtResource("5_vkq4q")]
 visible = false

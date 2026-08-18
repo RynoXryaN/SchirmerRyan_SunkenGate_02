@@ -81,7 +81,8 @@ func play_spatial_sound(
 	audio : AudioStream,
 	pos : Vector2,
 	pitch_variation : float = 0.0,
-	volume_variation_db : float = 0.0
+	volume_variation_db : float = 0.0,
+	base_volume_db : float = 0.0
 ) -> void:
 	
 	var ap : AudioStreamPlayer2D = AudioStreamPlayer2D.new()
@@ -92,7 +93,7 @@ func play_spatial_sound(
 	var safe_pitch_variation := clampf( pitch_variation, 0.0, 0.95 )
 	var safe_volume_variation := maxf( volume_variation_db, 0.0 )
 	ap.pitch_scale = randf_range( 1.0 - safe_pitch_variation, 1.0 + safe_pitch_variation )
-	ap.volume_db = randf_range( -safe_volume_variation, safe_volume_variation )
+	ap.volume_db = base_volume_db + randf_range( -safe_volume_variation, safe_volume_variation )
 	ap.finished.connect( ap.queue_free )
 	ap.play()
 	

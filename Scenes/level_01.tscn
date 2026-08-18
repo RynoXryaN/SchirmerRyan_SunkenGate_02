@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bq8y3gotxk5po"]
 
-[ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="1_f6slu"]
 [ext_resource type="Texture2D" uid="uid://ce7hvj6whg2np" path="res://Assets/2D_Provided_Resources/tilesets/tileset.png" id="2_fr3la"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pkws4"]
@@ -261,8 +260,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_pkws4")
 
 [node name="Level 01" type="Node2D" unique_id=1779848019]
-
-[node name="Player" parent="." unique_id=1832653433 instance=ExtResource("1_f6slu")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1169525927]
 tile_set = SubResource("TileSet_s7ctl")

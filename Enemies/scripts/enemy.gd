@@ -11,9 +11,21 @@ signal was_killed()
 @export var health : float = 50
 @export var affected_by_gravity : bool = true
 @export var face_left_on_start : bool = false
-@export_group("Audio")
-@export var hit_audio : AudioStream = preload( "res://General/Audio/hit.wav" )
-@export var death_audio : AudioStream = preload( "res://General/Audio/death.wav" )
+@export_category("Combat Feedback")
+@export var show_damage_numbers: bool = true
+@export var damage_number_color: Color = Color(1.0, 0.35, 0.35, 1.0)
+@export var flash_on_hit: bool = true
+@export var hit_flash_color: Color = Color.WHITE
+@export_range(0.01, 0.30, 0.01) var hit_flash_duration: float = 0.08
+@export var spawn_blood_on_hit: bool = true
+@export var blood_color: Color = Color(0.75, 0.05, 0.05, 1.0)
+@export_range(0, 30, 1) var blood_particles_per_hit: int = 5
+@export var spawn_blood_on_death: bool = true
+@export_range(0, 60, 1) var blood_particles_on_death: int = 14
+@export var hit_sound: AudioStream = preload( "res://General/Audio/hit.wav" )
+@export var death_sound: AudioStream = preload( "res://General/Audio/death.wav" )
+@export_range(-40.0, 10.0, 0.5) var hit_sound_volume_db: float = 0.0
+@export_range(-40.0, 10.0, 0.5) var death_sound_volume_db: float = 0.0
 @export_range( 0.0, 0.25, 0.01 ) var audio_pitch_variation : float = 0.05
 @export_range( 0.0, 6.0, 0.1, "suffix:dB" ) var audio_volume_variation_db : float = 1.0
 
@@ -28,6 +40,10 @@ var blackboard : BlackBoard
 
 var bleed_timer : float = 0.0
 var bleeding : bool = false
+var _death_feedback_played: bool = false
+var _flash_generation: int = 0
+var _flash_active: bool = false
+var _flash_original_self_modulate: Color
 
 #var dir : float = 1.0
 #var move_tween : Tween
@@ -123,33 +139,63 @@ func play_animation( anim_name : String ) -> void:
 	
 
 func _on_damage_taken( a : AttackArea ) -> void:
-	
+	if _death_feedback_played:
+		return
 	blackboard.damage_source = a
 	blackboard.health -= a.damage
 	blackboard.can_decide = true
+	var hit_position := global_position + Vector2(0.0, -32.0)
+	var hit_direction := (global_position - a.global_position).normalized()
+	if hit_direction.is_zero_approx():
+		hit_direction = Vector2.UP
+	if show_damage_numbers:
+		VisualEffectsFactory.damage_number(hit_position + Vector2(0.0, -20.0), a.damage, damage_number_color)
 
 	if blackboard.health <= health * 0.5:
 		bleeding = true
 	
 	if blackboard.health <= 0:
+		_death_feedback_played = true
 		bleeding = false
-		_play_audio( death_audio )
+		_play_audio(death_sound, death_sound_volume_db)
+		if spawn_blood_on_death:
+			VisualEffectsFactory.blood_burst(hit_position, hit_direction, blood_color, blood_particles_on_death)
 		damage_area.queue_free()
 		hazard_area.queue_free()
 		was_killed.emit()
 		return
 
-	_play_audio( hit_audio )
+	if flash_on_hit:
+		_flash_sprite()
+	if spawn_blood_on_hit:
+		VisualEffectsFactory.blood_burst(hit_position, hit_direction, blood_color, blood_particles_per_hit)
+	_play_audio(hit_sound, hit_sound_volume_db)
 	was_hit.emit( a )
 
 
-func _play_audio( stream : AudioStream ) -> void:
+func _flash_sprite() -> void:
+	if not sprite:
+		return
+	_flash_generation += 1
+	var generation := _flash_generation
+	if not _flash_active:
+		_flash_original_self_modulate = sprite.self_modulate
+		_flash_active = true
+	sprite.self_modulate = hit_flash_color
+	await get_tree().create_timer(hit_flash_duration).timeout
+	if is_instance_valid(sprite) and generation == _flash_generation:
+		sprite.self_modulate = _flash_original_self_modulate
+		_flash_active = false
+
+
+func _play_audio(stream: AudioStream, volume_db: float) -> void:
 	if stream:
 		Audio.play_spatial_sound(
 			stream,
 			global_position,
 			audio_pitch_variation,
-			audio_volume_variation_db
+			audio_volume_variation_db,
+			volume_db
 		)
 
 

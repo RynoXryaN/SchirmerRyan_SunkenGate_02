@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://General/Enemy_Spawn_Manager/enemy_spawn_manager.gd" id="1_manager"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spawn_area"]
+size = Vector2(640, 96)
+
+[node name="EnemySpawnManager" type="Node2D"]
+script = ExtResource("1_manager")
+
+[node name="SpawnArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+shape = SubResource("RectangleShape2D_spawn_area")

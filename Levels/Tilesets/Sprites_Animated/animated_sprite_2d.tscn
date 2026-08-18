@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://df62yplxnm7bj"]
+
+[ext_resource type="Texture2D" uid="uid://cmnbya4mwwmj4" path="res://Levels/Tilesets/Sprites_Animated/Candles and Candleabras.png" id="1_ej7f0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raxej"]
+atlas = ExtResource("1_ej7f0")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgvfa"]
+atlas = ExtResource("1_ej7f0")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq3de"]
+atlas = ExtResource("1_ej7f0")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gyj2"]
+atlas = ExtResource("1_ej7f0")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5hg"]
+atlas = ExtResource("1_ej7f0")
+region = Rect2(16, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2g4t"]
+atlas = ExtResource("1_ej7f0")
+region = Rect2(32, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n64fp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raxej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgvfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq3de")
+}],
+"loop": 1,
+"name": &"Candle Sconse",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gyj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2g4t")
+}],
+"loop": 1,
+"name": &"Candle Sconse_Blue",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=722327118]
+sprite_frames = SubResource("SpriteFrames_n64fp")
+animation = &"Candle Sconse_Blue"

@@ -3,7 +3,6 @@
 [ext_resource type="TileSet" uid="uid://fkl8smocyiru" path="res://Levels/Tilesets/forgotten_forest.tres" id="1_duho6"]
 [ext_resource type="PackedScene" uid="uid://bxwpjyachk0bn" path="res://Levels/Props/slam_breakable.tscn" id="2_hhnba"]
 [ext_resource type="Script" uid="uid://jpbhet65r764" path="res://General/Scripts/level_bounds.gd" id="3_0vlko"]
-[ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="4_cg2bw"]
 [ext_resource type="PackedScene" uid="uid://durq0j07eobvx" path="res://Levels/Tilesets/Sprites_Animated/moving_platform.tscn" id="5_jtfqf"]
 [ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="6_hhnba"]
 [ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="6_tt1mu"]
@@ -39,9 +38,6 @@ script = ExtResource("3_0vlko")
 width = 1024
 height = 878
 metadata/_custom_type_script = "uid://jpbhet65r764"
-
-[node name="Player" parent="." unique_id=1832653433 instance=ExtResource("4_cg2bw")]
-position = Vector2(24, 184)
 
 [node name="Moving_Platform_Container" parent="." unique_id=556840979 instance=ExtResource("5_jtfqf")]
 visible = false

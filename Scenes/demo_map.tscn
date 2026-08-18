@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cuyeunwmfs0sg"]
 
-[ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="2_hkha8"]
 [ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="3_husy1"]
 [ext_resource type="PackedScene" uid="uid://bhwdd1x5kfjt8" path="res://Levels/Props/dummies/test_dummy.tscn" id="4_husy1"]
 [ext_resource type="PackedScene" uid="uid://c0k4kdhi3sxgu" path="res://Levels/Props/crate.tscn" id="5_wveh7"]
@@ -124,9 +123,6 @@ texture = SubResource("GradientTexture2D_hkha8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBodies/Sprite2D6/StaticBody2D" unique_id=991242547]
 shape = SubResource("RectangleShape2D_bdi8m")
-
-[node name="Player" parent="." unique_id=1832653433 instance=ExtResource("2_hkha8")]
-position = Vector2(0, 37)
 
 [node name="DamageArea" type="Area2D" parent="." unique_id=93539865]
 collision_layer = 32

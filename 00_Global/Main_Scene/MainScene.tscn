@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://00_Global/Main_Scene/main_scene.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="2_player"]
+
+[node name="MainScene" type="Node"]
+script = ExtResource("1_main")
+
+[node name="LevelContainer" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="." instance=ExtResource("2_player")]

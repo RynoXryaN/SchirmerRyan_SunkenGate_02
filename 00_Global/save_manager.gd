@@ -89,7 +89,6 @@ func load_game( slot : int ) -> void:
 	discovered_areas = save_data.get( "discovered_areas", {} )
 	var scene_path : String = save_data.get( "scene_path", "uid://b5beoshdgyky1" )
 	await SceneManager.transition_scene( scene_path, "", Vector2.ZERO, "up" )
-	await SceneManager.new_scene_ready
 	setup_player()
 	pass
 

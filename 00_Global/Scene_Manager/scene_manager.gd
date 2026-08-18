@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+const MAIN_SCENE := preload("res://00_Global/Main_Scene/MainScene.tscn")
+
 signal load_scene_started
 signal new_scene_ready( target_name : String, offset : Vector2 )
 signal load_scene_finished
@@ -32,13 +34,20 @@ func transition_scene( new_scene : String, target_area : String, player_offset :
 	
 	await fade_screen( fade_pos, Vector2.ZERO )
 	
-	get_tree().change_scene_to_file( new_scene )
+	var main_scene := get_tree().current_scene as MainScene
+	if not main_scene:
+		main_scene = MAIN_SCENE.instantiate() as MainScene
+		get_tree().root.add_child(main_scene)
+		get_tree().current_scene.queue_free()
+		get_tree().current_scene = main_scene
+
+	main_scene.load_level(new_scene)
 	current_scene_uid = ResourceUID.path_to_uid( new_scene )
 	print( "new_scene: ", current_scene_uid )
 	scene_entered.emit( current_scene_uid )
 	
-	await get_tree().scene_changed
-	
+	await get_tree().process_frame
+
 	new_scene_ready.emit( target_area, player_offset )
 	
 	await get_tree().process_frame

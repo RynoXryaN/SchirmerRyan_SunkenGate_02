@@ -5,11 +5,7 @@ extends Area2D
 signal damage_taken( attack_area )
 
 func take_damage( attack_area : AttackArea ) -> void:
-	var target: Node = owner if owner else get_parent()
-	if target and target.has_method("show_damage_number"):
-		target.show_damage_number(attack_area.damage)
 	damage_taken.emit( attack_area )
-	print("DAMAGE!!!", attack_area.damage)
 	pass
 	
 func make_invulnerable( duration : float = 1.0 ) -> void:

@@ -11,7 +11,7 @@ enum TRIGGER_TYPE { TOUCH, INTERACT }
 		size = value
 		apply_area_settings()
 
-@export_range( 2, 12, 1, "or greater" ) var area_width : int = 1 :
+@export_range( 1, 12, 1, "or greater" ) var area_width : int = 1 :
 	set( value ):
 		area_width = value
 		apply_area_settings()

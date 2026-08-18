@@ -3,7 +3,6 @@
 [ext_resource type="TileSet" uid="uid://fkl8smocyiru" path="res://Levels/Tilesets/forgotten_forest.tres" id="1_be47m"]
 [ext_resource type="Texture2D" uid="uid://bwdwnmmwiu0qd" path="res://Assets/Medieval_Castle_Asset_Pack/Tilesets/SunkenGate_Stairs.png" id="2_sa3pg"]
 [ext_resource type="Script" uid="uid://jpbhet65r764" path="res://General/Scripts/level_bounds.gd" id="3_fl6nh"]
-[ext_resource type="PackedScene" uid="uid://bdnclrejqp8a0" path="res://Player/Scenes/Player.tscn" id="4_xj5ls"]
 [ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="6_7u4wy"]
 [ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="7_a3w0f"]
 [ext_resource type="AudioStream" uid="uid://buyrvlkdm6ifg" path="res://Music/SunkenGate_MainPlay.mp3" id="7_d53ic"]
@@ -42,9 +41,6 @@ script = ExtResource("3_fl6nh")
 width = 1024
 height = 814
 metadata/_custom_type_script = "uid://jpbhet65r764"
-
-[node name="Player" parent="." unique_id=1832653433 instance=ExtResource("4_xj5ls")]
-position = Vector2(23, 224)
 
 [node name="LT_01" parent="." unique_id=628461966 instance=ExtResource("6_7u4wy")]
 position = Vector2(0, 232)
