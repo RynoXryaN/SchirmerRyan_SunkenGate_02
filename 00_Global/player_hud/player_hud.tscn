@@ -197,6 +197,24 @@ layout_mode = 2
 text = "Test Camera Shake"
 script = SubResource("GDScript_n64fp")
 
+; TEMP DEBUG: Runtime ability toggles. Remove these four nodes together with
+; the matching temporary section in player_hud.gd after testing.
+[node name="TestDoubleJump" type="Button" parent="Control/DebugTestButtons"]
+layout_mode = 2
+text = "Double Jump: OFF"
+
+[node name="TestDash" type="Button" parent="Control/DebugTestButtons"]
+layout_mode = 2
+text = "Dash: OFF"
+
+[node name="TestGroundSlam" type="Button" parent="Control/DebugTestButtons"]
+layout_mode = 2
+text = "Ground Slam: OFF"
+
+[node name="TestMorphRoll" type="Button" parent="Control/DebugTestButtons"]
+layout_mode = 2
+text = "Morph Roll: OFF"
+
 [node name="GameOver" type="Control" parent="Control" unique_id=468134856]
 unique_name_in_owner = true
 layout_mode = 1
