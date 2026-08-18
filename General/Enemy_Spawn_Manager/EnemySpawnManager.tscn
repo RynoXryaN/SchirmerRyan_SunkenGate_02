@@ -1,18 +1,19 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://c2447ai00s2wo"]
 
-[ext_resource type="Script" path="res://General/Enemy_Spawn_Manager/enemy_spawn_manager.gd" id="1_manager"]
+[ext_resource type="Script" uid="uid://d4g486aiblyim" path="res://General/Enemy_Spawn_Manager/enemy_spawn_manager.gd" id="1_manager"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spawn_area"]
 size = Vector2(640, 96)
 
-[node name="EnemySpawnManager" type="Node2D"]
+[node name="EnemySpawnManager" type="Node2D" unique_id=547171491]
 script = ExtResource("1_manager")
 
-[node name="SpawnArea" type="Area2D" parent="."]
+[node name="SpawnArea" type="Area2D" parent="." unique_id=100325130]
 collision_layer = 0
 collision_mask = 0
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea" unique_id=1435487905]
 shape = SubResource("RectangleShape2D_spawn_area")
+debug_color = Color(0.74658537, 9.3854965e-07, 4.813075e-07, 0.41960785)

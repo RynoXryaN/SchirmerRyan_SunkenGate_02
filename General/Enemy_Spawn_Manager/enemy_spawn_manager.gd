@@ -31,6 +31,8 @@ extends Node2D
 
 @export_category("Debug")
 @export var show_debug_spawn_attempts: bool = false
+@export var editor_area_color := Color(0.15, 0.75, 1.0, 0.18)
+@export var editor_outline_color := Color(0.15, 0.85, 1.0, 0.9)
 
 @onready var spawn_area: Area2D = $SpawnArea
 @onready var spawn_shape: CollisionShape2D = $SpawnArea/CollisionShape2D
@@ -43,7 +45,10 @@ var _debug_points: Array[Vector2] = []
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
+		set_process(true)
+		queue_redraw()
 		return
+	set_process(false)
 	_timer = Timer.new()
 	_timer.one_shot = true
 	_timer.timeout.connect(_on_spawn_timer_timeout)
@@ -51,11 +56,41 @@ func _ready() -> void:
 	_schedule_next_attempt()
 
 
+func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		# Keep the visualization synchronized while the Area or shape is dragged.
+		queue_redraw()
+
+
 func _draw() -> void:
+	if Engine.is_editor_hint():
+		_draw_editor_spawn_area()
+		return
 	if not show_debug_spawn_attempts:
 		return
 	for point in _debug_points:
 		draw_circle(to_local(point), 4.0, Color(1.0, 0.25, 0.15, 0.9))
+
+
+func _draw_editor_spawn_area() -> void:
+	if not is_instance_valid(spawn_shape):
+		return
+	var rectangle := spawn_shape.shape as RectangleShape2D
+	if not rectangle:
+		return
+	var half_size := rectangle.size * 0.5
+	var local_corners := PackedVector2Array([
+		Vector2(-half_size.x, -half_size.y),
+		Vector2(half_size.x, -half_size.y),
+		Vector2(half_size.x, half_size.y),
+		Vector2(-half_size.x, half_size.y),
+	])
+	var corners := PackedVector2Array()
+	for corner in local_corners:
+		corners.append(to_local(spawn_shape.to_global(corner)))
+	draw_colored_polygon(corners, editor_area_color)
+	corners.append(corners[0])
+	draw_polyline(corners, editor_outline_color, 2.0, true)
 
 
 func _on_spawn_timer_timeout() -> void:
