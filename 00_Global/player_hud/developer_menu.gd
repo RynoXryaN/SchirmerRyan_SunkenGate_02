@@ -10,7 +10,6 @@ extends VBoxContainer
 @export var blocking_controls: Array[NodePath] = []
 
 var _is_open: bool = false
-var _selected_index: int = -1
 var _paused_tree: bool = false
 var _always_visible: Array[Control] = []
 var _menu_only: Array[Control] = []
@@ -40,17 +39,23 @@ func _input( event: InputEvent ) -> void:
 
 	if event.is_action_pressed( "ui_cancel" ):
 		close_menu()
-	elif event.is_action_pressed( "ui_up" ):
-		_select_control( _selected_index - 1 )
-	elif event.is_action_pressed( "ui_down" ):
-		_select_control( _selected_index + 1 )
-	elif event.is_action_pressed( "ui_left" ):
-		_set_selected_ability( false )
-	elif event.is_action_pressed( "ui_right" ):
-		_set_selected_ability( true )
+	elif event.is_action_pressed( "ui_select" ):
+		if _activate_focused_control():
+			get_viewport().set_input_as_handled()
+		return
+	elif event.is_action_pressed( "ui_left" ) or event.is_action_pressed( "ui_right" ):
+		# Horizontal analog jitter should never change developer settings.
+		get_viewport().set_input_as_handled()
+		return
 	elif event.is_action_pressed( "ui_accept" ):
-		_activate_selected_control()
+		# Ability switches use normal focused CheckButton activation. Ordinary
+		# test buttons are intentionally activated only through ui_select.
+		if not get_viewport().gui_get_focus_owner() is DebugAbilityButton:
+			get_viewport().set_input_as_handled()
+		return
 	else:
+		# Match the title menu: let Godot's Control focus system process
+		# ui_up, ui_down, and ui_accept, including analog deadzone/repeat.
 		return
 
 	get_viewport().set_input_as_handled()
@@ -68,14 +73,15 @@ func open_menu() -> void:
 		get_tree().paused = true
 
 	if not _navigable.is_empty():
-		_select_control( 0 )
+		_set_navigation_enabled( true )
+		_navigable.front().grab_focus()
 
 
 func close_menu() -> void:
 	if not _is_open:
 		return
 
-	_clear_selection()
+	_set_navigation_enabled( false )
 	_is_open = false
 	_apply_closed_visibility()
 	if _paused_tree:
@@ -94,47 +100,32 @@ func _can_open() -> bool:
 	return true
 
 
-func _select_control( index: int ) -> void:
-	if _navigable.is_empty():
-		return
-
-	_clear_selection()
-	_selected_index = wrapi( index, 0, _navigable.size() )
-	_set_control_selected( _navigable[_selected_index], true )
-
-
-func _clear_selection() -> void:
-	if _selected_index >= 0 and _selected_index < _navigable.size():
-		_set_control_selected( _navigable[_selected_index], false )
-	_selected_index = -1
-
-
-func _set_control_selected( control: Control, selected: bool ) -> void:
-	if control is DebugAbilityButton:
-		(control as DebugAbilityButton).set_selected( selected )
-	else:
-		control.modulate = Color( 1.0, 1.0, 0.65 ) if selected else Color.WHITE
-
-
-func _set_selected_ability( enabled: bool ) -> void:
-	var selected: Control = _get_selected_control()
-	if selected is DebugAbilityButton:
-		(selected as DebugAbilityButton).set_ability_enabled( enabled )
-
-
-func _activate_selected_control() -> void:
-	var selected: Control = _get_selected_control()
-	if selected is DebugAbilityButton:
-		var ability_button := selected as DebugAbilityButton
+func _activate_focused_control() -> bool:
+	var focused := get_viewport().gui_get_focus_owner()
+	if not focused is BaseButton:
+		return false
+	if not focused in _navigable:
+		return false
+	if focused is DebugAbilityButton:
+		var ability_button := focused as DebugAbilityButton
 		ability_button.set_ability_enabled( not ability_button.is_ability_enabled() )
-	elif selected is BaseButton:
-		(selected as BaseButton).pressed.emit()
+		return true
+	if focused is DebugPlayerFlagButton:
+		var flag_button := focused as DebugPlayerFlagButton
+		flag_button.set_debug_enabled( not flag_button.is_debug_enabled() )
+		return true
+
+	var test_button := focused as BaseButton
+	close_menu()
+	test_button.pressed.emit()
+	return true
 
 
-func _get_selected_control() -> Control:
-	if _selected_index < 0 or _selected_index >= _navigable.size():
-		return null
-	return _navigable[_selected_index]
+func _set_navigation_enabled( enabled: bool ) -> void:
+	for control in _navigable:
+		control.focus_mode = Control.FOCUS_ALL if enabled else Control.FOCUS_NONE
+		if not enabled:
+			control.release_focus()
 
 
 func _apply_closed_visibility() -> void:

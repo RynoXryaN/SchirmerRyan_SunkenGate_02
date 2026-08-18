@@ -7,11 +7,15 @@ extends CheckButton
 @export var ability: AbilityPickup.Type = AbilityPickup.Type.DOUBLE_JUMP
 
 var _is_selected: bool = false
+var _syncing_switch: bool = false
 
 
 func _ready() -> void:
 	focus_mode = Control.FOCUS_NONE
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	toggled.connect( _on_toggled )
+	focus_entered.connect( set_selected.bind( true ) )
+	focus_exited.connect( set_selected.bind( false ) )
 	refresh_label()
 
 
@@ -29,9 +33,7 @@ func set_ability_enabled( enabled: bool ) -> void:
 		AbilityPickup.Type.DOUBLE_JUMP:
 			player.double_jump = enabled
 		AbilityPickup.Type.DASH:
-			# The current Dash unlock grants both directional dash states.
-			player.dash = enabled
-			player.back_dash = enabled
+			player.dash_unlocked = enabled
 		AbilityPickup.Type.GROUND_SLAM:
 			player.ground_slam = enabled
 		AbilityPickup.Type.MORPH_ROLL:
@@ -51,7 +53,7 @@ func is_ability_enabled() -> bool:
 		AbilityPickup.Type.DOUBLE_JUMP:
 			return player.double_jump
 		AbilityPickup.Type.DASH:
-			return player.dash and player.back_dash
+			return player.dash_unlocked
 		AbilityPickup.Type.GROUND_SLAM:
 			return player.ground_slam
 		AbilityPickup.Type.MORPH_ROLL:
@@ -68,8 +70,15 @@ func set_selected( selected: bool ) -> void:
 func refresh_label() -> void:
 	var enabled: bool = is_ability_enabled()
 	var prefix: String = "▶ " if _is_selected else ""
+	_syncing_switch = true
 	button_pressed = enabled
+	_syncing_switch = false
 	text = "%s%s: %s" % [ prefix, _ability_display_name(), _state_text( enabled ) ]
+
+
+func _on_toggled( toggled_on: bool ) -> void:
+	if not _syncing_switch:
+		set_ability_enabled( toggled_on )
 
 
 func _get_player() -> Player:

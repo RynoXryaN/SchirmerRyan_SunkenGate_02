@@ -64,7 +64,7 @@ func save_game() -> void:
 		"y" : player.global_position.y,
 		"hp" : player.hp,
 		"max_hp" : player.max_hp,
-		"dash" : player.dash,
+		"dash" : player.dash_unlocked,
 		"double_jump" : player.double_jump,
 		"ground_slam" : player.ground_slam,
 		"morph_roll" : player.morph_roll,

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b26misjaeywyg" path="res://00_Global/visual_effects/hit_particle_settings.gd" id="3_04axr"]
 [ext_resource type="Script" uid="uid://de0c05hkhnrr1" path="res://00_Global/player_hud/debug_ability_button.gd" id="4_debug_ability"]
 [ext_resource type="Script" uid="uid://cse5o374x237d" path="res://00_Global/player_hud/developer_menu.gd" id="5_developer_menu"]
+[ext_resource type="Script" uid="uid://b0i2ckwqqf5a1" path="res://00_Global/player_hud/debug_player_flag_button.gd" id="6_debug_flag"]
 
 [sub_resource type="Gradient" id="Gradient_8jfgd"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -69,6 +70,32 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	VisualEffectsFactory.camera_shake()
 	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_test_dust"]
+script/source = "extends Button
+
+
+func _ready() -> void:
+	pressed.connect( _on_pressed )
+
+
+func _on_pressed() -> void:
+	var player := get_tree().get_first_node_in_group( \"Player\" ) as Player
+	if player:
+		VisualEffectsFactory.land_dust( player.global_position )
+"
+
+[sub_resource type="GDScript" id="GDScript_test_game_over"]
+script/source = "extends Button
+
+
+func _ready() -> void:
+	pressed.connect( _on_pressed )
+
+
+func _on_pressed() -> void:
+	PlayerHud.show_game_over()
 "
 
 [node name="PlayerHud" type="CanvasLayer" unique_id=1812373244]
@@ -179,8 +206,8 @@ offset_bottom = 60.0
 grow_horizontal = 0
 script = ExtResource("5_developer_menu")
 always_visible_controls = Array[NodePath]([NodePath("TestParticles"), NodePath("TestDust"), NodePath("TestGameOver"), NodePath("TestCameraShake")])
-menu_only_controls = Array[NodePath]([NodePath("DeveloperMenuTitle"), NodePath("TestDoubleJump"), NodePath("TestDash"), NodePath("TestGroundSlam"), NodePath("TestMorphRoll"), NodePath("DeveloperMenuHint")])
-navigable_controls = Array[NodePath]([NodePath("TestDoubleJump"), NodePath("TestDash"), NodePath("TestGroundSlam"), NodePath("TestMorphRoll")])
+menu_only_controls = Array[NodePath]([NodePath("DeveloperMenuTitle"), NodePath("TestDoubleJump"), NodePath("TestDash"), NodePath("TestGroundSlam"), NodePath("TestMorphRoll"), NodePath("TestInvulnerable"), NodePath("TestUntouchable"), NodePath("DeveloperMenuHint")])
+navigable_controls = Array[NodePath]([NodePath("TestParticles"), NodePath("TestDust"), NodePath("TestGameOver"), NodePath("TestCameraShake"), NodePath("TestDoubleJump"), NodePath("TestDash"), NodePath("TestGroundSlam"), NodePath("TestMorphRoll"), NodePath("TestInvulnerable"), NodePath("TestUntouchable")])
 blocking_controls = Array[NodePath]([NodePath("../GameOver")])
 
 [node name="DeveloperMenuTitle" type="Label" parent="Control/DeveloperMenu" unique_id=1599186334]
@@ -201,13 +228,13 @@ particle_settings = SubResource("Resource_ilici")
 layout_mode = 2
 focus_mode = 0
 text = "Test Dust"
-script = SubResource("GDScript_n64fp")
+script = SubResource("GDScript_test_dust")
 
 [node name="TestGameOver" type="Button" parent="Control/DeveloperMenu" unique_id=1082684884]
 layout_mode = 2
 focus_mode = 0
 text = "Test Game Over"
-script = SubResource("GDScript_n64fp")
+script = SubResource("GDScript_test_game_over")
 
 [node name="TestCameraShake" type="Button" parent="Control/DeveloperMenu" unique_id=1375297586]
 layout_mode = 2
@@ -246,12 +273,28 @@ text = "Morph Roll: OFF"
 script = ExtResource("4_debug_ability")
 ability = 3
 
+[node name="TestInvulnerable" type="CheckButton" parent="Control/DeveloperMenu"]
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
+text = "Invulnerable: OFF"
+script = ExtResource("6_debug_flag")
+
+[node name="TestUntouchable" type="CheckButton" parent="Control/DeveloperMenu"]
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
+text = "Untouchable: OFF"
+script = ExtResource("6_debug_flag")
+debug_flag = 1
+
 [node name="DeveloperMenuHint" type="Label" parent="Control/DeveloperMenu" unique_id=1929119826]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "UI directions: Navigate / OFF / ON
-Accept: Toggle  |  Cancel: Close"
+text = "Up / Down: Navigate
+Select: Toggle / Run Test
+Cancel: Close"
 horizontal_alignment = 1
 
 [node name="GameOver" type="Control" parent="Control" unique_id=468134856]

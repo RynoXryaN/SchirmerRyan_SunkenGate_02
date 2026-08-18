@@ -58,8 +58,7 @@ func _reward_ability() -> void:
 		Type.DOUBLE_JUMP:
 			player.double_jump = true
 		Type.DASH:
-			player.dash = true
-			player.back_dash = true
+			player.dash_unlocked = true
 		Type.GROUND_SLAM:
 			player.ground_slam = true
 		Type.MORPH_ROLL:

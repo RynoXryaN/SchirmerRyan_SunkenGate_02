@@ -61,24 +61,23 @@ var max_mana : float = 20:
 		mana = clampf(mana, 0, max_mana)
 		Messages.player_mana_changed.emit(mana, max_mana)
 		
-var dash : bool = true:
+var dash_unlocked : bool = true:
 	set(value):
-		if dash != value:
-			print("DASH CHANGED FROM ", dash, " TO ", value, " ON ", get_path())
+		if dash_unlocked != value:
+			print("DASH UNLOCK CHANGED FROM ", dash_unlocked, " TO ", value, " ON ", get_path())
 			print_stack()
-		dash = value
+		dash_unlocked = value
 var dash_count : int = 0
-var back_dash : bool = true:
-	set(value):
-		if back_dash != value:
-			print("BACK DASH CHANGED FROM ", back_dash, " TO ", value, " ON ", get_path())
-			print_stack()
-		back_dash = value
 var back_dash_count : int = 0
 var double_jump : bool = false
 var jump_count : int = 0
 var ground_slam : bool = false
 var morph_roll : bool = false
+
+# TEMP DEBUG: Developer Menu defensive testing flags. These are runtime-only
+# and intentionally excluded from save data.
+var debug_invulnerable: bool = false
+var debug_untouchable: bool = false
 
 #endregion
 
@@ -93,10 +92,10 @@ var gravity_multiplier : float = 1.0
 
 func _ready() -> void:
 	initialize_states()
-	print("AFTER INITIALIZE | dash: ", dash)
+	print("AFTER INITIALIZE | dash_unlocked: ", dash_unlocked)
 
 	apply_saved_abilities()
-	print("AFTER APPLY | dash: ", dash)
+	print("AFTER APPLY | dash_unlocked: ", dash_unlocked)
 
 	Messages.player_healed.connect( _on_player_healed )
 	damage_area.damage_taken.connect( _on_damage_taken )
@@ -234,10 +233,18 @@ func _on_damage_taken( a : AttackArea ) -> void:
 	if current_state == PlayerStateDeath:
 		return
 		
-	hp -= a.damage
+	if not debug_invulnerable:
+		hp -= a.damage
 	damage_taken.emit()
 
 	pass
+
+
+func set_debug_untouchable( enabled: bool ) -> void:
+	debug_untouchable = enabled
+	# HazardArea masks target layer 5 on the player's DamageArea. Disabling
+	# only this receiver layer leaves player physics and attacks unchanged.
+	damage_area.set_collision_layer_value( 5, not enabled )
 
 func has_mana(amount : float) -> bool:
 	return mana >= amount
@@ -254,18 +261,28 @@ func spend_mana(amount : float) -> bool:
 func restore_mana(amount : float) -> void:
 	mana += amount
 	
-func can_dash() -> bool:
-	print("CAN DASH CHECK FROM: ", get_path(), " | dash: ", dash, " dash_count: ", dash_count)
+func can_forward_dash() -> bool:
+	return dash_unlocked
 
-	if dash == false or dash_count > 0:
+
+# Future upgrade seam: this can require a directional/Evade upgrade later
+# without changing input routing or either dash state.
+func can_directional_dash() -> bool:
+	return dash_unlocked
+
+
+func can_dash() -> bool:
+	print("CAN DASH CHECK FROM: ", get_path(), " | dash_unlocked: ", dash_unlocked, " dash_count: ", dash_count)
+
+	if not can_forward_dash() or dash_count > 0:
 		return false
 
 	return true
 	
 func can_back_dash() -> bool:
-	print("CAN BACK DASH CHECK FROM: ", get_path(), " | back_dash: ", back_dash, " back_dash_count: ", back_dash_count)
+	print("CAN BACK DASH CHECK FROM: ", get_path(), " | dash_unlocked: ", dash_unlocked, " back_dash_count: ", back_dash_count)
 
-	if back_dash == false or back_dash_count > 0:
+	if not can_directional_dash() or back_dash_count > 0:
 		return false
 
 	return true
@@ -286,14 +303,13 @@ func apply_saved_abilities() -> void:
 		or SaveManager.persistent_data.get("right_dash", "") == "acquired"
 		or SaveManager.persistent_data.get("back_dash", "") == "acquired"
 	)
-	dash = has_dash
-	back_dash = has_dash
+	dash_unlocked = has_dash
 	ground_slam = SaveManager.persistent_data.get("ground_slam", "") == "acquired"
 	morph_roll = SaveManager.persistent_data.get("morph_roll", "") == "acquired"
 	
 	print("APPLIED ABILITIES TO: ", get_path())
 	print("double_jump: ", double_jump)
-	print("dash: ", dash)
+	print("dash_unlocked: ", dash_unlocked)
 	print("ground_slam: ", ground_slam)
 	print("morph_roll: ", morph_roll)
 	print("persistent data: ", SaveManager.persistent_data)
