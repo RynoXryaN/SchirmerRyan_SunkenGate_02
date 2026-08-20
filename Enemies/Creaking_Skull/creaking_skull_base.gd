@@ -36,6 +36,7 @@ var cooldown_time := 0.0
 var target: Node2D
 var facing := -1.0
 var _death_started := false
+var _combat_enabled := true
 
 
 func _ready() -> void:
@@ -73,6 +74,48 @@ func _physics_process(delta: float) -> void:
 	_acquire_target()
 	_update_state()
 	move_and_slide()
+
+
+func set_combat_enabled(enabled: bool) -> void:
+	_combat_enabled = enabled
+	attack_hitbox.set_active(false)
+	if is_instance_valid(hazard_area):
+		hazard_area.set_active(enabled)
+	if not enabled:
+		target = null
+		velocity = Vector2.ZERO
+		state = State.IDLE
+		state_time = 0.0
+		arm_pivot.rotation = 0.0
+	set_physics_process(enabled)
+	if enabled:
+		cooldown_time = maxf(cooldown_time, 0.6)
+		_play_state_animation("idle")
+
+
+func face_direction(direction: float) -> void:
+	_apply_facing(direction)
+
+
+func play_harmless_slam() -> void:
+	# Cinematic playback deliberately never activates AttackHitbox. Combat uses
+	# the normal state flow; this only sequences those same authored animations.
+	attack_hitbox.set_active(false)
+	_play_state_animation("attack_windup")
+	await get_tree().create_timer(windup_duration).timeout
+	if _death_started:
+		return
+	_play_state_animation("attack")
+	await get_tree().create_timer(active_duration).timeout
+	if _death_started:
+		return
+	_play_state_animation("recovery")
+	await get_tree().create_timer(recovery_duration).timeout
+	if _death_started:
+		return
+	arm_pivot.rotation = 0.0
+	attack_hitbox.set_active(false)
+	state = State.IDLE
 
 
 func _acquire_target() -> void:

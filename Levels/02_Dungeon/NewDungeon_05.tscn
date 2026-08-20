@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bwdwnmmwiu0qd" path="res://Assets/Medieval_Castle_Asset_Pack/Tilesets/SunkenGate_Stairs.png" id="2_b5bvm"]
 [ext_resource type="Script" uid="uid://jpbhet65r764" path="res://General/Scripts/level_bounds.gd" id="3_urvde"]
 [ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="5_e36eh"]
-[ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="6_hna3u"]
-[ext_resource type="AudioStream" uid="uid://cp7m5h32kdfn3" path="res://Music/SunkenGate_SaveRoom.mp3" id="7_urvde"]
+[ext_resource type="AudioStream" uid="uid://buyrvlkdm6ifg" path="res://Music/SunkenGate_MainPlay.mp3" id="7_urvde"]
 [ext_resource type="PackedScene" uid="uid://bupgmw6te5o0e" path="res://General/Constuction_Barrier/constuction_barrier.tscn" id="8_b5bvm"]
 [ext_resource type="PackedScene" uid="uid://dpqk6jkm54mi6" path="res://General/Level_Tag/level_tag.tscn" id="9_urvde"]
 [ext_resource type="PackedScene" uid="uid://rxu37aekcbys" path="res://Enemies/Bosses/Creaking_Skull/creaking_skull.tscn" id="9_w100r"]
+[ext_resource type="Script" path="res://Levels/02_Dungeon/new_dungeon_05_boss_encounter.gd" id="10_encounter"]
+[ext_resource type="AudioStream" uid="uid://dbtt6827npgdo" path="res://Music/SunkenGate_BossBattle.mp3" id="11_boss_music"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx20p"]
 texture = ExtResource("2_b5bvm")
@@ -21,6 +22,9 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_n64fp"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_jx20p")
+
+[sub_resource type="RectangleShape2D" id="BossIntroTriggerShape"]
+size = Vector2(128, 288)
 
 [node name="NewDungeon_05" type="Node2D" unique_id=243067464]
 
@@ -50,11 +54,6 @@ location = 0
 target_level = "uid://djmrbqfax44tl"
 target_area_name = "LT_02"
 
-[node name="MusicAutoTrigger" type="Node" parent="." unique_id=87531037]
-script = ExtResource("6_hna3u")
-track = ExtResource("7_urvde")
-metadata/_custom_type_script = "uid://e4pke5vxuyxn"
-
 [node name="ConstuctionBarrier" parent="." unique_id=254877588 instance=ExtResource("8_b5bvm")]
 position = Vector2(1408, 224)
 location = 1
@@ -64,5 +63,23 @@ size = 3
 level_name = "boss room!!!"
 description = "This will be our first boss!  True first test of player's skills.  Would like to progress more with the project, but I want to sharpen this initial area first and then add more as time allows."
 
-[node name="CreakingSkull" parent="." unique_id=592944686 instance=ExtResource("9_w100r")]
+[node name="BossEncounter" type="Node2D" parent="."]
+script = ExtResource("10_encounter")
+boss_scene = ExtResource("9_w100r")
+boss_music = ExtResource("11_boss_music")
+main_play_music = ExtResource("7_urvde")
+
+[node name="BossIntroTrigger" type="Area2D" parent="BossEncounter"]
+position = Vector2(560, 176)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossEncounter/BossIntroTrigger"]
+shape = SubResource("BossIntroTriggerShape")
+debug_color = Color(0.95, 0.2, 0.12, 0.35)
+
+[node name="BossEntranceStart" type="Marker2D" parent="BossEncounter"]
+position = Vector2(1024, 304)
+
+[node name="BossCombatPosition" type="Marker2D" parent="BossEncounter"]
 position = Vector2(766, 304)

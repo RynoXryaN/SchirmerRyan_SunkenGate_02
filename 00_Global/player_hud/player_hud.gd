@@ -82,29 +82,28 @@ func clear_game_over () -> void:
 	load_button.visible = false
 	quit_button.visible = false
 	
-	var player : Player = get_tree().get_first_node_in_group( "Player" )
-	if player:
-		player.queue_free()
-		
-	await SceneManager.scene_entered
 	game_over.visible = false
 	
 	pass
 	
 	
 func _on_load_pressed () -> void:
-	
-	SaveManager.load_game( SaveManager.current_slot )
-	clear_game_over ()
+	load_button.disabled = true
+	quit_button.disabled = true
+	await SaveManager.load_game(SaveManager.current_slot)
+	clear_game_over()
+	load_button.disabled = false
+	quit_button.disabled = false
 	
 	pass
 	
 	
 func _on_quit_pressed () -> void:
-	
-	print( "test" )
-	
-	SceneManager.transition_scene( "res://Title_Screen/title_screen.tscn", "", Vector2.ZERO, "up" )
-	clear_game_over ()
+	load_button.disabled = true
+	quit_button.disabled = true
+	await SceneManager.transition_scene("res://Title_Screen/title_screen.tscn", "", Vector2.ZERO, "up")
+	clear_game_over()
+	load_button.disabled = false
+	quit_button.disabled = false
 	
 	pass

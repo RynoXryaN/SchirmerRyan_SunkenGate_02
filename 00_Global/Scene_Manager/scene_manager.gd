@@ -19,7 +19,15 @@ func _ready() -> void:
 	load_scene_finished.emit()
 	pass
 
-func transition_scene( new_scene : String, target_area : String, player_offset : Vector2, dir : String) -> void:
+func transition_scene(
+	new_scene: String,
+	target_area: String,
+	player_offset: Vector2,
+	dir: String,
+	player_spawn_position: Variant = null,
+	player_setup: Callable = Callable(),
+	replace_player: bool = false
+) -> void:
 	
 	if transition_locked:
 		return
@@ -41,8 +49,25 @@ func transition_scene( new_scene : String, target_area : String, player_offset :
 		get_tree().current_scene.queue_free()
 		get_tree().current_scene = main_scene
 
-	main_scene.load_level(new_scene)
-	current_scene_uid = ResourceUID.path_to_uid( new_scene )
+	var loaded_scene := main_scene.load_level(new_scene)
+	if not loaded_scene:
+		push_error("Scene transition failed to load: %s" % new_scene)
+		fade.visible = false
+		get_tree().paused = false
+		transition_locked = false
+		return
+
+	if is_playable_scene(new_scene):
+		if replace_player:
+			main_scene.clear_player()
+		var player := main_scene.ensure_player_exists(player_spawn_position)
+		if player_setup.is_valid():
+			player_setup.call(player)
+	else:
+		# Menu-only scenes must not retain a dead or hidden gameplay Player.
+		main_scene.clear_player()
+
+	current_scene_uid = ResourceUID.path_to_uid(resolve_scene_path(new_scene))
 	print( "new_scene: ", current_scene_uid )
 	scene_entered.emit( current_scene_uid )
 	
@@ -60,6 +85,18 @@ func transition_scene( new_scene : String, target_area : String, player_offset :
 	await get_tree().create_timer(0.35).timeout
 	transition_locked = false
 	pass
+
+
+func is_playable_scene(scene_reference: String) -> bool:
+	return resolve_scene_path(scene_reference).begins_with("res://Levels/")
+
+
+func resolve_scene_path(scene_reference: String) -> String:
+	if scene_reference.begins_with("uid://"):
+		var uid := ResourceUID.text_to_id(scene_reference)
+		if uid != ResourceUID.INVALID_ID and ResourceUID.has_id(uid):
+			return ResourceUID.get_id_path(uid)
+	return scene_reference
 
 
 func fade_screen( from : Vector2, to : Vector2 ) -> Signal:
