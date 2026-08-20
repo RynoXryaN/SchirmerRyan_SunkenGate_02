@@ -19,6 +19,7 @@ enum State { IDLE, CHASE, WINDUP, ATTACK, RECOVERY, HURT, DEATH }
 @export_category("Attack Timing")
 @export_range(0.1, 2.0, 0.05) var windup_duration: float = 0.55
 @export_range(0.05, 1.0, 0.05) var active_duration: float = 0.22
+@export_range(0.03, 0.2, 0.01) var impact_window_duration: float = 0.08
 @export_range(0.1, 2.0, 0.05) var recovery_duration: float = 0.7
 @export_range(0.05, 1.0, 0.05) var hurt_duration: float = 0.22
 
@@ -26,6 +27,7 @@ enum State { IDLE, CHASE, WINDUP, ATTACK, RECOVERY, HURT, DEATH }
 @onready var edge_check: RayCast2D = $EdgeCheck
 @onready var wall_check: RayCast2D = $WallCheck
 @onready var visuals: Node2D = $Visuals
+@onready var arm_pivot: Node2D = $Visuals/Pose/ArmPivot
 @onready var death_pieces: Node2D = $DeathPieces
 
 var state: State = State.IDLE
@@ -51,6 +53,7 @@ func _ready() -> void:
 	attack_hitbox.damage = damage
 	hazard_area.damage = contact_damage
 	attack_hitbox.set_active(false)
+	_apply_facing(-1.0 if face_left_on_start else 1.0)
 	_play_state_animation("idle")
 
 
@@ -104,6 +107,10 @@ func _update_state() -> void:
 				_set_state(State.ATTACK)
 		State.ATTACK:
 			velocity.x = 0.0
+			# Damage begins only as the club reaches the floor, not during the
+			# overhead travel portion of the swing.
+			if state_time <= minf(impact_window_duration, active_duration):
+				attack_hitbox.set_active(true)
 			if state_time <= 0.0:
 				_set_state(State.RECOVERY)
 		State.RECOVERY, State.HURT:
@@ -119,8 +126,10 @@ func _set_state(next: State) -> void:
 	state = next
 	match state:
 		State.IDLE:
+			arm_pivot.rotation = 0.0
 			_play_state_animation("idle")
 		State.CHASE:
+			arm_pivot.rotation = 0.0
 			_play_state_animation("shamble")
 		State.WINDUP:
 			state_time = windup_duration
@@ -128,13 +137,15 @@ func _set_state(next: State) -> void:
 		State.ATTACK:
 			state_time = active_duration
 			attack_hitbox.damage = damage
-			attack_hitbox.set_active(true)
 			_play_state_animation("attack")
 		State.RECOVERY:
 			state_time = recovery_duration
 			cooldown_time = attack_cooldown
 			_play_state_animation("recovery")
 		State.HURT:
+			# A hit can interrupt any attack phase; restore the articulated arm so
+			# it cannot remain frozen halfway through a slam.
+			arm_pivot.rotation = 0.0
 			state_time = hurt_duration
 			_play_state_animation("hurt")
 	if debug_logging:
@@ -146,11 +157,18 @@ func _face_target() -> void:
 		return
 	var new_facing := signf(target.global_position.x - global_position.x)
 	if not is_zero_approx(new_facing) and new_facing != facing:
-		facing = new_facing
-		visuals.scale.x = absf(visuals.scale.x) * facing
-		attack_hitbox.flip(facing)
-		edge_check.position.x = absf(edge_check.position.x) * facing
-		wall_check.target_position.x = absf(wall_check.target_position.x) * facing
+		_apply_facing(new_facing)
+
+
+func _apply_facing(direction: float) -> void:
+	# Keep every directional component synchronized. Visuals contains both the
+	# body and articulated arm, so mirroring here preserves the local slam arc.
+	facing = -1.0 if direction < 0.0 else 1.0
+	# The source artwork natively faces left; unflipped Visuals therefore means -1.
+	visuals.scale.x = absf(visuals.scale.x) * -facing
+	attack_hitbox.flip(facing)
+	edge_check.position.x = absf(edge_check.position.x) * facing
+	wall_check.target_position.x = absf(wall_check.target_position.x) * facing
 
 
 func _can_advance() -> bool:

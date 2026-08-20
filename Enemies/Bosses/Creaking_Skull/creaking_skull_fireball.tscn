@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Enemies/Bosses/Creaking_Skull/creaking_skull_fireball.gd" id="1_fireball"]
+[ext_resource type="Script" uid="uid://6s8p4noeyskh" path="res://General/Scripts/attack_area.gd" id="2_attack"]
+[ext_resource type="Texture2D" uid="uid://84arbqik1lc" path="res://Assets/CastleVania_Aria/Enemies/Creaking Skull.png" id="3_sheet"]
+
+[sub_resource type="Shader" id="Shader_mask"]
+code = "shader_type canvas_item;\nuniform vec4 key_color : source_color = vec4(0.32941177, 0.42745098, 0.55686277, 1.0);\nuniform float tolerance = 0.025;\nvoid fragment() {\n vec4 c = texture(TEXTURE, UV);\n if (distance(c.rgb, key_color.rgb) < tolerance) { c.a = 0.0; }\n COLOR = c * COLOR;\n}"
+
+[sub_resource type="ShaderMaterial" id="Material_mask"]
+shader = SubResource("Shader_mask")
+
+[sub_resource type="CircleShape2D" id="Shape_body"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="Shape_attack"]
+radius = 9.0
+
+[node name="CreakingSkullFireball" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_fireball")
+speed = 155.0
+max_lifetime = 4.0
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="FireballSprite" type="Sprite2D" parent="Visual"]
+material = SubResource("Material_mask")
+texture = ExtResource("3_sheet")
+region_enabled = true
+region_rect = Rect2(0, 136, 24, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Shape_body")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("2_attack")
+damage = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("Shape_attack")

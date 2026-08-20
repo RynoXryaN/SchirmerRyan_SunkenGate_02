@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Levels/Props/destructibles/destructible_prop.gd" id="1"]
+[ext_resource type="Script" path="res://General/Scripts/damage_area.gd" id="2"]
+[ext_resource type="Script" path="res://General/Scripts/loot_dropper.gd" id="3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_empty"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prop"]
+size = Vector2(12, 14)
+
+[sub_resource type="Gradient" id="Gradient_light"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.65, 0.65, 0.65, 0.55, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_light"]
+gradient = SubResource("Gradient_light")
+width = 96
+height = 96
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="DestructibleProp" type="Node2D" groups=["breakable_prop", "destructible"]]
+script = ExtResource("1")
+hp = 1.0
+fixed_hit_count = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_empty")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -4)
+enabled = false
+texture = SubResource("GradientTexture2D_light")
+energy = 1.0
+shadow_enabled = false
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("RectangleShape2D_prop")
+
+[node name="SpawnMarker" type="Marker2D" parent="."]
+
+[node name="LootDropper" type="Marker2D" parent="SpawnMarker"]
+script = ExtResource("3")
+auto_connect_to_owner = false

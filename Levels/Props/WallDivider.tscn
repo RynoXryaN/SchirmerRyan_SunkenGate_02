@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Built/Sprites/Background/wall_divider.png" id="1_texture"]
+
+[node name="WallDivider" type="Node2D"]
+
+[node name="DividerSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_texture")
+centered = false
