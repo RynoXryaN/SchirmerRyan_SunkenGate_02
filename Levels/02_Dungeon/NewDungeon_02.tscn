@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" path="res://Levels/Props/Decorative/SirenStatue.tscn" id="10_d1mwe"]
 [ext_resource type="PackedScene" uid="uid://dw87qprsfvauv" path="res://Levels/Props/Decorative/SirenStatueDias.tscn" id="11_be47m"]
 [ext_resource type="PackedScene" path="res://General/Breakables/Props/wall_brazier.tscn" id="12_h35b4"]
+[ext_resource type="PackedScene" path="res://Environment/Water/StreamingWater2D.tscn" id="13_stream"]
+[ext_resource type="PackedScene" path="res://Environment/Water/StandingWater2D.tscn" id="14_pool"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx20p"]
 texture = ExtResource("2_sa3pg")
@@ -86,6 +88,24 @@ position = Vector2(512, 672)
 [node name="SirenStatueDias" parent="." unique_id=166623519 instance=ExtResource("11_be47m")]
 position = Vector2(512, 708)
 collision_position = Vector2(0, -32)
+
+[node name="FountainWater" type="Node2D" parent="." unique_id=1375353776]
+
+[node name="StandingWater2D" parent="FountainWater" unique_id=317331403 instance=ExtResource("14_pool")]
+position = Vector2(544, 743)
+opacity = 0.75
+tint = Color(0.32, 0.68, 1, 1)
+region_size = Vector2(576, 70)
+
+[node name="LeftStream" parent="FountainWater" unique_id=1711005855 instance=ExtResource("13_stream")]
+position = Vector2(463, 675)
+origin_shape = 0
+region_size = Vector2(6, 73)
+
+[node name="RightStream" parent="FountainWater" unique_id=1507706450 instance=ExtResource("13_stream")]
+position = Vector2(554, 676)
+origin_shape = 0
+region_size = Vector2(6, 73)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=291536733]
 

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Environment/Water/water_splash_particles.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Environment/Water/splash_particle.svg" id="2_texture"]
+
+[sub_resource type="Gradient" id="Gradient_water"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.45, 0.87, 1, 1, 0.1, 0.48, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture_water"]
+gradient = SubResource("Gradient_water")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_water"]
+resource_local_to_scene = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 55.0
+gravity = Vector3(0, 180, 0)
+initial_velocity_min = 38.0
+initial_velocity_max = 72.0
+scale_min = 0.55
+scale_max = 1.25
+color_ramp = SubResource("GradientTexture_water")
+
+[node name="WaterSplashParticles" type="GPUParticles2D"]
+texture_filter = 1
+z_index = 4
+emitting = false
+amount = 18
+lifetime = 0.7
+randomness = 0.45
+visibility_rect = Rect2(-256, -96, 512, 160)
+process_material = SubResource("ParticleProcessMaterial_water")
+texture = ExtResource("2_texture")
+script = ExtResource("1_script")

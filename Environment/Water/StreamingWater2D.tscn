@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Environment/Water/streaming_water_2d.gd" id="1_script"]
+[ext_resource type="Shader" path="res://Environment/Water/water_stream.gdshader" id="2_shader"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_water"]
+resource_local_to_scene = true
+size = Vector2(64, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cast"]
+resource_local_to_scene = true
+size = Vector2(64, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stream"]
+resource_local_to_scene = true
+shader = ExtResource("2_shader")
+
+[node name="StreamingWater2D" type="Area2D"]
+texture_filter = 1
+texture_repeat = 2
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("1_script")
+
+[node name="Visual" type="TextureRect" parent="."]
+mouse_filter = 2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_stream")
+offset_left = -32.0
+offset_top = -48.0
+offset_right = 32.0
+offset_bottom = 48.0
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_water")
+debug_color = Color(0.2, 0.72, 1, 0.25)
+
+[node name="FlowCast" type="ShapeCast2D" parent="."]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_cast")
+target_position = Vector2(0, 96)
+collision_mask = 305
+collide_with_areas = true
+collide_with_bodies = true

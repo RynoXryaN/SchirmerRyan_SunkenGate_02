@@ -33,6 +33,25 @@ colors = PackedColorArray(0.8627451, 0, 0, 1, 0.99996346, 0.6140783, 0.55596757,
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1rq2o"]
 gradient = SubResource("Gradient_htg7c")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_air_background"]
+bg_color = Color(0.015, 0.06, 0.10, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.74, 0.92, 0.9)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_air_fill"]
+bg_color = Color(0.16, 0.68, 0.92, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
 [sub_resource type="GDScript" id="GDScript_1rq2o"]
 script/source = "extends Button
 
@@ -193,6 +212,90 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 24
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="AirGauge" type="Control" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 36.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Panel" type="ColorRect" parent="Control/AirGauge"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -12.0
+offset_right = 81.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.015, 0.045, 0.075, 0.88)
+mouse_filter = 2
+
+[node name="AirLabel" type="Label" parent="Control/AirGauge"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -9.0
+offset_right = -43.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.68, 0.93, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "AIR"
+vertical_alignment = 1
+
+[node name="AirBar" type="ProgressBar" parent="Control/AirGauge"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -7.0
+offset_right = 57.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_air_background")
+theme_override_styles/fill = SubResource("StyleBoxFlat_air_fill")
+value = 100.0
+show_percentage = false
+
+[node name="AirValueLabel" type="Label" parent="Control/AirGauge"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 61.0
+offset_top = -9.0
+offset_right = 77.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.82, 0.96, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "12"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="DeveloperMenu" type="VBoxContainer" parent="Control" unique_id=1416720179]
 layout_mode = 1

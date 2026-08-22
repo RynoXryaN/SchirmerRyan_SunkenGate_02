@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Environment/Water/mouth_bubble_emitter_2d.gd" id="1_script"]
+
+[node name="MouthBubbleEmitter2D" type="Node2D"]
+script = ExtResource("1_script")

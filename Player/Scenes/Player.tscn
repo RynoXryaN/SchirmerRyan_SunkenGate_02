@@ -26,6 +26,8 @@
 [ext_resource type="Script" uid="uid://eyq1n0xnmr2r" path="res://Player/States/dodge.gd" id="16_dodge"]
 [ext_resource type="Script" uid="uid://crfjfvwhk85o0" path="res://Player/Scripts/ability_controller.gd" id="22_xq5ky"]
 [ext_resource type="Resource" uid="uid://ccakve6r1d3dt" path="res://General/Projectiles/Dagger/dagger_ability.tres" id="23_1roin"]
+[ext_resource type="Script" path="res://Player/Scripts/breath_component.gd" id="24_breath"]
+[ext_resource type="PackedScene" path="res://Environment/Water/MouthBubbleParticles.tscn" id="25_bubbles"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wyx6f"]
 radius = 8.0
@@ -471,6 +473,13 @@ hframes = 16
 vframes = 4
 frame = 1
 script = ExtResource("12_agy6j")
+
+[node name="BreathComponent" type="Node" parent="."]
+script = ExtResource("24_breath")
+
+[node name="MouthBubbles" parent="." instance=ExtResource("25_bubbles")]
+unique_name_in_owner = true
+position = Vector2(7, -55)
 
 [node name="AttackSprite2D" type="Sprite2D" parent="Character" unique_id=319267213]
 unique_name_in_owner = true

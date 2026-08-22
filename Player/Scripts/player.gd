@@ -241,6 +241,15 @@ func _on_damage_taken( a : AttackArea ) -> void:
 	pass
 
 
+func apply_environmental_damage(amount: float) -> void:
+	if current_state == PlayerStateDeath or debug_invulnerable:
+		return
+	hp -= amount
+	damage_taken.emit()
+	if hp <= 0.0:
+		change_state(current_state.death)
+
+
 func set_debug_untouchable( enabled: bool ) -> void:
 	debug_untouchable = enabled
 	# HazardArea masks target layer 5 on the player's DamageArea. Disabling
