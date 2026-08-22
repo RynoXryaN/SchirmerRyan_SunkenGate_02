@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://chkv604t0rk62" path="res://Player/Sprites/abilities.png" id="1_5rd78"]
 [ext_resource type="Script" uid="uid://dkl5j1feukp5r" path="res://General/Ability_Pickup/ability_pickup.gd" id="1_oecmb"]
-[ext_resource type="Script" uid="uid://dr26tgc60d5dh" path="res://General/Scripts/breakable.gd" id="2_oecmb"]
+[ext_resource type="Script" uid="uid://dr26tgc60d5dh" path="res://General/Breakables/Core/breakable.gd" id="2_oecmb"]
 [ext_resource type="Script" uid="uid://b26misjaeywyg" path="res://00_Global/visual_effects/hit_particle_settings.gd" id="3_a7c5d"]
 [ext_resource type="AudioStream" uid="uid://c3ti06kecbcns" path="res://General/Audio/ability_crack.wav" id="4_kji3w"]
 [ext_resource type="AudioStream" uid="uid://b5jmhhpo1d5t8" path="res://General/Audio/ability_acquire.wav" id="5_id5sj"]

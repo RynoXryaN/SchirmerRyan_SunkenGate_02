@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhwdd1x5kfjt8"]
 
-[ext_resource type="Script" uid="uid://chfwydsgj3xui" path="res://Levels/Props/dummies/test_dummy.gd" id="1_k76xv"]
-[ext_resource type="Texture2D" uid="uid://c04aktnchgl8r" path="res://General/Sprites/props_destructible.png" id="2_4u8nk"]
+[ext_resource type="Script" uid="uid://chfwydsgj3xui" path="res://Levels/Props/Interactive/Dummies/test_dummy.gd" id="1_k76xv"]
+[ext_resource type="Texture2D" uid="uid://c04aktnchgl8r" path="res://General/Breakables/Props/Sprites/props_destructible.png" id="2_4u8nk"]
 [ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="3_ya7wa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qgdun"]

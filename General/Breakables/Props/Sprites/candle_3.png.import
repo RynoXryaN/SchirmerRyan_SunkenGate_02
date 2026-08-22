@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx81vh4vw2jmk"
-path="res://.godot/imported/Candle_3.png-fddcd53325764fd8f866f716889ae03e.ctex"
+path="res://.godot/imported/candle_3.png-784b7ec6743d909717b953c7a30ec5df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Props/destructibles/sprites/Candle_3.png"
-dest_files=["res://.godot/imported/Candle_3.png-fddcd53325764fd8f866f716889ae03e.ctex"]
+source_file="res://General/Breakables/Props/Sprites/candle_3.png"
+dest_files=["res://.godot/imported/candle_3.png-784b7ec6743d909717b953c7a30ec5df.ctex"]
 
 [params]
 

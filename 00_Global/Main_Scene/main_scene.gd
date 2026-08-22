@@ -40,9 +40,9 @@ func ensure_player_exists(spawn_position: Variant = null) -> Player:
 			player_instance.reparent(self, true)
 
 	# A malformed level or previous race must not leave two controllable players.
-	for duplicate in players.slice(1):
-		duplicate.get_parent().remove_child(duplicate)
-		duplicate.queue_free()
+	for extra_player in players.slice(1):
+		extra_player.get_parent().remove_child(extra_player)
+		extra_player.queue_free()
 
 	if spawn_position is Vector2:
 		player_instance.global_position = spawn_position

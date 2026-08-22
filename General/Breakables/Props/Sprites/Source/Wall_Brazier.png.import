@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgav5tbepmyfp"
-path="res://.godot/imported/candle_blue.png-bd49c7bf3644f3361a49f1def99cfdf6.ctex"
+uid="uid://cguwm2f3p8kfx"
+path="res://.godot/imported/Wall_Brazier.png-025f3b36040d1c204c0ecd25727ca2fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Props/destructibles/sprites/candle_blue.png"
-dest_files=["res://.godot/imported/candle_blue.png-bd49c7bf3644f3361a49f1def99cfdf6.ctex"]
+source_file="res://General/Breakables/Props/Sprites/Source/Wall_Brazier.png"
+dest_files=["res://.godot/imported/Wall_Brazier.png-025f3b36040d1c204c0ecd25727ca2fa.ctex"]
 
 [params]
 

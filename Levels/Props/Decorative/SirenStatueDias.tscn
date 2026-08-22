@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dw87qprsfvauv"]
+
+[ext_resource type="PackedScene" path="res://Levels/Props/Interactive/OneWayPropPlatform.tscn" id="1_platform"]
+[ext_resource type="Texture2D" uid="uid://tseiw5nvlchy" path="res://Assets/Built/Sprites/Props/SirenStatueDias.png" id="2_texture"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fjua"]
+resource_local_to_scene = true
+size = Vector2(238, 6)
+
+[node name="SirenStatueDias" unique_id=166623519 instance=ExtResource("1_platform")]
+platform_texture = ExtResource("2_texture")
+sprite_position = Vector2(0, -24)
+collision_size = Vector2(238, 6)
+collision_position = Vector2(0, -42)
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -24)
+texture = ExtResource("2_texture")
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_8fjua")

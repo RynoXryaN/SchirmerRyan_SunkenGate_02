@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://u23kfubc1l0y"]
+
+[ext_resource type="PackedScene" path="res://General/Breakables/Core/destructible_prop.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://dgav5tbepmyfp" path="res://General/Breakables/Props/Sprites/candle_blue.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="Atlas_0"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="Atlas_1"]
+atlas = ExtResource("2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="Atlas_2"]
+atlas = ExtResource("2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="Frames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_2")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="Shape"]
+size = Vector2(10, 16)
+
+[node name="CandleBlue" unique_id=1153086145 instance=ExtResource("1")]
+light_enabled = true
+light_color = Color(0.28, 0.62, 1, 1)
+light_energy = 1.7
+light_radius = 0.75
+flicker_strength = 0.1
+drop_loot = true
+dagger_response = 2
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("Frames")
+
+[node name="PointLight2D" parent="." index="1"]
+enabled = true
+color = Color(0.28, 0.62, 1, 1)
+energy = 1.7
+texture_scale = 0.75
+
+[node name="CollisionShape2D" parent="DamageArea" index="0"]
+shape = SubResource("Shape")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://Levels/Props/destructibles/destructible_prop_debris.gd" id="1"]
+[ext_resource type="Script" path="res://General/Breakables/Core/destructible_prop_debris.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_debris"]
 size = Vector2(10, 10)
@@ -21,4 +21,3 @@ shape = SubResource("RectangleShape2D_debris")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-

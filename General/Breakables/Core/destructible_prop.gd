@@ -46,6 +46,21 @@ enum PixelScale { ONE_X = 1, TWO_X = 2 }
 @export_range(0.0, 0.5, 0.01) var flicker_strength: float = 0.08
 @export_range(0.1, 20.0, 0.1) var flicker_speed: float = 7.0
 
+@export_category("Reflected Glow")
+@export var reflected_glow_enabled: bool = true:
+	set(value):
+		reflected_glow_enabled = value
+		_apply_light_settings()
+@export_range(0.0, 1.0, 0.01) var reflected_glow_energy_ratio: float = 0.12:
+	set(value):
+		reflected_glow_energy_ratio = value
+		_apply_light_settings()
+@export_range(1.0, 6.0, 0.05) var reflected_glow_radius_multiplier: float = 2.75:
+	set(value):
+		reflected_glow_radius_multiplier = value
+		_apply_light_settings()
+@export_range(0.0, 1.0, 0.01) var reflected_glow_flicker_ratio: float = 0.4
+
 @export_category("Loot")
 @export var drop_loot: bool = false
 @export_range(0.0, 1.0, 0.01) var overall_drop_chance: float = 1.0
@@ -64,10 +79,12 @@ enum PixelScale { ONE_X = 1, TWO_X = 2 }
 @onready var spawn_marker: Marker2D = $SpawnMarker
 @onready var loot_dropper: LootDropper = $SpawnMarker/LootDropper
 @onready var prop_light: PointLight2D = $PointLight2D
+@onready var reflected_glow: PointLight2D = $ReflectedGlow2D
 
 var _flicker_time: float = 0.0
 var _flicker_phase: float = 0.0
 var _flicker_rate: float = 1.0
+var _destruction_queued: bool = false
 
 
 func _ready() -> void:
@@ -94,6 +111,15 @@ func _process(delta: float) -> void:
 	var flicker := sin(t) * 0.55 + sin(t * 2.37 + 1.4) * 0.3 + sin(t * 5.71) * 0.15
 	prop_light.energy = light_energy * (1.0 + flicker * flicker_strength)
 	prop_light.texture_scale = light_radius * float(pixel_scale) * (1.0 + flicker * flicker_strength * 0.18)
+	if reflected_glow and reflected_glow_enabled:
+		var reflected_flicker := flicker * flicker_strength * reflected_glow_flicker_ratio
+		reflected_glow.energy = light_energy * reflected_glow_energy_ratio * (1.0 + reflected_flicker)
+		reflected_glow.texture_scale = (
+			light_radius
+			* reflected_glow_radius_multiplier
+			* float(pixel_scale)
+			* (1.0 + reflected_flicker * 0.12)
+		)
 
 
 func _on_damage_taken(attack_area: AttackArea) -> void:
@@ -104,10 +130,17 @@ func _on_damage_taken(attack_area: AttackArea) -> void:
 
 
 func _destroy(pos: Vector2 = Vector2.INF, dir: Vector2 = Vector2.UP) -> void:
-	if _is_destroyed:
+	if _is_destroyed or _destruction_queued:
 		return
 	if not pos.is_finite():
 		pos = global_position + emission_offset
+	_destruction_queued = true
+	_destroy_deferred.call_deferred(pos, dir)
+
+
+func _destroy_deferred(pos: Vector2, dir: Vector2) -> void:
+	if _is_destroyed:
+		return
 
 	_is_destroyed = true
 	hp = 0
@@ -147,7 +180,7 @@ func _spawn_destruction_output(direction: Vector2) -> void:
 		if destroyed_replacement:
 			replacement = destroyed_replacement.instantiate()
 		else:
-			var debris_scene: PackedScene = load("res://Levels/Props/destructibles/destructible_prop_debris.tscn")
+			var debris_scene: PackedScene = load("res://General/Breakables/Core/destructible_prop_debris.tscn")
 			replacement = debris_scene.instantiate()
 		_add_world_sibling(replacement)
 		if replacement is Node2D:
@@ -205,3 +238,10 @@ func _apply_light_settings() -> void:
 	light.energy = light_energy
 	light.texture_scale = light_radius * float(pixel_scale)
 	light.position = light_offset * float(pixel_scale)
+	var glow := get_node_or_null("ReflectedGlow2D") as PointLight2D
+	if glow:
+		glow.enabled = light_enabled and reflected_glow_enabled
+		glow.color = light_color
+		glow.energy = light_energy * reflected_glow_energy_ratio
+		glow.texture_scale = light_radius * reflected_glow_radius_multiplier * float(pixel_scale)
+		glow.position = light_offset * float(pixel_scale)

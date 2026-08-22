@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://fkl8smocyiru" path="res://Levels/Tilesets/forgotten_forest.tres" id="1_ro7mg"]
 [ext_resource type="Texture2D" uid="uid://btxyi5xv6vp8h" path="res://Assets/LushForestAssetPack/ParallaxScrollingForestBackground/Forest_layer2.png" id="2_63176"]
 [ext_resource type="Texture2D" uid="uid://bwdwnmmwiu0qd" path="res://Assets/Medieval_Castle_Asset_Pack/Tilesets/SunkenGate_Stairs.png" id="2_o5j3c"]
-[ext_resource type="PackedScene" path="res://Levels/Props/WallDivider.tscn" id="2_tqfia"]
-[ext_resource type="PackedScene" path="res://Levels/Props/WallPanel.tscn" id="3_2s8s5"]
+[ext_resource type="PackedScene" path="res://Levels/Props/Decorative/WallDivider.tscn" id="2_tqfia"]
+[ext_resource type="PackedScene" path="res://Levels/Props/Decorative/WallPanel.tscn" id="3_2s8s5"]
 [ext_resource type="Texture2D" uid="uid://d2rs5u8jrj0ln" path="res://Assets/LushForestAssetPack/ParallaxScrollingForestBackground/Forest_layer3.png" id="3_8lpat"]
 [ext_resource type="Script" uid="uid://jpbhet65r764" path="res://General/Scripts/level_bounds.gd" id="3_gd453"]
 [ext_resource type="Texture2D" uid="uid://divp7tp0pml0g" path="res://Assets/LushForestAssetPack/ParallaxScrollingForestBackground/Forest_layer5.png" id="4_mdfkv"]
@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://buyrvlkdm6ifg" path="res://Music/SunkenGate_MainPlay.mp3" id="12_s8y31"]
 [ext_resource type="PackedScene" uid="uid://c2447ai00s2wo" path="res://General/Enemy_Spawn_Manager/EnemySpawnManager.tscn" id="13_enemy_spawner"]
 [ext_resource type="PackedScene" uid="uid://ck5hktsdvi0ok" path="res://Enemies/zombie_dawn/zombie.tscn" id="14_zombie"]
-[ext_resource type="PackedScene" uid="uid://u23kfubc1l0y" path="res://Levels/Props/destructibles/candle_blue.tscn" id="20_63176"]
+[ext_resource type="PackedScene" uid="uid://u23kfubc1l0y" path="res://General/Breakables/Props/candle_blue.tscn" id="20_63176"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jx20p"]
 texture = ExtResource("2_o5j3c")
@@ -186,24 +186,38 @@ metadata/_custom_type_script = "uid://e4pke5vxuyxn"
 
 [node name="CandleBlue" parent="DestructibleProps" unique_id=3616732 instance=ExtResource("20_63176")]
 position = Vector2(496, 200)
+pixel_scale = 2
 light_color = Color(0, 0, 0.8352941, 1)
-light_energy = null
-light_radius = null
-light_offset = null
-light_flicker = null
-flicker_strength = null
-flicker_speed = null
+light_energy = 2.0
+light_radius = 2.0
+flicker_strength = 0.5
+flicker_speed = 12.7
 
 [node name="CandleBlue2" parent="DestructibleProps" unique_id=279142729 instance=ExtResource("20_63176")]
 position = Vector2(912, 200)
+pixel_scale = 2
 light_color = Color(0, 0, 0.8352941, 1)
+light_energy = 2.0
+light_radius = 2.0
+flicker_strength = 0.5
+flicker_speed = 12.7
 
 [node name="CandleBlue3" parent="DestructibleProps" unique_id=411561292 instance=ExtResource("20_63176")]
 position = Vector2(1328, 200)
+pixel_scale = 2
 light_color = Color(0, 0, 0.8352941, 1)
+light_energy = 2.0
+light_radius = 2.0
+flicker_strength = 0.5
+flicker_speed = 12.7
 
 [node name="CandleBlue4" parent="DestructibleProps" unique_id=1914243758 instance=ExtResource("20_63176")]
 position = Vector2(1744, 200)
+pixel_scale = 2
 light_color = Color(0, 0, 0.8352941, 1)
+light_energy = 2.0
+light_radius = 2.0
+flicker_strength = 0.5
+flicker_speed = 12.7
 
 [editable path="EnemySpawnManager"]

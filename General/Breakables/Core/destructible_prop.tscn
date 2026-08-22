@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://Levels/Props/destructibles/destructible_prop.gd" id="1"]
+[ext_resource type="Script" path="res://General/Breakables/Core/destructible_prop.gd" id="1"]
 [ext_resource type="Script" path="res://General/Scripts/damage_area.gd" id="2"]
 [ext_resource type="Script" path="res://General/Scripts/loot_dropper.gd" id="3"]
 
@@ -13,7 +13,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prop"]
-size = Vector2(12, 14)
+size = Vector2(14, 16)
 
 [sub_resource type="Gradient" id="Gradient_light"]
 offsets = PackedFloat32Array(0, 0.45, 1)
@@ -43,6 +43,14 @@ position = Vector2(0, -4)
 enabled = false
 texture = SubResource("GradientTexture2D_light")
 energy = 1.0
+shadow_enabled = false
+
+[node name="ReflectedGlow2D" type="PointLight2D" parent="."]
+position = Vector2(0, -4)
+enabled = false
+texture = SubResource("GradientTexture2D_light")
+energy = 0.12
+texture_scale = 2.75
 shadow_enabled = false
 
 [node name="DamageArea" type="Area2D" parent="."]

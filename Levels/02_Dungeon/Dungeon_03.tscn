@@ -2,13 +2,13 @@
 
 [ext_resource type="TileSet" uid="uid://fkl8smocyiru" path="res://Levels/Tilesets/forgotten_forest.tres" id="1_bh2gd"]
 [ext_resource type="PackedScene" uid="uid://fp7r1tlhdxg4" path="res://Levels/Tilesets/Sprites_Animated/lever.tscn" id="2_0orhc"]
-[ext_resource type="PackedScene" uid="uid://bxwpjyachk0bn" path="res://Levels/Props/slam_breakable.tscn" id="2_eugsd"]
+[ext_resource type="PackedScene" uid="uid://bxwpjyachk0bn" path="res://General/Breakables/Progression/slam_breakable.tscn" id="2_eugsd"]
 [ext_resource type="Script" uid="uid://jpbhet65r764" path="res://General/Scripts/level_bounds.gd" id="3_eugsd"]
 [ext_resource type="PackedScene" uid="uid://durq0j07eobvx" path="res://Levels/Tilesets/Sprites_Animated/moving_platform.tscn" id="5_wpcce"]
 [ext_resource type="PackedScene" uid="uid://cc1c1tjekfgfx" path="res://General/Level_transitions/level_transition.tscn" id="6_c37if"]
 [ext_resource type="Script" uid="uid://e4pke5vxuyxn" path="res://Music/music_auto_trigger.gd" id="7_4o8a6"]
 [ext_resource type="AudioStream" uid="uid://r5525kn3sdx7" path="res://Music/dungeon_01.ogg" id="8_nntml"]
-[ext_resource type="PackedScene" uid="uid://c0k4kdhi3sxgu" path="res://Levels/Props/crate.tscn" id="9_mu3bj"]
+[ext_resource type="PackedScene" uid="uid://c0k4kdhi3sxgu" path="res://General/Breakables/Props/crate.tscn" id="9_mu3bj"]
 [ext_resource type="PackedScene" uid="uid://sa3hv23ypaho" path="res://General/Ability_Pickup/ability_pickup.tscn" id="11_eugsd"]
 
 [node name="Dungeon_03" type="Node2D" unique_id=243067464]

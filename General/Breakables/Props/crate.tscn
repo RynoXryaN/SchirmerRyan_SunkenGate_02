@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c0k4kdhi3sxgu"]
 
-[ext_resource type="Script" uid="uid://dr26tgc60d5dh" path="res://General/Scripts/breakable.gd" id="1_j6gu6"]
+[ext_resource type="Script" uid="uid://dr26tgc60d5dh" path="res://General/Breakables/Core/breakable.gd" id="1_j6gu6"]
 [ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="2_rmv41"]
-[ext_resource type="Texture2D" uid="uid://c04aktnchgl8r" path="res://General/Sprites/props_destructible.png" id="3_o4d0r"]
+[ext_resource type="Texture2D" uid="uid://c04aktnchgl8r" path="res://General/Breakables/Props/Sprites/props_destructible.png" id="3_o4d0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wveh7"]
 size = Vector2(40, 31)

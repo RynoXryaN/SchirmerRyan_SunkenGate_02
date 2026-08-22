@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cuyeunwmfs0sg"]
 
 [ext_resource type="Script" uid="uid://bghkwtmlo6w70" path="res://General/Scripts/damage_area.gd" id="3_husy1"]
-[ext_resource type="PackedScene" uid="uid://bhwdd1x5kfjt8" path="res://Levels/Props/dummies/test_dummy.tscn" id="4_husy1"]
-[ext_resource type="PackedScene" uid="uid://c0k4kdhi3sxgu" path="res://Levels/Props/crate.tscn" id="5_wveh7"]
-[ext_resource type="PackedScene" uid="uid://b4dm116l21u1p" path="res://Levels/Props/dummies/spike_dummy.tscn" id="6_a8jj6"]
+[ext_resource type="PackedScene" uid="uid://bhwdd1x5kfjt8" path="res://Levels/Props/Interactive/Dummies/test_dummy.tscn" id="4_husy1"]
+[ext_resource type="PackedScene" uid="uid://c0k4kdhi3sxgu" path="res://General/Breakables/Props/crate.tscn" id="5_wveh7"]
+[ext_resource type="PackedScene" uid="uid://b4dm116l21u1p" path="res://Levels/Props/Interactive/Dummies/spike_dummy.tscn" id="6_a8jj6"]
 [ext_resource type="PackedScene" uid="uid://durypwi6qpv0r" path="res://Enemies/slime/slime.tscn" id="7_qrg3h"]
 
 [sub_resource type="Gradient" id="Gradient_buxef"]

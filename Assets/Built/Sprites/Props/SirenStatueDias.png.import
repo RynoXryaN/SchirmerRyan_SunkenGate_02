@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmod87f6ywl75"
-path="res://.godot/imported/Lantern_Blue.png-2bf7d9b0d3aa877f5f48650f15c783d4.ctex"
+uid="uid://tseiw5nvlchy"
+path="res://.godot/imported/SirenStatueDias.png-afa53997c419f9577dd1c3f32fafa2bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Levels/Props/destructibles/sprites/Lantern_Blue.png"
-dest_files=["res://.godot/imported/Lantern_Blue.png-2bf7d9b0d3aa877f5f48650f15c783d4.ctex"]
+source_file="res://Assets/Built/Sprites/Props/SirenStatueDias.png"
+dest_files=["res://.godot/imported/SirenStatueDias.png-afa53997c419f9577dd1c3f32fafa2bf.ctex"]
 
 [params]
 
